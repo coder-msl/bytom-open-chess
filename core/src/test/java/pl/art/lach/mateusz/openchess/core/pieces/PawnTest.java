@@ -34,5 +34,15 @@ public class PawnTest {
         
         assertTrue(pawn.wasShiftedByTwoFields(from, to));
     }
+    
+    @Test
+    public void wasntShiftedByTwoFieldsTest() {
+        Pawn pawn = new Pawn();
+        
+        Field from = Field.getInstance(Field.Letter._A, Field.Number._7);
+        Field to = Field.getInstance(Field.Letter._A, Field.Number._6);
+        
+        assertFalse(pawn.wasShiftedByTwoFields(from, to));
+    }
 
 }
