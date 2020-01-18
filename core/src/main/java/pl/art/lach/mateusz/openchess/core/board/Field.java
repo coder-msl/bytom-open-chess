@@ -51,11 +51,12 @@ public class Field {
     }
     
     @Override
-    public boolean equals(Object obj) {
-        if (null == obj) return false;
-        if (obj.getClass() != Field.class) return false;
+    public boolean equals(Object object) {
+        if (null == object || object.getClass() != Field.class) {
+            return false;
+        }
         
-        Field field = (Field)obj;
+        Field field = (Field) object;
         return Objects.equals(letter, field.letter)
                 && Objects.equals(number, field.number);
     }
