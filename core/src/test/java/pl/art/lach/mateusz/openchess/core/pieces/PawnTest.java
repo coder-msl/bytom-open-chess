@@ -14,7 +14,13 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -51,6 +57,19 @@ public class PawnTest {
         Pawn pawn = new Pawn();
         
         assertEquals(1, pawn.getValue());
+    }
+    
+    @Test
+    public void pawnWhiteColorFieldsInRangeTest() {
+        Piece pawn = new Pawn();
+        Field currentField = Field.getInstance(Field.Letter._A, Field.Number._2);
+        Set<Field> fields = pawn.getAllFieldsInRange(currentField);
+        
+        Field expected1 = Field.getInstance(Field.Letter._A, Field.Number._3);
+        Field expected2 = Field.getInstance(Field.Letter._A, Field.Number._4);
+        Field expected3 = Field.getInstance(Field.Letter._B, Field.Number._3);
+        
+        assertThat(fields, hasItems(expected1, expected2, expected3));
     }
     
     

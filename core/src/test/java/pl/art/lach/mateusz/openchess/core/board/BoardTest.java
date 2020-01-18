@@ -12,13 +12,13 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package pl.art.lach.mateusz.openchess.core.pieces;
+package pl.art.lach.mateusz.openchess.core.board;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import pl.art.lach.mateusz.openchess.core.Board;
+import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 
 /**

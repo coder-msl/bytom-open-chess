@@ -12,11 +12,9 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package pl.art.lach.mateusz.openchess.core;
+package pl.art.lach.mateusz.openchess.core.board;
 
 import java.util.Arrays;
-
-import pl.art.lach.mateusz.openchess.core.board.Field;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -36,7 +34,7 @@ public class Board {
           for (int j = Field.Letter._A.ordinal(); j < NUMBER_OF_FIELDS; j++) {
               Field.Letter letter = Field.Letter.values()[i];
               Field.Number number = Field.Number.values()[j];
-              fields[i][j] = new Field(letter, number);
+              fields[i][j] = Field.getInstance(letter, number);
           }
       }
     }

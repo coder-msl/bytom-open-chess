@@ -14,6 +14,8 @@
  */
 package pl.art.lach.mateusz.openchess.core.board;
 
+import java.util.Objects;
+
 /**
  * @author: Mateusz Sławomir Lach 
  */
@@ -31,7 +33,7 @@ public class Field {
     
     private final Number number;
     
-    public Field(Letter letter, Number number) {
+    Field(Letter letter, Number number) {
         this.letter = letter;
         this.number = number;
     }
@@ -46,6 +48,16 @@ public class Field {
 
     public Object getLetter() {
         return letter;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (null == obj) return false;
+        if (obj.getClass() != Field.class) return false;
+        
+        Field field = (Field)obj;
+        return Objects.equals(letter, field.letter)
+                && Objects.equals(number, field.number);
     }
     
 

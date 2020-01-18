@@ -12,34 +12,23 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package pl.art.lach.mateusz.openchess.core.pieces;
+package pl.art.lach.mateusz.openchess.core.board;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import static org.junit.Assert.*;
 
-import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
+import org.junit.Test;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public abstract class Piece {
-    
-    protected int value = 0;
-    
-    protected final List<PieceStrategy> strategies = new ArrayList<>();
+public class FieldTest {
+
+    @Test
+    public void equalsTest() {
+        Field fieldA1_1 = Field.getInstance(Field.Letter._A, Field.Number._1);
+        Field fieldA1_2 = Field.getInstance(Field.Letter._A, Field.Number._1);
         
-    int getValue() {
-        return value;
+        assertEquals(fieldA1_1, fieldA1_2);
     }
 
-    public Set<Field> getAllFieldsInRange(Field currentField) {
-        Set<Field> fields = new HashSet<>();
-        strategies.forEach((strategy) -> {
-            fields.addAll(strategy.getAllFieldsInRange(currentField));
-        });
-        return fields;
-    }
 }
