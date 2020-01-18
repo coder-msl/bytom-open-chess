@@ -52,4 +52,6 @@ public class PawnTest {
         
         assertEquals(1, pawn.getValue());
     }
+    
+    
 }
