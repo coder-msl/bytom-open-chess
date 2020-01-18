@@ -27,8 +27,14 @@ public class FieldTest {
     public void equalsTest() {
         Field fieldA1_1 = Field.getInstance(Field.Letter._A, Field.Number._1);
         Field fieldA1_2 = Field.getInstance(Field.Letter._A, Field.Number._1);
+        Field fieldA2 = Field.getInstance(Field.Letter._A, Field.Number._2);
         
         assertEquals(fieldA1_1, fieldA1_2);
+        assertNotEquals(fieldA1_1, fieldA2);
+        assertNotEquals(fieldA1_2, fieldA2);
+        assertNotEquals(null, fieldA1_1);
+        assertNotEquals(fieldA1_1, null);
+        assertNotEquals(fieldA1_1, "This is not same type");
     }
 
 }
