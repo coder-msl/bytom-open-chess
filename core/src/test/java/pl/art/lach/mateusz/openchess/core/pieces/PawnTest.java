@@ -47,7 +47,7 @@ public class PawnTest {
 
     
     @Test
-    public void valuePawnTest() {
+    public void pawnValueTest() {
         Pawn pawn = new Pawn();
         
         assertEquals(1, pawn.getValue());
