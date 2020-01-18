@@ -59,18 +59,5 @@ public class PawnTest {
         assertEquals(1, pawn.getValue());
     }
     
-    @Test
-    public void pawnWhiteColorFieldsInRangeTest() {
-        Piece pawn = new Pawn();
-        Field currentField = Field.getInstance(Field.Letter._A, Field.Number._2);
-        Set<Field> fields = pawn.getAllFieldsInRange(currentField);
-        
-        Field expected1 = Field.getInstance(Field.Letter._A, Field.Number._3);
-        Field expected2 = Field.getInstance(Field.Letter._A, Field.Number._4);
-        Field expected3 = Field.getInstance(Field.Letter._B, Field.Number._3);
-        
-        assertThat(fields, hasItems(expected1, expected2, expected3));
-    }
-    
     
 }
