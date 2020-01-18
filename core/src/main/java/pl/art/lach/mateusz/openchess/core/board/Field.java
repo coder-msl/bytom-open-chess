@@ -43,6 +43,10 @@ public class Field {
     public Number getNumber() {
         return number;
     }
+
+    public Object getLetter() {
+        return letter;
+    }
     
 
 }

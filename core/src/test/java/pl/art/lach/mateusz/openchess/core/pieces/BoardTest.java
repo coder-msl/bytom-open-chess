@@ -25,10 +25,11 @@ import pl.art.lach.mateusz.openchess.core.board.Field;
  * @author: Mateusz Sławomir Lach 
  */
 public class BoardTest {
+    
+    private Board board = new Board();
 
     @Test
     public void isInBoardTest() {
-        Board board = new Board();
         assertTrue(board.isFieldNumberValid(0));
         assertTrue(board.isFieldNumberValid(1));
         assertTrue(board.isFieldNumberValid(2));
@@ -45,13 +46,25 @@ public class BoardTest {
     
     @Test
     public void boardHasBeenCorrectlyInitiatedTest() {
-        Field[][] fields = new Board().getFields();
+        Field[][] fields = board.getFields();
         
         for (Field[] row : fields) {
             for (Field column : row) {
+                assertNotNull(column);
                 assertTrue(column instanceof Field);
             }
         }
+    }
+    
+    @Test
+    public void boardFieldsHasCorrectNumbersTest() {
+        Field[][] fields = board.getFields();
+                
+        assertEquals(Field.Letter._A, fields[0][0].getLetter());
+        assertEquals(Field.Number._1, fields[0][0].getNumber());
+        
+        assertEquals(Field.Letter._H, fields[7][7].getLetter());
+        assertEquals(Field.Number._8, fields[7][7].getNumber());
     }
 
 }
