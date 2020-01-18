@@ -19,5 +19,9 @@ package pl.art.lach.mateusz.openchess.core.pieces;
  */
 public abstract class Piece {
     
+    protected int value = 0;
     
+    int getValue() {
+        return value;
+    }
 }

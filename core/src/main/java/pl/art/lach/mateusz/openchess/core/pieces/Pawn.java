@@ -20,6 +20,10 @@ import pl.art.lach.mateusz.openchess.core.board.Field;
  * @author: Mateusz Sławomir Lach 
  */
 class Pawn extends Piece {
+    
+    Pawn() {
+        this.value = 1;
+    }
 
     public boolean wasShiftedByTwoFields(Field from, Field to) {
         int fromNumber = from.getNumber().ordinal();

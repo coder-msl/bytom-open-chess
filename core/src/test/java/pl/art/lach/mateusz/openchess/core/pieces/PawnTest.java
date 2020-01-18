@@ -45,4 +45,11 @@ public class PawnTest {
         assertFalse(pawn.wasShiftedByTwoFields(from, to));
     }
 
+    
+    @Test
+    public void valuePawnTest() {
+        Pawn pawn = new Pawn();
+        
+        assertEquals(1, pawn.getValue());
+    }
 }
