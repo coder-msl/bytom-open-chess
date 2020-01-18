@@ -14,7 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
@@ -25,6 +25,7 @@ import java.util.Set;
 import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.board.Field;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.PawnStrategy;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -59,5 +60,19 @@ public class PawnTest {
         assertEquals(1, pawn.getValue());
     }
     
-    
+    @Test
+    public void pawnShouldUseOneStrategyTest() {
+       Pawn pawn = new Pawn();
+       PawnStrategy pawnStrategy = new PawnStrategy();
+       Field currentField = Field.getInstance(Field.Letter._A, Field.Number._2);
+       
+       Set<Field> fieldsFromPawnClass = pawn.getAllFieldsInRange(currentField);
+       Set<Field> fieldsFromStrategy = pawnStrategy.getAllFieldsInRange(currentField);
+       
+       assertEquals(fieldsFromPawnClass.size(), fieldsFromStrategy.size());
+       fieldsFromPawnClass.forEach((element) -> {
+           assertThat(fieldsFromStrategy, hasItem(element));
+       });
+       
+    }
 }
