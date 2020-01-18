@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.Board;
+import pl.art.lach.mateusz.openchess.core.board.Field;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -40,8 +41,17 @@ public class BoardTest {
         assertFalse(board.isInBoard(8));
         assertFalse(board.isInBoard(9));
         assertFalse(board.isInBoard(-1));
+    }
+    
+    @Test
+    public void boardHasBeenCorrectlyInitiatedTest() {
+        Field[][] fields = new Board().getFields();
         
-        
+        for (Field[] row : fields) {
+            for (Field column : row) {
+                assertTrue(column instanceof Field);
+            }
+        }
     }
 
 }

@@ -21,6 +21,7 @@ import pl.art.lach.mateusz.openchess.core.board.Field;
  */
 class Pawn extends Piece {
     
+    
     Pawn() {
         this.value = 1;
     }

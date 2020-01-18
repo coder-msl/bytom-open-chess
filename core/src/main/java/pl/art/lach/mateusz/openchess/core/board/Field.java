@@ -31,7 +31,7 @@ public class Field {
     
     private final Number number;
     
-    private Field(Letter letter, Number number) {
+    public Field(Letter letter, Number number) {
         this.letter = letter;
         this.number = number;
     }
