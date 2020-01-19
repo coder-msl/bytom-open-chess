@@ -46,8 +46,14 @@ public class Field {
         return number;
     }
 
-    public Object getLetter() {
+    public Letter getLetter() {
         return letter;
+    }
+    
+
+    public static boolean isFieldNumberValid(int fieldNumber) {
+        return fieldNumber >= Field.Number._1.ordinal()
+                && fieldNumber <= Field.Number._8.ordinal();
     }
     
     @Override

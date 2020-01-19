@@ -22,17 +22,19 @@ import java.util.Set;
 import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.board.Field;
+import pl.art.lach.mateusz.openchess.core.pieces.Piece.Color;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
 public class PawnStrategyTest {
+    
+    private final PieceStrategy pawnStrategy = new PawnStrategy();
 
     @Test
-    public void pawnWhiteColorFieldsInRangeTest() {
-        PieceStrategy pawnStrategy = new PawnStrategy();
+    public void pawnFieldsInRangeTest_WhiteColor_A2() {
         Field currentField = Field.getInstance(Field.Letter._A, Field.Number._2);
-        Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField);
+        Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.WHITE);
         
         Field expected1 = Field.getInstance(Field.Letter._A, Field.Number._3);
         Field expected2 = Field.getInstance(Field.Letter._A, Field.Number._4);
@@ -40,5 +42,51 @@ public class PawnStrategyTest {
         
         assertThat(fields, hasItems(expected1, expected2, expected3));
     }
-
+    
+    @Test
+    public void pawnFieldsInRangeTest_WhiteColor_B2() {
+        Field currentField = Field.getInstance(Field.Letter._B, Field.Number._2);
+        Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.WHITE);
+        
+        Field expected1 = Field.getInstance(Field.Letter._A, Field.Number._3);
+        Field expected2 = Field.getInstance(Field.Letter._B, Field.Number._4);
+        Field expected3 = Field.getInstance(Field.Letter._B, Field.Number._3);
+        
+        assertThat(fields, hasItems(expected1, expected2, expected3));
+    }
+    
+    @Test
+    public void pawnFieldsInRangeTest_BlackColor_A7() {
+        Field currentField = Field.getInstance(Field.Letter._A, Field.Number._7);
+        Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.BLACK);
+        
+        Field expected1 = Field.getInstance(Field.Letter._A, Field.Number._6);
+        Field expected2 = Field.getInstance(Field.Letter._B, Field.Number._6);
+        Field expected3 = Field.getInstance(Field.Letter._A, Field.Number._5);
+        
+        assertThat(fields, hasItems(expected1, expected2, expected3));
+    }
+    
+    @Test
+    public void pawnFieldsInRangeTest_BlackColor_C6() {
+        Field currentField = Field.getInstance(Field.Letter._C, Field.Number._6);
+        Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.BLACK);
+        
+        Field expected1 = Field.getInstance(Field.Letter._C, Field.Number._5);
+        Field expected2 = Field.getInstance(Field.Letter._D, Field.Number._5);
+        Field expected3 = Field.getInstance(Field.Letter._B, Field.Number._5);
+        
+        assertThat(fields, hasItems(expected1, expected2, expected3));
+    }
+    
+    @Test
+    public void pawnFieldsInRangeTest_BlackColor_H6() {
+        Field currentField = Field.getInstance(Field.Letter._H, Field.Number._6);
+        Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.BLACK);
+        
+        Field expected1 = Field.getInstance(Field.Letter._H, Field.Number._5);
+        Field expected2 = Field.getInstance(Field.Letter._G, Field.Number._5);
+        
+        assertThat(fields, hasItems(expected1, expected2));
+    }
 }

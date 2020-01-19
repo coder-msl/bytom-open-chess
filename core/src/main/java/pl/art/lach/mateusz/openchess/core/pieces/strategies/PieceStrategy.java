@@ -16,12 +16,13 @@ package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
 import java.util.Set;
 import pl.art.lach.mateusz.openchess.core.board.Field;
+import pl.art.lach.mateusz.openchess.core.pieces.Piece.Color;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
 public interface PieceStrategy {
 
-    public Set<Field> getAllFieldsInRange(Field currentField);
+    public Set<Field> getAllFieldsInRange(Field currentField, Color white);
     
 }

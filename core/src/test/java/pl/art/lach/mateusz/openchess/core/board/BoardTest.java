@@ -30,18 +30,18 @@ public class BoardTest {
 
     @Test
     public void isInBoardTest() {
-        assertTrue(board.isFieldNumberValid(0));
-        assertTrue(board.isFieldNumberValid(1));
-        assertTrue(board.isFieldNumberValid(2));
-        assertTrue(board.isFieldNumberValid(3));
-        assertTrue(board.isFieldNumberValid(4));
-        assertTrue(board.isFieldNumberValid(5));
-        assertTrue(board.isFieldNumberValid(6));
-        assertTrue(board.isFieldNumberValid(7));
+        assertTrue(Field.isFieldNumberValid(0));
+        assertTrue(Field.isFieldNumberValid(1));
+        assertTrue(Field.isFieldNumberValid(2));
+        assertTrue(Field.isFieldNumberValid(3));
+        assertTrue(Field.isFieldNumberValid(4));
+        assertTrue(Field.isFieldNumberValid(5));
+        assertTrue(Field.isFieldNumberValid(6));
+        assertTrue(Field.isFieldNumberValid(7));
         
-        assertFalse(board.isFieldNumberValid(8));
-        assertFalse(board.isFieldNumberValid(9));
-        assertFalse(board.isFieldNumberValid(-1));
+        assertFalse(Field.isFieldNumberValid(8));
+        assertFalse(Field.isFieldNumberValid(9));
+        assertFalse(Field.isFieldNumberValid(-1));
     }
     
     @Test

@@ -25,6 +25,7 @@ import java.util.Set;
 import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.board.Field;
+import pl.art.lach.mateusz.openchess.core.pieces.Piece.Color;
 import pl.art.lach.mateusz.openchess.core.pieces.strategies.PawnStrategy;
 
 /**
@@ -66,8 +67,8 @@ public class PawnTest {
        PawnStrategy pawnStrategy = new PawnStrategy();
        Field currentField = Field.getInstance(Field.Letter._A, Field.Number._2);
        
-       Set<Field> fieldsFromPawnClass = pawn.getAllFieldsInRange(currentField);
-       Set<Field> fieldsFromStrategy = pawnStrategy.getAllFieldsInRange(currentField);
+       Set<Field> fieldsFromPawnClass = pawn.getAllFieldsInRange(currentField, Color.WHITE);
+       Set<Field> fieldsFromStrategy = pawnStrategy.getAllFieldsInRange(currentField, Color.WHITE);
        
        assertEquals(fieldsFromPawnClass.size(), fieldsFromStrategy.size());
        fieldsFromPawnClass.forEach((element) -> {

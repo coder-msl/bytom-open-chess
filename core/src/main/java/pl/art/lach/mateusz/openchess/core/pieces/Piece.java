@@ -27,6 +27,10 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
  */
 public abstract class Piece {
     
+    public enum Color {
+        WHITE, BLACK
+    }
+
     protected int value = 0;
     
     protected final List<PieceStrategy> strategies = new ArrayList<>();
@@ -35,10 +39,10 @@ public abstract class Piece {
         return value;
     }
 
-    public Set<Field> getAllFieldsInRange(Field currentField) {
+    public Set<Field> getAllFieldsInRange(Field currentField, Color color) {
         Set<Field> fields = new HashSet<>();
         strategies.forEach((strategy) -> {
-            fields.addAll(strategy.getAllFieldsInRange(currentField));
+            fields.addAll(strategy.getAllFieldsInRange(currentField, color));
         });
         return fields;
     }

@@ -39,10 +39,6 @@ public class Board {
       }
     }
 
-    public boolean isFieldNumberValid(int fieldNumber) {
-        return fieldNumber >= Field.Number._1.ordinal()
-                && fieldNumber <= Field.Number._8.ordinal();
-    }
 
     public Field[][] getFields() {
         return Arrays.copyOf(fields, fields.length);
