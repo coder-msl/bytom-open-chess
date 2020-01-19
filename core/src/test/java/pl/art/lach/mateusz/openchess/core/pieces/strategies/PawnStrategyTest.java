@@ -15,6 +15,8 @@
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
 import static org.hamcrest.CoreMatchers.hasItems;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 import java.util.Set;
@@ -53,6 +55,36 @@ public class PawnStrategyTest {
         Field expected3 = Field.getInstance(Field.Letter._B, Field.Number._3);
         
         assertThat(fields, hasItems(expected1, expected2, expected3));
+    }
+    
+    @Test
+    public void pawnFieldsInRangeTest_WhiteColor_B3() {
+        Field currentField = Field.getInstance(Field.Letter._B, Field.Number._3);
+        Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.WHITE);
+        
+        Field expected1 = Field.getInstance(Field.Letter._B, Field.Number._4);
+        Field expected2 = Field.getInstance(Field.Letter._A, Field.Number._4);
+        Field expected3 = Field.getInstance(Field.Letter._C, Field.Number._4);
+        
+        assertThat(fields, hasItems(expected1, expected2, expected3));
+    }
+    
+    @Test
+    public void pawnFieldsInRangeTest_WhiteColor_B8() {
+        Field currentField = Field.getInstance(Field.Letter._B, Field.Number._8);
+        Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.WHITE);
+        
+        assertNotNull(fields);
+        assertEquals(0, fields.size());
+    }
+    
+    @Test
+    public void pawnFieldsInRangeTest_WhiteColor_B1() {
+        Field currentField = Field.getInstance(Field.Letter._B, Field.Number._1);
+        Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.BLACK);
+        
+        assertNotNull(fields);
+        assertEquals(0, fields.size());
     }
     
     @Test
