@@ -14,13 +14,9 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-
-import java.util.Set;
 
 import org.junit.Test;
 
@@ -31,7 +27,7 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.PawnStrategy;
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public class PawnTest {
+public class PawnTest extends PieceTest {
 
     @Test
     public void wasShiftedByTwoFieldsTest() {
@@ -57,23 +53,16 @@ public class PawnTest {
     @Test
     public void pawnValueTest() {
         Pawn pawn = new Pawn();
-        
+
         assertEquals(1, pawn.getValue());
     }
     
     @Test
     public void pawnShouldUseOneStrategyTest() {
-       Pawn pawn = new Pawn();
-       PawnStrategy pawnStrategy = new PawnStrategy();
-       Field currentField = Field.getInstance(Field.Letter._A, Field.Number._2);
-       
-       Set<Field> fieldsFromPawnClass = pawn.getAllFieldsInRange(currentField, Color.WHITE);
-       Set<Field> fieldsFromStrategy = pawnStrategy.getAllFieldsInRange(currentField, Color.WHITE);
-       
-       assertEquals(fieldsFromPawnClass.size(), fieldsFromStrategy.size());
-       fieldsFromPawnClass.forEach((element) -> {
-           assertThat(fieldsFromStrategy, hasItem(element));
-       });
-       
+        Pawn pawn = new Pawn();
+        PawnStrategy pawnStrategy = new PawnStrategy();
+        Field field = Field.getInstance(Field.Letter._A, Field.Number._2);
+        pieceShouldReturnSameFieldsAsStrategyTest(pawn, pawnStrategy, field, Color.WHITE);
+        pieceShouldReturnSameFieldsAsStrategyTest(pawn, pawnStrategy, field, Color.BLACK);
     }
 }
