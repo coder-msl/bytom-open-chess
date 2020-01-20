@@ -14,6 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import pl.art.lach.mateusz.openchess.core.board.Field;
@@ -22,8 +23,20 @@ import pl.art.lach.mateusz.openchess.core.pieces.Piece.Color;
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public interface PieceStrategy {
+public class RookStrategy extends LongRangeStrategy {
 
-    Set<Field> getAllFieldsInRange(Field currentField, Color white);
-    
+    @Override
+    public Set<Field> getAllFieldsInRange(Field currentField, Color white) {
+        final Set<Field> fields = new HashSet<>();
+        
+        addFieldsInDirection(fields, currentField, Direction.TOP);
+        addFieldsInDirection(fields, currentField, Direction.BOTTOM);
+        addFieldsInDirection(fields, currentField, Direction.LEFT);
+        addFieldsInDirection(fields, currentField, Direction.RIGHT);
+        
+        return fields;
+    }
+
+
+
 }
