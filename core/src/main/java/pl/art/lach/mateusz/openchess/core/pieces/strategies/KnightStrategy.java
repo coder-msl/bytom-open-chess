@@ -14,6 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -44,7 +45,7 @@ public class KnightStrategy implements PieceStrategy {
         addIfCoordinatesAreValid(fields, letter + 2, number + 1);
         addIfCoordinatesAreValid(fields, letter + 2, number - 1);
         
-        return fields;
+        return Collections.unmodifiableSet(fields);
     }
 
 

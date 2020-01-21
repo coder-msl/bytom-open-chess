@@ -14,6 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,7 +43,7 @@ public class PawnStrategy implements PieceStrategy {
             addIfCoordinatesAreValid(fields, letter, number + (numberDirection * 2));
         }
         
-        return fields;
+        return Collections.unmodifiableSet(fields);
     }
 
     private int getNumberDirectionBasingOnColor(Color color) {

@@ -14,6 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,7 +35,7 @@ public class RookStrategy extends LongRangeStrategy {
         addFieldsInDirection(fields, currentField, Direction.LEFT);
         addFieldsInDirection(fields, currentField, Direction.RIGHT);
         
-        return fields;
+        return Collections.unmodifiableSet(fields);
     }
 
 

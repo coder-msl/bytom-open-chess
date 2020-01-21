@@ -14,6 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,7 +35,7 @@ public class BishopStrategy extends LongRangeStrategy {
         addFieldsInDirection(fields, currentField, Direction.TOP_LEFT);
         addFieldsInDirection(fields, currentField, Direction.BOTTOM_RIGHT);
         
-        return fields;
+        return Collections.unmodifiableSet(fields);
     }
 
 
