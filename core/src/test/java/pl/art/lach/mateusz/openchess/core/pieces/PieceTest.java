@@ -20,8 +20,8 @@ import static org.junit.Assert.assertThat;
 
 import java.util.Set;
 
+import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.Piece.Color;
 import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
 
 /**

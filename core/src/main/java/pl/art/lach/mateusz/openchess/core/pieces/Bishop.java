@@ -19,7 +19,7 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.BishopStrategy;
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public class Bishop extends Piece {
+class Bishop extends Piece {
 
     Bishop() {
         value = 3;

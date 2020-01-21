@@ -3,10 +3,11 @@ package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 import java.util.Set;
 
 import org.junit.Test;
+
+import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
-import pl.art.lach.mateusz.openchess.core.pieces.Piece.Color;
 
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.assertThat;

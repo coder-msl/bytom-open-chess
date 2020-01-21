@@ -14,33 +14,15 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import pl.art.lach.mateusz.openchess.core.Color;
-import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.RookStrategy;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public abstract class Piece {
+class Rook extends Piece {
 
-    protected int value = 0;
-    
-    protected final List<PieceStrategy> strategies = new ArrayList<>();
-        
-    int getValue() {
-        return value;
-    }
-
-    public Set<Field> getAllFieldsInRange(Field currentField, Color color) {
-        Set<Field> fields = new HashSet<>();
-        strategies.forEach((strategy) -> {
-            fields.addAll(strategy.getAllFieldsInRange(currentField, color));
-        });
-        return fields;
+    Rook() {
+        value = 5;
+        strategies.add(new RookStrategy());
     }
 }

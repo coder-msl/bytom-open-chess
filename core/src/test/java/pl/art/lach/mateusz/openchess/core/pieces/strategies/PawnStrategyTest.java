@@ -23,8 +23,8 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.Piece.Color;
 
 /**
  * @author: Mateusz Sławomir Lach 

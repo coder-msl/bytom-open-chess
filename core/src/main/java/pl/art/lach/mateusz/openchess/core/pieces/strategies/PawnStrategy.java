@@ -17,9 +17,9 @@ package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 import java.util.HashSet;
 import java.util.Set;
 
+import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
-import pl.art.lach.mateusz.openchess.core.pieces.Piece.Color;
 
 /**
  * @author: Mateusz Sławomir Lach 

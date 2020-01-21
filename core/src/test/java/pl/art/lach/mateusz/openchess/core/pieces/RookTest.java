@@ -20,33 +20,27 @@ import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.BishopStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.RookStrategy;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public class BishopTest extends PieceTest {
+public class RookTest extends PieceTest {
 
     
     @Test
-    public void pawnValueTest() {
-        Bishop bishop = new Bishop();
-        assertEquals(3, bishop.getValue());
+    public void rookValueTest() {
+        Rook rook = new Rook();
+
+        assertEquals(5, rook.getValue());
     }
     
     @Test
-    public void bishopShouldUseOneStrategyTest_A2() {
-        Bishop bishop = new Bishop();
-        BishopStrategy strategy = new BishopStrategy();
+    public void rookShouldUseOneStrategyTest() {
+        Rook rook = new Rook();
+        RookStrategy rookStrategy = new RookStrategy();
         Field field = Field.getInstance(Field.Letter._A, Field.Number._2);
-        pieceShouldReturnSameFieldsAsStrategyTest(bishop, strategy, field, Color.WHITE);
-    }
-    
-    @Test
-    public void bishopShouldUseOneStrategyTest_H7() {
-        Bishop bishop = new Bishop();
-        BishopStrategy strategy = new BishopStrategy();
-        Field field = Field.getInstance(Field.Letter._E, Field.Number._5);
-        pieceShouldReturnSameFieldsAsStrategyTest(bishop, strategy, field, Color.BLACK);
+        pieceShouldReturnSameFieldsAsStrategyTest(rook, rookStrategy, field, Color.WHITE);
+        pieceShouldReturnSameFieldsAsStrategyTest(rook, rookStrategy, field, Color.BLACK);
     }
 }

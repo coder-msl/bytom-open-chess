@@ -12,18 +12,13 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package pl.art.lach.mateusz.openchess.core.pieces.strategies;
-
-import java.util.Set;
-
-import pl.art.lach.mateusz.openchess.core.Color;
-import pl.art.lach.mateusz.openchess.core.board.Field;
+package pl.art.lach.mateusz.openchess.core;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public interface PieceStrategy {
-
-    Set<Field> getAllFieldsInRange(Field currentField, Color white);
+public enum Color {
+    WHITE,
     
+    BLACK;
 }

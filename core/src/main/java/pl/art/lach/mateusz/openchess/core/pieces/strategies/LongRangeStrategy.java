@@ -58,7 +58,7 @@ public abstract class LongRangeStrategy implements PieceStrategy {
     protected void addFieldsInDirection(Set<Field> fields, Field currentField, Direction direction) {
         int fieldLetter = currentField.getLetter().ordinal() + direction.getLetterDirection();
         int fieldNumber = currentField.getNumber().ordinal() + direction.getNumberDirection();
-        while (Field.isFieldNumberValid(fieldLetter) && Field.isFieldNumberValid(fieldNumber)) {
+        while (coordinatesAreValid(fieldLetter, fieldNumber)) {
             Letter letter = Field.Letter.values()[fieldLetter];
             Number number = Field.Number.values()[fieldNumber];
 
@@ -67,5 +67,9 @@ public abstract class LongRangeStrategy implements PieceStrategy {
             fieldLetter += direction.getLetterDirection();
             fieldNumber += direction.getNumberDirection();
         }
+    }
+
+    private boolean coordinatesAreValid(int fieldLetter, int fieldNumber) {
+        return Field.isFieldNumberValid(fieldLetter) && Field.isFieldNumberValid(fieldNumber);
     }
 }
