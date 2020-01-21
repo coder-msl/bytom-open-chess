@@ -48,5 +48,26 @@ public class KingStrategyTest {
         
         assertThat(fields, hasItems(fieldD1, fieldD2, fieldE2, fieldF2, fieldF1));
      }
+    
+    @Test
+    public void kingFieldsInRangeTest_C4() {
+        Field fieldC4 = Field.getInstance(Letter._C, Number._4);
+        final Set<Field> fields = kingStrategy.getAllFieldsInRange(fieldC4, Color.WHITE);
+        
+        Field fieldC3 = Field.getInstance(Letter._C, Number._3);
+        Field fieldC5 = Field.getInstance(Letter._C, Number._5);
+        
+        Field fieldB4 = Field.getInstance(Letter._B, Number._4);
+        Field fieldB3 = Field.getInstance(Letter._B, Number._3);
+        Field fieldB5 = Field.getInstance(Letter._B, Number._5);
+        
+        Field fieldD4 = Field.getInstance(Letter._D, Number._4);
+        Field fieldD3 = Field.getInstance(Letter._D, Number._3);
+        Field fieldD5 = Field.getInstance(Letter._D, Number._5);
+        
+        assertThat(fields, hasItems(fieldC3, fieldC5));
+        assertThat(fields, hasItems(fieldB4, fieldB3, fieldB5));
+        assertThat(fields, hasItems(fieldD4, fieldD3, fieldD5));
+     }
 
 }
