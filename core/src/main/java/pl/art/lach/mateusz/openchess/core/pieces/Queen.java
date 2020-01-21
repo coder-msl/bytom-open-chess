@@ -14,33 +14,17 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
-
-import pl.art.lach.mateusz.openchess.core.Color;
-import pl.art.lach.mateusz.openchess.core.board.Field;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.BishopStrategy;
 import pl.art.lach.mateusz.openchess.core.pieces.strategies.RookStrategy;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public class RookTest extends PieceTest {
+class Queen extends Piece {
 
-    
-    @Test
-    public void rookValueTest() {
-        Rook rook = new Rook();
-
-        assertEquals(5, rook.getValue());
-    }
-    
-    @Test
-    public void rookShouldUseOneStrategyTest() {
-        Rook rook = new Rook();
-        RookStrategy rookStrategy = new RookStrategy();
-        Field field = Field.getInstance(Field.Letter._A, Field.Number._2);
-        pieceShouldContainsAllFieldsReturnedByStrategyTest(rook, rookStrategy, field, Color.WHITE);
-        pieceShouldContainsAllFieldsReturnedByStrategyTest(rook, rookStrategy, field, Color.BLACK);
+    Queen() {
+        value = 9;
+        strategies.add(new RookStrategy());
+        strategies.add(new BishopStrategy());
     }
 }

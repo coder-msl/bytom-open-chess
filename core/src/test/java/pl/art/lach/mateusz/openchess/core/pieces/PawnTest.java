@@ -62,7 +62,7 @@ public class PawnTest extends PieceTest {
         Pawn pawn = new Pawn();
         PawnStrategy pawnStrategy = new PawnStrategy();
         Field field = Field.getInstance(Field.Letter._A, Field.Number._2);
-        pieceShouldReturnSameFieldsAsStrategyTest(pawn, pawnStrategy, field, Color.WHITE);
-        pieceShouldReturnSameFieldsAsStrategyTest(pawn, pawnStrategy, field, Color.BLACK);
+        pieceShouldContainsAllFieldsReturnedByStrategyTest(pawn, pawnStrategy, field, Color.WHITE);
+        pieceShouldContainsAllFieldsReturnedByStrategyTest(pawn, pawnStrategy, field, Color.BLACK);
     }
 }

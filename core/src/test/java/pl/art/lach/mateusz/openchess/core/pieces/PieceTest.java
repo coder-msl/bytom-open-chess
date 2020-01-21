@@ -15,7 +15,6 @@
 package pl.art.lach.mateusz.openchess.core.pieces;
 
 import static org.hamcrest.CoreMatchers.hasItem;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 import java.util.Set;
@@ -29,15 +28,16 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
  */
 abstract class PieceTest {
 
-    public void pieceShouldReturnSameFieldsAsStrategyTest(final Piece piece, 
+    public void pieceShouldContainsAllFieldsReturnedByStrategyTest(final Piece piece, 
             final PieceStrategy strategy, final Field field, final Color color) {
 
-        Set<Field> fieldsFromPawnClass = piece.getAllFieldsInRange(field, color);
+        Set<Field> fieldsFromPiece = piece.getAllFieldsInRange(field, color);
         Set<Field> fieldsFromStrategy = strategy.getAllFieldsInRange(field, color);
 
-        assertEquals(fieldsFromPawnClass.size(), fieldsFromStrategy.size());
-        fieldsFromPawnClass.forEach((element) -> {
+        
+        fieldsFromPiece.forEach((element) -> {
             assertThat(fieldsFromStrategy, hasItem(element));
         });
     }
+    
 }

@@ -1,0 +1,83 @@
+/*
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+package pl.art.lach.mateusz.openchess.core.pieces;
+
+import static org.hamcrest.CoreMatchers.hasItem;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Set;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import pl.art.lach.mateusz.openchess.core.Color;
+import pl.art.lach.mateusz.openchess.core.board.Field;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.BishopStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.RookStrategy;
+
+/**
+ * @author: Mateusz Sławomir Lach 
+ */
+public class QueenTest extends PieceTest {
+
+    private Queen queen;
+    
+    private PieceStrategy rookStrategy;
+    
+    private PieceStrategy bishopStrategy;
+    
+    @Before
+    public void setup() {
+        queen = new Queen();
+        rookStrategy = new RookStrategy();
+        bishopStrategy = new BishopStrategy();
+    }
+    
+    @Test
+    public void queenValueTest() {
+        assertEquals(9, queen.getValue());
+    }
+    
+    @Test
+    public void rookShouldUseOneStrategyTest_White() {
+        Field field = Field.getInstance(Field.Letter._A, Field.Number._2);
+        
+        Set<Field> queenWhiteFields = queen.getAllFieldsInRange(field, Color.WHITE);
+        Set<Field> rookStrategyFields = rookStrategy.getAllFieldsInRange(field, Color.WHITE);
+        Set<Field> bishopStrategyFields = bishopStrategy.getAllFieldsInRange(field, Color.WHITE);
+
+        assertEquals(queenWhiteFields.size(), rookStrategyFields.size() + bishopStrategyFields.size());
+
+        assertTrue(queenWhiteFields.containsAll(rookStrategyFields));
+        assertTrue(queenWhiteFields.containsAll(bishopStrategyFields));
+    }
+    
+    
+    @Test
+    public void rookShouldUseOneStrategyTest_Black() {
+        Field field = Field.getInstance(Field.Letter._A, Field.Number._2);
+        
+        Set<Field> queenBlackFields = queen.getAllFieldsInRange(field, Color.BLACK);
+        Set<Field> rookStrategyFields = rookStrategy.getAllFieldsInRange(field, Color.BLACK);
+        Set<Field> bishopStrategyFields = bishopStrategy.getAllFieldsInRange(field, Color.BLACK);
+
+        assertEquals(queenBlackFields.size(), rookStrategyFields.size() + bishopStrategyFields.size());
+        assertTrue(queenBlackFields.containsAll(rookStrategyFields));
+        assertTrue(queenBlackFields.containsAll(bishopStrategyFields));
+    }
+}

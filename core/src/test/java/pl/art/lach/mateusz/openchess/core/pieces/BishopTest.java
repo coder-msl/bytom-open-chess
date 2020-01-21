@@ -39,7 +39,7 @@ public class BishopTest extends PieceTest {
         Bishop bishop = new Bishop();
         BishopStrategy strategy = new BishopStrategy();
         Field field = Field.getInstance(Field.Letter._A, Field.Number._2);
-        pieceShouldReturnSameFieldsAsStrategyTest(bishop, strategy, field, Color.WHITE);
+        pieceShouldContainsAllFieldsReturnedByStrategyTest(bishop, strategy, field, Color.WHITE);
     }
     
     @Test
@@ -47,6 +47,6 @@ public class BishopTest extends PieceTest {
         Bishop bishop = new Bishop();
         BishopStrategy strategy = new BishopStrategy();
         Field field = Field.getInstance(Field.Letter._E, Field.Number._5);
-        pieceShouldReturnSameFieldsAsStrategyTest(bishop, strategy, field, Color.BLACK);
+        pieceShouldContainsAllFieldsReturnedByStrategyTest(bishop, strategy, field, Color.BLACK);
     }
 }

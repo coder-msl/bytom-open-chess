@@ -67,5 +67,10 @@ public class Field {
                 && Objects.equals(number, field.number);
     }
     
+    @Override
+    public int hashCode() {
+        return Objects.hash(letter, number);
+    }
+    
 
 }
