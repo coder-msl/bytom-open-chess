@@ -28,7 +28,7 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
  */
 abstract class PieceTest {
 
-    public void pieceShouldContainsAllFieldsReturnedByStrategyTest(final Piece piece, 
+    public void shouldContainAllFieldsAsStrategy(final Piece piece, 
             final PieceStrategy strategy, final Field field, final Color color) {
 
         Set<Field> fieldsFromPiece = piece.getAllFieldsInRange(field, color);

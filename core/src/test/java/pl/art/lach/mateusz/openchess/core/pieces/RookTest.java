@@ -40,7 +40,7 @@ public class RookTest extends PieceTest {
         Rook rook = new Rook();
         RookStrategy rookStrategy = new RookStrategy();
         Field field = Field.getInstance(Field.Letter._A, Field.Number._2);
-        pieceShouldContainsAllFieldsReturnedByStrategyTest(rook, rookStrategy, field, Color.WHITE);
-        pieceShouldContainsAllFieldsReturnedByStrategyTest(rook, rookStrategy, field, Color.BLACK);
+        shouldContainAllFieldsAsStrategy(rook, rookStrategy, field, Color.WHITE);
+        shouldContainAllFieldsAsStrategy(rook, rookStrategy, field, Color.BLACK);
     }
 }
