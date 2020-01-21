@@ -12,27 +12,35 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package pl.art.lach.mateusz.openchess.core.pieces.strategies;
+package pl.art.lach.mateusz.openchess.core.pieces;
 
-import java.util.Set;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.RookStrategy;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public interface PieceStrategy {
+public class KnightTest extends PieceTest {
 
-    Set<Field> getAllFieldsInRange(Field currentField, Color white);
     
-    static void addIfCoordinatesAreValid(Set<Field> fields, int letterOrdinal, int numberOrdinal) {
-        if (Field.coordinatesAreValid(letterOrdinal, numberOrdinal)) {
-            Field.Letter letter = Field.Letter.values()[letterOrdinal];
-            Field.Number number = Field.Number.values()[numberOrdinal];
-            Field fieldInRange = Field.getInstance(letter, number);
-            fields.add(fieldInRange);
-        }
+    @Test
+    public void knightValueTest() {
+        Knight rook = new Knight();
+
+        assertEquals(3, rook.getValue());
     }
     
+    @Test
+    public void rookShouldUseOneStrategyTest() {
+        Rook rook = new Rook();
+        RookStrategy rookStrategy = new RookStrategy();
+        Field field = Field.getInstance(Field.Letter._C, Field.Number._4);
+        pieceShouldContainsAllFieldsReturnedByStrategyTest(rook, rookStrategy, field, Color.WHITE);
+        pieceShouldContainsAllFieldsReturnedByStrategyTest(rook, rookStrategy, field, Color.BLACK);
+    }
 }

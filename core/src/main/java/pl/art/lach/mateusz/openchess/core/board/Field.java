@@ -56,6 +56,10 @@ public class Field {
                 && fieldNumber <= Field.Number._8.ordinal();
     }
     
+    public static boolean coordinatesAreValid(int fieldLetter, int fieldNumber) {
+        return isFieldNumberValid(fieldLetter) && isFieldNumberValid(fieldNumber);
+    }
+    
     @Override
     public boolean equals(Object object) {
         if (null == object || object.getClass() != Field.class) {

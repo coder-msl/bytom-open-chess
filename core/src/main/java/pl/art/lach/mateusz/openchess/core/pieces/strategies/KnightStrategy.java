@@ -19,44 +19,34 @@ import java.util.Set;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.board.Field.Number;
 import static pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy.addIfCoordinatesAreValid;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public class PawnStrategy implements PieceStrategy {
+public class KnightStrategy implements PieceStrategy {
 
     @Override
-    public Set<Field> getAllFieldsInRange(Field currentField, Color color) {
+    public Set<Field> getAllFieldsInRange(Field currentField, Color white) {
         final Set<Field> fields = new HashSet<>();
-        final int numberDirection = getNumberDirectionBasingOnColor(color);
-        
         final int letter = currentField.getLetter().ordinal();
         final int number = currentField.getNumber().ordinal();
-        addIfCoordinatesAreValid(fields, letter, number + numberDirection);
-        addIfCoordinatesAreValid(fields, letter - 1, number + numberDirection);
-        addIfCoordinatesAreValid(fields, letter + 1, number + numberDirection);
         
-        if (isOnStartPosition(currentField, color)) {
-            addIfCoordinatesAreValid(fields, letter, number + (numberDirection * 2));
-        }
+        addIfCoordinatesAreValid(fields, letter - 1, number - 2);
+        addIfCoordinatesAreValid(fields, letter - 1, number + 2);
+        
+        addIfCoordinatesAreValid(fields, letter - 2, number + 1);
+        addIfCoordinatesAreValid(fields, letter - 2, number - 1);
+        
+        addIfCoordinatesAreValid(fields, letter + 1, number + 2);
+        addIfCoordinatesAreValid(fields, letter + 1, number - 2);
+        
+        addIfCoordinatesAreValid(fields, letter + 2, number + 1);
+        addIfCoordinatesAreValid(fields, letter + 2, number - 1);
         
         return fields;
     }
 
-    private int getNumberDirectionBasingOnColor(Color color) {
-        int numberDirection = 1;
-        if (Color.BLACK == color) {
-            numberDirection = -numberDirection;
-        }
-        return numberDirection;
-    }
-    
-   
-    private boolean isOnStartPosition(Field currentField, Color color) {
-        return (Color.WHITE == color && currentField.getNumber() == Number._2)
-                || (Color.BLACK == color && currentField.getNumber() == Number._7);
-    }
+
 
 }
