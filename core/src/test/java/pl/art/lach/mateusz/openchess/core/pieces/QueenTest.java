@@ -14,9 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Set;

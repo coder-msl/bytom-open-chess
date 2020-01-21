@@ -34,7 +34,7 @@ public class RookStrategyTest {
     private final RookStrategy rookStrategy = new RookStrategy();
 
     @Test
-    public void bishipFieldsInRangeTest_C4() {
+    public void bishopFieldsInRangeTest_C4() {
         Field fieldC4 = Field.getInstance(Letter._C, Number._4);
         final Set<Field> fields = rookStrategy.getAllFieldsInRange(fieldC4, Color.WHITE);
         
