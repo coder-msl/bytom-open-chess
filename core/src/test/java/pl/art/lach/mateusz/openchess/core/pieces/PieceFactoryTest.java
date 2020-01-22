@@ -25,7 +25,7 @@ public class PieceFactoryTest {
 
     @Test
     public void testCreatePawn() {
-        Piece pawn = PieceFactory.getPawnInstance();
+        Piece pawn = new PieceFactory().getPawnInstance();
         assertTrue(pawn instanceof Piece);
         assertEquals(1, pawn.getValue());
     }

@@ -57,6 +57,7 @@ public class FieldTest {
         
         assertFalse(field.isFree());
         assertNotNull(field.getPiece());
+        assertSame(pawn, field.getPiece());
     }
 
 }

@@ -24,7 +24,6 @@ import pl.art.lach.mateusz.openchess.core.pieces.Piece;
 public abstract class Field {
     
     
-    
     public enum Number {
         _1, _2, _3, _4, _5, _6, _7, _8
     }

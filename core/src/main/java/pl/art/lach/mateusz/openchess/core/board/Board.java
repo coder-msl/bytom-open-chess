@@ -21,22 +21,10 @@ import java.util.Arrays;
  */
 public class Board {
     
-    private final int NUMBER_OF_FIELDS = Field.Number.values().length;
-    
-    private final Field[][] fields = new Field[NUMBER_OF_FIELDS][NUMBER_OF_FIELDS];
+    private final Field[][] fields;
     
     public Board() {
-        initializeFields();
-    }
-
-    private final void initializeFields() {
-      for (int i = Field.Number._1.ordinal(); i < NUMBER_OF_FIELDS; i++) {
-          for (int j = Field.Letter._A.ordinal(); j < NUMBER_OF_FIELDS; j++) {
-              Field.Letter letter = Field.Letter.values()[i];
-              Field.Number number = Field.Number.values()[j];
-              fields[i][j] = Field.getFreeField(letter, number);
-          }
-      }
+        this.fields = new FieldFacade().getEmptyFields();
     }
 
 

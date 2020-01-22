@@ -27,24 +27,20 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.KingStrategy;
  */
 public class KingTest extends PieceTest {
 
+    private King king = new King();
     
     @Test
     public void kingValueTest() {
-        King king = new King();
         assertEquals(100, king.getValue());
     }
     
     @Test
     public void kingSymbolTest() {
-        King king = new King();
         assertEquals('K', king.getSymbol());
     }
     
-    
-    
     @Test
     public void kingShouldUseOneStrategyTest() {
-        King king = new King();
         KingStrategy kingStrategy = new KingStrategy();
         Field field = Field.getFreeField(Field.Letter._E, Field.Number._1);
         shouldContainAllFieldsAsStrategy(king, kingStrategy, field, Color.WHITE);
