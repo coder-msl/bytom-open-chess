@@ -31,7 +31,7 @@ import pl.art.lach.mateusz.openchess.core.board.Field;
  */
 public class PawnStrategyTest {
     
-    private final PieceStrategy pawnStrategy = new PawnStrategy();
+    private final PieceMoveStrategy pawnStrategy = new PawnStrategy();
 
     @Test
     public void pawnFieldsInRangeTest_WhiteColor_A2() {

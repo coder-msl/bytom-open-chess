@@ -14,7 +14,7 @@ import static org.junit.Assert.assertThat;
 
 public class BishopStrategyTest {
     
-    private final PieceStrategy bishopStrategy = new BishopStrategy();
+    private final PieceMoveStrategy bishopStrategy = new BishopStrategy();
 
     @Test
     public void bishopFieldsInRangeTest_C4() {

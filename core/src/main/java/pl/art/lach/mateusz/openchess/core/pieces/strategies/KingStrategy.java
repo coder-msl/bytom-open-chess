@@ -20,11 +20,11 @@ import java.util.Set;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import static pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy.addIfCoordinatesAreValid;
+import static pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy.addIfCoordinatesAreValid;
 /**
  * @author: Mateusz Sławomir Lach 
  */
-class KingStrategy implements PieceStrategy {
+class KingStrategy implements PieceMoveStrategy {
 
     @Override
     public Set<Field> getAllFieldsInRange(Field currentField, Color white) {

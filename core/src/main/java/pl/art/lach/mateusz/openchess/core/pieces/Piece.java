@@ -21,7 +21,7 @@ import java.util.Set;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -30,7 +30,7 @@ public abstract class Piece {
 
     private final int value;
     
-    protected final List<PieceStrategy> strategies = new ArrayList<>();
+    protected final List<PieceMoveStrategy> strategies = new ArrayList<>();
     
     private final char symbol;
     

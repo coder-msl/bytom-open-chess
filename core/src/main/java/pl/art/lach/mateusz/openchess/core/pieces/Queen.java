@@ -14,7 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.StrategyFactory;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -23,7 +23,7 @@ class Queen extends Piece {
 
     Queen() {
         super(9, 'Q');
-        StrategyFactory factory = new StrategyFactory();
+        MoveStrategyFactory factory = new MoveStrategyFactory();
         strategies.add(factory.getRookStrategy());
         strategies.add(factory.getBishopStrategy());
     }

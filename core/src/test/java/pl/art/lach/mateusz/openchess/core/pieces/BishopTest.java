@@ -20,8 +20,8 @@ import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.StrategyFactory;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -30,7 +30,7 @@ public class BishopTest extends PieceTest {
 
     private Bishop bishop = new Bishop();
     
-    private PieceStrategy strategy = new StrategyFactory().getBishopStrategy();
+    private PieceMoveStrategy strategy = new MoveStrategyFactory().getBishopStrategy();
     
     @Test
     public void pawnValueTest() {

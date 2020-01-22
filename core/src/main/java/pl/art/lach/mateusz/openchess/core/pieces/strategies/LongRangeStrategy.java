@@ -23,7 +23,7 @@ import pl.art.lach.mateusz.openchess.core.board.Field.Number;
 /**
  * @author: Mateusz Sławomir Lach 
  */
-abstract class LongRangeStrategy implements PieceStrategy {
+abstract class LongRangeStrategy implements PieceMoveStrategy {
 
     protected enum Direction {
 

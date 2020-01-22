@@ -21,7 +21,7 @@ import java.util.Set;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -29,7 +29,7 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
 abstract class PieceTest {
 
     public void shouldContainAllFieldsAsStrategy(final Piece piece, 
-            final PieceStrategy strategy, final Field field, final Color color) {
+            final PieceMoveStrategy strategy, final Field field, final Color color) {
 
         Set<Field> fieldsFromPiece = piece.getAllFieldsInRange(field, color);
         Set<Field> fieldsFromStrategy = strategy.getAllFieldsInRange(field, color);

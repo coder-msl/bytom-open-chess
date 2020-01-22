@@ -20,8 +20,8 @@ import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.StrategyFactory;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -38,7 +38,7 @@ public class KnightTest extends PieceTest {
     @Test
     public void knightShouldUseOneStrategyTest() {
         Knight knight = new Knight();
-        PieceStrategy strategy = new StrategyFactory().getKnightStrategy();
+        PieceMoveStrategy strategy = new MoveStrategyFactory().getKnightStrategy();
         Field field = Field.getFreeField(Field.Letter._C, Field.Number._4);
         shouldContainAllFieldsAsStrategy(knight, strategy, field, Color.WHITE);
         shouldContainAllFieldsAsStrategy(knight, strategy, field, Color.BLACK);

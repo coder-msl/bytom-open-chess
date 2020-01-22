@@ -14,25 +14,28 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
-import java.util.Set;
-
-import pl.art.lach.mateusz.openchess.core.Color;
-import pl.art.lach.mateusz.openchess.core.board.Field;
-
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public interface PieceStrategy {
+public class MoveStrategyFactory {
 
-    Set<Field> getAllFieldsInRange(Field currentField, Color white);
-    
-    static void addIfCoordinatesAreValid(Set<Field> fields, int letterOrdinal, int numberOrdinal) {
-        if (Field.coordinatesAreValid(letterOrdinal, numberOrdinal)) {
-            Field.Letter letter = Field.Letter.values()[letterOrdinal];
-            Field.Number number = Field.Number.values()[numberOrdinal];
-            Field fieldInRange = Field.getFreeField(letter, number);
-            fields.add(fieldInRange);
-        }
+    public PieceMoveStrategy getPawnStrategy() {
+        return new PawnStrategy();
     }
     
+    public PieceMoveStrategy getKnightStrategy() {
+        return new KnightStrategy();
+    }
+    
+    public PieceMoveStrategy getBishopStrategy() {
+        return new BishopStrategy();
+    }
+    
+    public PieceMoveStrategy getRookStrategy() {
+        return new RookStrategy();
+    }
+    
+    public PieceMoveStrategy getKingStrategy() {
+        return new KingStrategy();
+    }
 }
