@@ -22,7 +22,7 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.RookStrategy;
 class Rook extends Piece {
 
     Rook() {
-        value = 5;
+        super(5, 'R');
         strategies.add(new RookStrategy());
     }
 }

@@ -35,26 +35,26 @@ public class RookStrategyTest {
 
     @Test
     public void bishopFieldsInRangeTest_C4() {
-        Field fieldC4 = Field.getInstance(Letter._C, Number._4);
+        Field fieldC4 = Field.getFreeField(Letter._C, Number._4);
         final Set<Field> fields = rookStrategy.getAllFieldsInRange(fieldC4, Color.WHITE);
         
-        Field fieldB4 = Field.getInstance(Letter._B, Number._4);
-        Field fieldA4 = Field.getInstance(Letter._A, Number._4);
+        Field fieldB4 = Field.getFreeField(Letter._B, Number._4);
+        Field fieldA4 = Field.getFreeField(Letter._A, Number._4);
         
-        Field fieldD4 = Field.getInstance(Letter._D, Number._4);
-        Field fieldE4 = Field.getInstance(Letter._E, Number._4);
-        Field fieldF4 = Field.getInstance(Letter._F, Number._4);
-        Field fieldG4 = Field.getInstance(Letter._G, Number._4);
-        Field fieldH4 = Field.getInstance(Letter._H, Number._4);
+        Field fieldD4 = Field.getFreeField(Letter._D, Number._4);
+        Field fieldE4 = Field.getFreeField(Letter._E, Number._4);
+        Field fieldF4 = Field.getFreeField(Letter._F, Number._4);
+        Field fieldG4 = Field.getFreeField(Letter._G, Number._4);
+        Field fieldH4 = Field.getFreeField(Letter._H, Number._4);
         
-        Field fieldC5 = Field.getInstance(Letter._C, Number._5);
-        Field fieldC6 = Field.getInstance(Letter._C, Number._6);
-        Field fieldC7 = Field.getInstance(Letter._C, Number._7);
-        Field fieldC8 = Field.getInstance(Letter._C, Number._8);
+        Field fieldC5 = Field.getFreeField(Letter._C, Number._5);
+        Field fieldC6 = Field.getFreeField(Letter._C, Number._6);
+        Field fieldC7 = Field.getFreeField(Letter._C, Number._7);
+        Field fieldC8 = Field.getFreeField(Letter._C, Number._8);
         
-        Field fieldC3 = Field.getInstance(Letter._C, Number._3);
-        Field fieldC2 = Field.getInstance(Letter._C, Number._2);
-        Field fieldC1 = Field.getInstance(Letter._C, Number._1);
+        Field fieldC3 = Field.getFreeField(Letter._C, Number._3);
+        Field fieldC2 = Field.getFreeField(Letter._C, Number._2);
+        Field fieldC1 = Field.getFreeField(Letter._C, Number._1);
         
         assertThat(fields, hasItems(fieldB4, fieldA4));
         assertThat(fields, hasItems(fieldD4, fieldE4, fieldF4, fieldG4, fieldH4));

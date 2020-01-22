@@ -14,24 +14,20 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.PawnStrategy;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
-class Pawn extends Piece {
-    
-    
-    public Pawn() {
-        super(1, '\0');
-        this.strategies.add(new PawnStrategy());
-    }
+public class PieceFactoryTest {
 
-    public boolean wasShiftedByTwoFields(Field from, Field to) {
-        int fromNumber = from.getNumber().ordinal();
-        int toNumber = to.getNumber().ordinal();
-        return Math.abs(fromNumber - toNumber) == 2;
+    @Test
+    public void testCreatePawn() {
+        Piece pawn = PieceFactory.getPawnInstance();
+        assertTrue(pawn instanceof Piece);
+        assertEquals(1, pawn.getValue());
     }
 
 }

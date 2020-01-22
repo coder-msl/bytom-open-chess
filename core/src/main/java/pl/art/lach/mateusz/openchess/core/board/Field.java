@@ -16,10 +16,14 @@ package pl.art.lach.mateusz.openchess.core.board;
 
 import java.util.Objects;
 
+import pl.art.lach.mateusz.openchess.core.pieces.Piece;
+
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public class Field {
+public abstract class Field {
+    
+    
     
     public enum Number {
         _1, _2, _3, _4, _5, _6, _7, _8
@@ -33,13 +37,22 @@ public class Field {
     
     private final Number number;
     
-    Field(Letter letter, Number number) {
+    Field(final Letter letter, final Number number) {
         this.letter = letter;
         this.number = number;
     }
     
-    public static Field getInstance(Letter letter, Number number) {
-        return new Field(letter, number);
+    abstract boolean isFree();
+    
+    abstract Piece getPiece();
+    
+    public static Field getFreeField(final Letter letter, final Number number) {
+        return new Field.EmptyField(letter, number);
+    }
+    
+    public static Field getOccupiedField(final Letter letter, final Number number, 
+            final Piece piece) {
+        return new Field.OccupiedField(letter, number, piece);
     }
     
     public Number getNumber() {
@@ -57,12 +70,13 @@ public class Field {
     }
     
     public static boolean coordinatesAreValid(int fieldLetter, int fieldNumber) {
-        return isFieldNumberValid(fieldLetter) && isFieldNumberValid(fieldNumber);
+        return isFieldNumberValid(fieldLetter) 
+                && isFieldNumberValid(fieldNumber);
     }
     
     @Override
     public boolean equals(Object object) {
-        if (null == object || object.getClass() != Field.class) {
+        if (null == object || !(object instanceof Field)) {
             return false;
         }
         
@@ -76,5 +90,44 @@ public class Field {
         return Objects.hash(letter, number);
     }
     
+    
+    static class EmptyField extends Field {
+
+        EmptyField(Letter letter, Number number) {
+            super(letter, number);
+        }
+
+        @Override
+        boolean isFree() {
+            return true;
+        }
+
+        @Override
+        Piece getPiece() {
+            return null;
+        }
+        
+    }
+    
+    static class OccupiedField extends Field {
+        
+        private final Piece piece;
+
+        OccupiedField(Letter letter, Number number, Piece piece) {
+            super(letter, number);
+            this.piece = piece;
+        }
+
+        @Override
+        boolean isFree() {
+            return false;
+        }
+
+        @Override
+        Piece getPiece() {
+            return piece;
+        }
+        
+    }
 
 }

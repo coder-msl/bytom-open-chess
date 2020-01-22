@@ -62,7 +62,7 @@ public abstract class LongRangeStrategy implements PieceStrategy {
             Letter letter = Field.Letter.values()[fieldLetter];
             Number number = Field.Number.values()[fieldNumber];
 
-            fields.add(Field.getInstance(letter, number));
+            fields.add(Field.getFreeField(letter, number));
 
             fieldLetter += direction.getLetterDirection();
             fieldNumber += direction.getNumberDirection();

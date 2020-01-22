@@ -39,7 +39,7 @@ public class RookTest extends PieceTest {
     public void rookShouldUseOneStrategyTest() {
         Rook rook = new Rook();
         RookStrategy rookStrategy = new RookStrategy();
-        Field field = Field.getInstance(Field.Letter._A, Field.Number._2);
+        Field field = Field.getFreeField(Field.Letter._A, Field.Number._2);
         shouldContainAllFieldsAsStrategy(rook, rookStrategy, field, Color.WHITE);
         shouldContainAllFieldsAsStrategy(rook, rookStrategy, field, Color.BLACK);
     }

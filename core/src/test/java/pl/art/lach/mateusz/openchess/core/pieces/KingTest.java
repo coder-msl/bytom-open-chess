@@ -29,16 +29,24 @@ public class KingTest extends PieceTest {
 
     
     @Test
-    public void rookValueTest() {
+    public void kingValueTest() {
         King king = new King();
-        assertEquals(0, king.getValue());
+        assertEquals(100, king.getValue());
     }
     
     @Test
-    public void rookShouldUseOneStrategyTest() {
+    public void kingSymbolTest() {
+        King king = new King();
+        assertEquals('K', king.getSymbol());
+    }
+    
+    
+    
+    @Test
+    public void kingShouldUseOneStrategyTest() {
         King king = new King();
         KingStrategy kingStrategy = new KingStrategy();
-        Field field = Field.getInstance(Field.Letter._E, Field.Number._1);
+        Field field = Field.getFreeField(Field.Letter._E, Field.Number._1);
         shouldContainAllFieldsAsStrategy(king, kingStrategy, field, Color.WHITE);
         shouldContainAllFieldsAsStrategy(king, kingStrategy, field, Color.BLACK);
     }

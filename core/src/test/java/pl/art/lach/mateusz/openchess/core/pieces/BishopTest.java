@@ -38,7 +38,7 @@ public class BishopTest extends PieceTest {
     public void bishopShouldUseOneStrategyTest_A2() {
         Bishop bishop = new Bishop();
         BishopStrategy strategy = new BishopStrategy();
-        Field field = Field.getInstance(Field.Letter._A, Field.Number._2);
+        Field field = Field.getOccupiedField(Field.Letter._A, Field.Number._2, bishop);
         shouldContainAllFieldsAsStrategy(bishop, strategy, field, Color.WHITE);
     }
     
@@ -46,7 +46,7 @@ public class BishopTest extends PieceTest {
     public void bishopShouldUseOneStrategyTest_H7() {
         Bishop bishop = new Bishop();
         BishopStrategy strategy = new BishopStrategy();
-        Field field = Field.getInstance(Field.Letter._E, Field.Number._5);
+        Field field = Field.getFreeField(Field.Letter._E, Field.Number._5);
         shouldContainAllFieldsAsStrategy(bishop, strategy, field, Color.BLACK);
     }
 }

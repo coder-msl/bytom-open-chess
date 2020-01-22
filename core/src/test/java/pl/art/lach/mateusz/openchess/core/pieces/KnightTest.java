@@ -39,7 +39,7 @@ public class KnightTest extends PieceTest {
     public void rookShouldUseOneStrategyTest() {
         Rook rook = new Rook();
         RookStrategy rookStrategy = new RookStrategy();
-        Field field = Field.getInstance(Field.Letter._C, Field.Number._4);
+        Field field = Field.getFreeField(Field.Letter._C, Field.Number._4);
         shouldContainAllFieldsAsStrategy(rook, rookStrategy, field, Color.WHITE);
         shouldContainAllFieldsAsStrategy(rook, rookStrategy, field, Color.BLACK);
     }

@@ -14,24 +14,15 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.PawnStrategy;
-
 /**
  * @author: Mateusz Sławomir Lach 
  */
-class Pawn extends Piece {
+public class PieceFactory {
     
+    private static final Piece PAWN = new Pawn();
     
-    public Pawn() {
-        super(1, '\0');
-        this.strategies.add(new PawnStrategy());
-    }
-
-    public boolean wasShiftedByTwoFields(Field from, Field to) {
-        int fromNumber = from.getNumber().ordinal();
-        int toNumber = to.getNumber().ordinal();
-        return Math.abs(fromNumber - toNumber) == 2;
+    public Piece getPawnInstance() {
+        return PAWN;
     }
 
 }

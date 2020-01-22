@@ -22,7 +22,7 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.KingStrategy;
 class King extends Piece {
 
     King() {
-        value = 0;
+        super(100, 'K');
         strategies.add(new KingStrategy());
     }
 }

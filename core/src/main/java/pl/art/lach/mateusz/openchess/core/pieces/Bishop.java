@@ -22,7 +22,7 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.BishopStrategy;
 class Bishop extends Piece {
 
     Bishop() {
-        value = 3;
+        super(3, 'B');
         strategies.add(new BishopStrategy());
     }
 }

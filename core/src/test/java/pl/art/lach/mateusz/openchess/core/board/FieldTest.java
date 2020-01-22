@@ -18,6 +18,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
+import pl.art.lach.mateusz.openchess.core.board.Field.Number;
+import pl.art.lach.mateusz.openchess.core.pieces.Piece;
+import pl.art.lach.mateusz.openchess.core.pieces.PieceFactory;
+
 /**
  * @author: Mateusz Sławomir Lach 
  */
@@ -25,9 +30,9 @@ public class FieldTest {
 
     @Test
     public void equalsTest() {
-        Field fieldA1_1 = Field.getInstance(Field.Letter._A, Field.Number._1);
-        Field fieldA1_2 = Field.getInstance(Field.Letter._A, Field.Number._1);
-        Field fieldA2 = Field.getInstance(Field.Letter._A, Field.Number._2);
+        Field fieldA1_1 = Field.getFreeField(Field.Letter._A, Field.Number._1);
+        Field fieldA1_2 = Field.getFreeField(Field.Letter._A, Field.Number._1);
+        Field fieldA2 = Field.getFreeField(Field.Letter._A, Field.Number._2);
         
         assertEquals(fieldA1_1, fieldA1_2);
         assertNotEquals(fieldA1_1, fieldA2);
@@ -35,6 +40,23 @@ public class FieldTest {
         assertNotEquals(null, fieldA1_1);
         assertNotEquals(fieldA1_1, null);
         assertNotEquals(fieldA1_1, "This is not same type");
+    }
+    
+    @Test
+    public void emptyFieldTest() {
+        Field field = Field.getFreeField(Letter._A, Number._2);
+        
+        assertTrue(field.isFree());
+        assertNull(field.getPiece());
+    }
+    
+    @Test
+    public void occupiedFieldTest() {
+        Piece pawn = new PieceFactory().getPawnInstance();
+        Field field = Field.getOccupiedField(Letter._A, Number._2, pawn);
+        
+        assertFalse(field.isFree());
+        assertNotNull(field.getPiece());
     }
 
 }

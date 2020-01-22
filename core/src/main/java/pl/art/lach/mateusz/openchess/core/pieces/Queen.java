@@ -23,7 +23,7 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.RookStrategy;
 class Queen extends Piece {
 
     Queen() {
-        value = 9;
+        super(9, 'Q');
         strategies.add(new RookStrategy());
         strategies.add(new BishopStrategy());
     }

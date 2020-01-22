@@ -33,8 +33,8 @@ public class PawnTest extends PieceTest {
     public void wasShiftedByTwoFieldsTest() {
         Pawn pawn = new Pawn();
         
-        Field from = Field.getInstance(Field.Letter._A, Field.Number._7);
-        Field to = Field.getInstance(Field.Letter._A, Field.Number._5);
+        Field from = Field.getFreeField(Field.Letter._A, Field.Number._7);
+        Field to = Field.getFreeField(Field.Letter._A, Field.Number._5);
         
         assertTrue(pawn.wasShiftedByTwoFields(from, to));
     }
@@ -43,8 +43,8 @@ public class PawnTest extends PieceTest {
     public void wasntShiftedByTwoFieldsTest() {
         Pawn pawn = new Pawn();
         
-        Field from = Field.getInstance(Field.Letter._A, Field.Number._7);
-        Field to = Field.getInstance(Field.Letter._A, Field.Number._6);
+        Field from = Field.getFreeField(Field.Letter._A, Field.Number._7);
+        Field to = Field.getFreeField(Field.Letter._A, Field.Number._6);
         
         assertFalse(pawn.wasShiftedByTwoFields(from, to));
     }
@@ -61,7 +61,7 @@ public class PawnTest extends PieceTest {
     public void pawnShouldUseOneStrategyTest() {
         Pawn pawn = new Pawn();
         PawnStrategy pawnStrategy = new PawnStrategy();
-        Field field = Field.getInstance(Field.Letter._A, Field.Number._2);
+        Field field = Field.getFreeField(Field.Letter._A, Field.Number._2);
         shouldContainAllFieldsAsStrategy(pawn, pawnStrategy, field, Color.WHITE);
         shouldContainAllFieldsAsStrategy(pawn, pawnStrategy, field, Color.BLACK);
     }

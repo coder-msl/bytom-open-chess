@@ -28,12 +28,23 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
  */
 public abstract class Piece {
 
-    protected int value = 0;
+    private final int value;
     
     protected final List<PieceStrategy> strategies = new ArrayList<>();
+    
+    private final char symbol;
+    
+    Piece(int value, char symbol) {
+        this.value = value;
+        this.symbol = symbol;
+    }
         
     int getValue() {
         return value;
+    }
+    
+    char getSymbol() {
+        return symbol;
     }
 
     public Set<Field> getAllFieldsInRange(Field currentField, Color color) {

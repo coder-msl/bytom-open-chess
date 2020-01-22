@@ -22,7 +22,7 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.KnightStrategy;
 class Knight extends Piece {
 
     Knight() {
-        value = 3;
+        super(3, 'N');
         strategies.add(new KnightStrategy());
     }
 }

@@ -18,23 +18,23 @@ public class BishopStrategyTest {
 
     @Test
     public void bishopFieldsInRangeTest_C4() {
-        Field fieldC4 = Field.getInstance(Letter._C, Number._4);
+        Field fieldC4 = Field.getFreeField(Letter._C, Number._4);
         final Set<Field> fields = bishopStrategy.getAllFieldsInRange(fieldC4, Color.WHITE);
         
-        Field fieldB5 = Field.getInstance(Letter._B, Number._5);
-        Field fieldA6 = Field.getInstance(Letter._A, Number._6);
+        Field fieldB5 = Field.getFreeField(Letter._B, Number._5);
+        Field fieldA6 = Field.getFreeField(Letter._A, Number._6);
         
-        Field fieldD5 = Field.getInstance(Letter._D, Number._5);
-        Field fieldE6 = Field.getInstance(Letter._E, Number._6);
-        Field fieldF7 = Field.getInstance(Letter._F, Number._7);
-        Field fieldG8 = Field.getInstance(Letter._G, Number._8);
+        Field fieldD5 = Field.getFreeField(Letter._D, Number._5);
+        Field fieldE6 = Field.getFreeField(Letter._E, Number._6);
+        Field fieldF7 = Field.getFreeField(Letter._F, Number._7);
+        Field fieldG8 = Field.getFreeField(Letter._G, Number._8);
         
-        Field fieldB3 = Field.getInstance(Letter._B, Number._3);
-        Field fieldA2 = Field.getInstance(Letter._A, Number._2);
+        Field fieldB3 = Field.getFreeField(Letter._B, Number._3);
+        Field fieldA2 = Field.getFreeField(Letter._A, Number._2);
         
-        Field fieldD3 = Field.getInstance(Letter._D, Number._3);
-        Field fieldE2 = Field.getInstance(Letter._E, Number._2);
-        Field fieldF1 = Field.getInstance(Letter._F, Number._1);
+        Field fieldD3 = Field.getFreeField(Letter._D, Number._3);
+        Field fieldE2 = Field.getFreeField(Letter._E, Number._2);
+        Field fieldF1 = Field.getFreeField(Letter._F, Number._1);
         
         assertThat(fields, hasItems(fieldB5, fieldA6));
         assertThat(fields, hasItems(fieldD5, fieldE6, fieldF7, fieldG8));
