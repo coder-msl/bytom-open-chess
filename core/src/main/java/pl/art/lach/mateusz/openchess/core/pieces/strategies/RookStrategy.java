@@ -24,7 +24,7 @@ import pl.art.lach.mateusz.openchess.core.board.Field;
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public class RookStrategy extends LongRangeStrategy {
+class RookStrategy extends LongRangeStrategy {
 
     @Override
     public Set<Field> getAllFieldsInRange(Field currentField, Color white) {

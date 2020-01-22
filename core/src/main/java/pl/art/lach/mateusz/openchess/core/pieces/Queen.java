@@ -14,8 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.BishopStrategy;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.RookStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.StrategyFactory;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -24,7 +23,8 @@ class Queen extends Piece {
 
     Queen() {
         super(9, 'Q');
-        strategies.add(new RookStrategy());
-        strategies.add(new BishopStrategy());
+        StrategyFactory factory = new StrategyFactory();
+        strategies.add(factory.getRookStrategy());
+        strategies.add(factory.getBishopStrategy());
     }
 }

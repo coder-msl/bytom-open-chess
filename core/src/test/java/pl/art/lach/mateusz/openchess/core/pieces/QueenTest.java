@@ -24,9 +24,8 @@ import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.BishopStrategy;
 import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.RookStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.StrategyFactory;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -42,8 +41,8 @@ public class QueenTest extends PieceTest {
     @Before
     public void setup() {
         queen = new Queen();
-        rookStrategy = new RookStrategy();
-        bishopStrategy = new BishopStrategy();
+        rookStrategy = new StrategyFactory().getRookStrategy();
+        bishopStrategy = new StrategyFactory().getBishopStrategy();
     }
     
     @Test

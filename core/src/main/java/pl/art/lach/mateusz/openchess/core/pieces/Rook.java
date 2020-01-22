@@ -14,7 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.RookStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.StrategyFactory;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -23,6 +23,6 @@ class Rook extends Piece {
 
     Rook() {
         super(5, 'R');
-        strategies.add(new RookStrategy());
+        strategies.add(new StrategyFactory().getRookStrategy());
     }
 }

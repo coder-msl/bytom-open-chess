@@ -25,7 +25,7 @@ import static pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy
 /**
  * @author: Mateusz Sławomir Lach 
  */
-public class KnightStrategy implements PieceStrategy {
+class KnightStrategy implements PieceStrategy {
 
     @Override
     public Set<Field> getAllFieldsInRange(Field currentField, Color white) {

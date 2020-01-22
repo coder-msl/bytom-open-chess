@@ -22,7 +22,8 @@ import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.PawnStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.StrategyFactory;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -60,7 +61,7 @@ public class PawnTest extends PieceTest {
     @Test
     public void pawnShouldUseOneStrategyTest() {
         Pawn pawn = new Pawn();
-        PawnStrategy pawnStrategy = new PawnStrategy();
+        PieceStrategy pawnStrategy = new StrategyFactory().getPawnStrategy();
         Field field = Field.getFreeField(Field.Letter._A, Field.Number._2);
         shouldContainAllFieldsAsStrategy(pawn, pawnStrategy, field, Color.WHITE);
         shouldContainAllFieldsAsStrategy(pawn, pawnStrategy, field, Color.BLACK);

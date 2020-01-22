@@ -20,32 +20,31 @@ import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.BishopStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.StrategyFactory;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
 public class BishopTest extends PieceTest {
 
+    private Bishop bishop = new Bishop();
+    
+    private PieceStrategy strategy = new StrategyFactory().getBishopStrategy();
     
     @Test
     public void pawnValueTest() {
-        Bishop bishop = new Bishop();
         assertEquals(3, bishop.getValue());
     }
     
     @Test
     public void bishopShouldUseOneStrategyTest_A2() {
-        Bishop bishop = new Bishop();
-        BishopStrategy strategy = new BishopStrategy();
         Field field = Field.getOccupiedField(Field.Letter._A, Field.Number._2, bishop);
         shouldContainAllFieldsAsStrategy(bishop, strategy, field, Color.WHITE);
     }
     
     @Test
-    public void bishopShouldUseOneStrategyTest_H7() {
-        Bishop bishop = new Bishop();
-        BishopStrategy strategy = new BishopStrategy();
+    public void bishopShouldUseOneStrategyTest_E5() {
         Field field = Field.getFreeField(Field.Letter._E, Field.Number._5);
         shouldContainAllFieldsAsStrategy(bishop, strategy, field, Color.BLACK);
     }

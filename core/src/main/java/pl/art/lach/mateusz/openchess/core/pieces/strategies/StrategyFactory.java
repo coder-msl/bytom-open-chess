@@ -12,17 +12,30 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package pl.art.lach.mateusz.openchess.core.pieces;
-
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.StrategyFactory;
+package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
-class Knight extends Piece {
+public class StrategyFactory {
 
-    Knight() {
-        super(3, 'N');
-        strategies.add(new StrategyFactory().getKnightStrategy());
+    public PieceStrategy getPawnStrategy() {
+        return new PawnStrategy();
+    }
+    
+    public PieceStrategy getKnightStrategy() {
+        return new KnightStrategy();
+    }
+    
+    public PieceStrategy getBishopStrategy() {
+        return new BishopStrategy();
+    }
+    
+    public PieceStrategy getRookStrategy() {
+        return new RookStrategy();
+    }
+    
+    public PieceStrategy getKingStrategy() {
+        return new KingStrategy();
     }
 }

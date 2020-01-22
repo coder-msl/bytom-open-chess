@@ -14,7 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.BishopStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.StrategyFactory;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -23,6 +23,6 @@ class Bishop extends Piece {
 
     Bishop() {
         super(3, 'B');
-        strategies.add(new BishopStrategy());
+        strategies.add(new StrategyFactory().getBishopStrategy());
     }
 }

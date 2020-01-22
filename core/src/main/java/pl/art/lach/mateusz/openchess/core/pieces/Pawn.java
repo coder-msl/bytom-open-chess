@@ -15,7 +15,7 @@
 package pl.art.lach.mateusz.openchess.core.pieces;
 
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.PawnStrategy;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.StrategyFactory;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -25,7 +25,7 @@ class Pawn extends Piece {
     
     public Pawn() {
         super(1, '\0');
-        this.strategies.add(new PawnStrategy());
+        this.strategies.add(new StrategyFactory().getPawnStrategy());
     }
 
     public boolean wasShiftedByTwoFields(Field from, Field to) {
