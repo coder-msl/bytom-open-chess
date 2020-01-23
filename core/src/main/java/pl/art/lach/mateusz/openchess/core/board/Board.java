@@ -32,23 +32,10 @@ public class Board {
     }
     
     public static Board getEmptyBoard() {
-        Field[][] emptyFields = createEmptyFieldsArray();
+        Field[][] emptyFields = new FieldFacade().getEmptyFields();
         return new Board(emptyFields);
     }
-    
-    private static Field[][] createEmptyFieldsArray() {
-        Field[][] emptyFields = new Field[FIELDS_LENGTH][FIELDS_LENGTH]; 
-        FieldFacade fieldFacade = new FieldFacade();
-        for (int i = 0; i < emptyFields.length; i++) {
-            for (int j = 0; j < emptyFields[i].length; j++) {
-                Letter letter = Letter.values()[i];
-                Number number = Number.values()[j];
-                emptyFields[i][j] = fieldFacade.getEmptyFieldInstance(letter, number);
-            }
-        }
-        return emptyFields;
-    }
-    
+        
     private static Board getConfiguredBoard(Field[][] fields) {
         return new Board(fields);
     }
@@ -91,7 +78,7 @@ public class Board {
         }
         
         private Builder() {
-            this.builderFields = createEmptyFieldsArray();
+            this.builderFields = new FieldFacade().getEmptyFields();
         }
         
         public static Builder ofEmptyBoard() {

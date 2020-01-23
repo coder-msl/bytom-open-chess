@@ -41,5 +41,12 @@ public class FieldFacade {
         return EMPTY_FIELDS_CACHE[letter.ordinal()][number.ordinal()];
     }
     
+    public Field[][] getEmptyFields() {
+        Field[][] clonedFields = EMPTY_FIELDS_CACHE.clone();
+        for (int i = 0; i < clonedFields.length; i++) {
+            clonedFields[i] = EMPTY_FIELDS_CACHE[i].clone();
+        }
+        return clonedFields;
+    }
 
 }
