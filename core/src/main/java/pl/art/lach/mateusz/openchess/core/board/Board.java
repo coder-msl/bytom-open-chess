@@ -14,11 +14,10 @@
  */
 package pl.art.lach.mateusz.openchess.core.board;
 
+import java.util.Arrays;
+
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
-import static pl.art.lach.mateusz.openchess.core.board.FieldFacade.FIELDS_LENGTH;
-
-import java.util.Arrays;
 
 /**
  * @author: Mateusz Sławomir Lach 
