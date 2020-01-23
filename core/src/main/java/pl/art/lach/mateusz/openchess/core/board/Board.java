@@ -28,7 +28,7 @@ public class Board {
     private final Field[][] fields;
     
     Board(Field[][] fields) {
-        this.fields = Arrays.copyOf(fields, fields.length);
+        this.fields = deepCloneFields(fields);
     }
     
     public static Board getEmptyBoard() {
@@ -57,11 +57,28 @@ public class Board {
         return fields[letter.ordinal()][number.ordinal()];
     }
     
+    public Board setField(Field field) {
+        return Board.Builder.ofExistingBoard(this)
+                .setField(field)
+                .build();
+    }
+    
+    public Board clearField(Field field) {
+        return clearField(field.getLetter(), field.getNumber());
+    }
 
     public Board clearField(Letter letter, Number number) {
         return Board.Builder.ofExistingBoard(this)
                 .clearField(letter, number)
                 .build();
+    }
+    
+    private static Field[][] deepCloneFields(Field[][] fields) {
+        Field[][] copy = Arrays.copyOf(fields, fields.length);
+        for (int i = 0; i < copy.length; i++) {
+            copy[i] = fields[i].clone();
+        }
+        return copy;
     }
 
     
@@ -70,7 +87,7 @@ public class Board {
         private final Field[][] builderFields;
         
         private Builder(Board board) {
-            this.builderFields = Arrays.copyOf(board.fields, board.fields.length);
+            this.builderFields = deepCloneFields(board.fields);
         }
         
         private Builder() {

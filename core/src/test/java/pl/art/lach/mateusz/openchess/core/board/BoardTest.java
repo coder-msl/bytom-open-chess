@@ -20,6 +20,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.board.Board;
+import pl.art.lach.mateusz.openchess.core.board.Board.Builder;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
@@ -99,6 +100,17 @@ public class BoardTest {
         
         assertFalse(board.getField(field.getLetter(), field.getNumber()).isEmpty());
     }
+    
+    @Test
+    public void setBoardFieldOfExistingBoardTest() {
+        Piece piece = new PieceFactory().getPawnInstance();
+        Field field = Field.getOccupiedField(Letter._B, Number._2, piece);
+        Board board = Board.Builder.ofEmptyBoard().build();
+        
+        Board adjustedBoard = board.setField(field);
+        assertFalse(adjustedBoard.getField(field.getLetter(), field.getNumber()).isEmpty());
+        assertTrue(board.getField(field.getLetter(), field.getNumber()).isEmpty());
+    }
 
     @Test
     public void clearBoardFieldAndImmutabilityOfBoardTest() {
@@ -110,7 +122,25 @@ public class BoardTest {
                 
         assertFalse(board.getField(field.getLetter(), field.getNumber()).isEmpty());
         
-        Board adjustedBoard = board.clearField(field.getLetter(), field.getNumber());
+        Board adjustedBoard = board.clearField(field);
+        assertTrue(adjustedBoard.getField(field.getLetter(), field.getNumber()).isEmpty());
+        assertFalse(board.getField(field.getLetter(), field.getNumber()).isEmpty());
+    }
+    
+    @Test
+    public void clearBoardFieldAndImmutabilityOfBoardBuilderTest() {
+        Piece piece = new PieceFactory().getPawnInstance();
+        Field field = Field.getOccupiedField(Letter._B, Number._2, piece);
+        Board board = Board.Builder.ofEmptyBoard()
+                .setField(field)
+                .build();
+                
+        assertFalse(board.getField(field.getLetter(), field.getNumber()).isEmpty());
+        
+        Board adjustedBoard = Builder.ofExistingBoard(board)
+                .clearField(field)
+                .build();
+        
         assertTrue(adjustedBoard.getField(field.getLetter(), field.getNumber()).isEmpty());
         assertFalse(board.getField(field.getLetter(), field.getNumber()).isEmpty());
     }
