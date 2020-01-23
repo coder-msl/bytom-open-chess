@@ -14,10 +14,11 @@
  */
 package pl.art.lach.mateusz.openchess.core.board;
 
-import java.util.Arrays;
-
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
+import static pl.art.lach.mateusz.openchess.core.board.FieldFacade.FIELDS_LENGTH;
+
+import java.util.Arrays;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -27,24 +28,40 @@ public class Board {
     private final Field[][] fields;
     
     Board(Field[][] fields) {
-        this.fields = new FieldFacade().getEmptyFields();
+        this.fields = Arrays.copyOf(fields, fields.length);
     }
     
     public static Board getEmptyBoard() {
-        Field[][] fields = new FieldFacade().getEmptyFields();
-        return new Board(fields);
+        Field[][] emptyFields = createEmptyFieldsArray();
+        return new Board(emptyFields);
     }
     
-    public static Board getBoard(Field[][] fields) {
-        return new Board(fields);
+    private static Field[][] createEmptyFieldsArray() {
+        Field[][] emptyFields = new Field[FIELDS_LENGTH][FIELDS_LENGTH]; 
+        FieldFacade fieldFacade = new FieldFacade();
+        for (int i = 0; i < emptyFields.length; i++) {
+            for (int j = 0; j < emptyFields[i].length; j++) {
+                Letter letter = Letter.values()[i];
+                Number number = Number.values()[j];
+                emptyFields[i][j] = fieldFacade.getEmptyFieldInstance(letter, number);
+            }
+        }
+        return emptyFields;
     }
     
-    public Field[][] getFields() {
-        return Arrays.copyOf(fields, fields.length);
+    private static Board getConfiguredBoard(Field[][] fields) {
+        return new Board(fields);
     }
 
     public Field getField(Letter letter, Number number) {
         return fields[letter.ordinal()][number.ordinal()];
+    }
+    
+
+    public Board clearField(Letter letter, Number number) {
+        return Board.Builder.ofExistingBoard(this)
+                .clearField(letter, number)
+                .build();
     }
 
     
@@ -52,8 +69,20 @@ public class Board {
         
         private final Field[][] builderFields;
         
-        public Builder(Board board) {
-            this.builderFields = board.getFields();
+        private Builder(Board board) {
+            this.builderFields = Arrays.copyOf(board.fields, board.fields.length);
+        }
+        
+        private Builder() {
+            this.builderFields = createEmptyFieldsArray();
+        }
+        
+        public static Builder ofEmptyBoard() {
+            return new Builder();
+        }
+        
+        public static Builder ofExistingBoard(final Board board) {
+            return new Builder(board);
         }
         
         public Builder setField(Field field) {
@@ -63,10 +92,21 @@ public class Board {
             return this;
         }
         
+        public Builder clearField(Field field) {
+            return clearField(field.getLetter(), field.getNumber());
+        }
+        
+        public Builder clearField(Letter letter, Number number) {
+            Field emptyField = Field.getEmptyField(letter, number);
+            builderFields[letter.ordinal()][number.ordinal()] = emptyField;
+            return this;
+        }
+        
         public Board build() {
-            return Board.getBoard(builderFields);
+            return Board.getConfiguredBoard(builderFields);
         }
         
     }
+
 
 }

@@ -14,8 +14,6 @@
  */
 package pl.art.lach.mateusz.openchess.core.board;
 
-import java.util.Arrays;
-
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
 /**
@@ -23,7 +21,7 @@ import pl.art.lach.mateusz.openchess.core.board.Field.Number;
  */
 public class FieldFacade {
     
-    private static final int FIELDS_LENGTH = Field.Number.values().length;
+    public static final int FIELDS_LENGTH = Field.Number.values().length;
     
     private static final Field[][] EMPTY_FIELDS_CACHE = createEmptyFields();
 
@@ -33,7 +31,7 @@ public class FieldFacade {
             for (int j = Field.Letter._A.ordinal(); j < FIELDS_LENGTH; j++) {
                 Field.Letter letter = Field.Letter.values()[i];
                 Field.Number number = Field.Number.values()[j];
-                fields[i][j] = Field.getFreeField(letter, number);
+                fields[i][j] = Field.getEmptyField(letter, number);
             }
         }
         return fields;
@@ -43,8 +41,5 @@ public class FieldFacade {
         return EMPTY_FIELDS_CACHE[letter.ordinal()][number.ordinal()];
     }
     
-    public Field[][] getEmptyFields() {
-        return Arrays.copyOf(EMPTY_FIELDS_CACHE, EMPTY_FIELDS_CACHE.length);
-    }
 
 }

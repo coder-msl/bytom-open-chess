@@ -25,21 +25,28 @@ import pl.art.lach.mateusz.openchess.core.board.Field.Number;
  * @author: Mateusz Sławomir Lach 
  */
 public class FieldFacadeTest {
+    
+    private FieldFacade fieldFacade = new FieldFacade();
 
     @Test
-    public void testEmptyFields() {
-        Field[][] fields = new FieldFacade().getEmptyFields();
-        Field fieldA1 = fields[Field.Number._1.ordinal()][Field.Number._1.ordinal()];
+    public void testEmptyFieldShouldBeSameInstance() {
+        Field fieldA1 = fieldFacade.getEmptyFieldInstance(Field.Letter._A, Field.Number._1);
         assertEquals(Field.Number._1, fieldA1.getNumber());
         assertEquals(Field.Letter._A, fieldA1.getLetter());
+        
+        Field fieldA1_2 = fieldFacade.getEmptyFieldInstance(Field.Letter._A, Field.Number._1);
+        assertEquals(Field.Number._1, fieldA1_2.getNumber());
+        assertEquals(Field.Letter._A, fieldA1_2.getLetter());
+        
+        assertSame(fieldA1, fieldA1_2);
     }
 
     @Test
     public void testEmptyField() {
-        Field fieldA1 = new FieldFacade().getEmptyFieldInstance(Letter._A, Number._1);
+        Field fieldA1 = fieldFacade.getEmptyFieldInstance(Letter._A, Number._1);
         
         assertEquals(Field.Number._1, fieldA1.getNumber());
         assertEquals(Field.Letter._A, fieldA1.getLetter());
-        assertEquals(fieldA1, Field.getFreeField(Letter._A, Number._1));
+        assertEquals(fieldA1, Field.getEmptyField(Letter._A, Number._1));
     }
 }

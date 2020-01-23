@@ -52,7 +52,7 @@ public class QueenTest extends PieceTest {
     
     @Test
     public void rookShouldUseOneStrategyTest_White() {
-        Field field = Field.getFreeField(Field.Letter._A, Field.Number._2);
+        Field field = Field.getEmptyField(Field.Letter._A, Field.Number._2);
         
         Set<Field> queenWhiteFields = queen.getAllFieldsInRange(field, Color.WHITE);
         Set<Field> rookStrategyFields = rookStrategy.getAllFieldsInRange(field, Color.WHITE);
@@ -67,7 +67,7 @@ public class QueenTest extends PieceTest {
     
     @Test
     public void rookShouldUseOneStrategyTest_Black() {
-        Field field = Field.getFreeField(Field.Letter._A, Field.Number._2);
+        Field field = Field.getEmptyField(Field.Letter._A, Field.Number._2);
         
         Set<Field> queenBlackFields = queen.getAllFieldsInRange(field, Color.BLACK);
         Set<Field> rookStrategyFields = rookStrategy.getAllFieldsInRange(field, Color.BLACK);

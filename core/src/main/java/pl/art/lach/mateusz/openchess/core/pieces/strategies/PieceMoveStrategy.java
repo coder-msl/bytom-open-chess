@@ -30,7 +30,7 @@ public interface PieceMoveStrategy {
         if (Field.coordinatesAreValid(letterOrdinal, numberOrdinal)) {
             Field.Letter letter = Field.Letter.values()[letterOrdinal];
             Field.Number number = Field.Number.values()[numberOrdinal];
-            Field fieldInRange = Field.getFreeField(letter, number);
+            Field fieldInRange = Field.getEmptyField(letter, number);
             fields.add(fieldInRange);
         }
     }

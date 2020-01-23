@@ -41,11 +41,11 @@ public abstract class Field {
         this.number = number;
     }
     
-    abstract boolean isFree();
+    abstract boolean isEmpty();
     
     abstract Piece getPiece();
     
-    public static Field getFreeField(final Letter letter, final Number number) {
+    public static Field getEmptyField(final Letter letter, final Number number) {
         return new Field.EmptyField(letter, number);
     }
     
@@ -56,7 +56,7 @@ public abstract class Field {
     
     public static Field getField(final Letter letter, final Number number, final Piece piece) {
         if (null == piece) {
-            return getFreeField(letter, number);
+            return getEmptyField(letter, number);
         }
         return getOccupiedField(letter, number, piece);
     }
@@ -104,7 +104,7 @@ public abstract class Field {
         }
 
         @Override
-        boolean isFree() {
+        boolean isEmpty() {
             return true;
         }
 
@@ -125,7 +125,7 @@ public abstract class Field {
         }
 
         @Override
-        boolean isFree() {
+        boolean isEmpty() {
             return false;
         }
 

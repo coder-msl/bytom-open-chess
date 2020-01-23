@@ -35,20 +35,20 @@ public class KnightStrategyTest {
 
     @Test
     public void knightFieldsInRangeTest_C4() {
-        Field fieldC4 = Field.getFreeField(Letter._C, Number._4);
+        Field fieldC4 = Field.getEmptyField(Letter._C, Number._4);
         final Set<Field> fields = knightStrategy.getAllFieldsInRange(fieldC4, Color.WHITE);
 
-        Field fieldA3 = Field.getFreeField(Letter._A, Number._3);
-        Field fieldA5 = Field.getFreeField(Letter._A, Number._5);
+        Field fieldA3 = Field.getEmptyField(Letter._A, Number._3);
+        Field fieldA5 = Field.getEmptyField(Letter._A, Number._5);
 
-        Field fieldB2 = Field.getFreeField(Letter._B, Number._2);
-        Field fieldB6 = Field.getFreeField(Letter._B, Number._6);
+        Field fieldB2 = Field.getEmptyField(Letter._B, Number._2);
+        Field fieldB6 = Field.getEmptyField(Letter._B, Number._6);
 
-        Field fieldD2 = Field.getFreeField(Letter._D, Number._2);
-        Field fieldD6 = Field.getFreeField(Letter._D, Number._6);
+        Field fieldD2 = Field.getEmptyField(Letter._D, Number._2);
+        Field fieldD6 = Field.getEmptyField(Letter._D, Number._6);
 
-        Field fieldE3 = Field.getFreeField(Letter._E, Number._3);
-        Field fieldE5 = Field.getFreeField(Letter._E, Number._5);
+        Field fieldE3 = Field.getEmptyField(Letter._E, Number._3);
+        Field fieldE5 = Field.getEmptyField(Letter._E, Number._5);
 
         assertThat(fields, hasItems(fieldA3, fieldA5));
         assertThat(fields, hasItems(fieldB2, fieldB6));
@@ -59,11 +59,11 @@ public class KnightStrategyTest {
 
     @Test
     public void knightFieldsInRangeTest_A1() {
-        Field fieldA1 = Field.getFreeField(Letter._A, Number._1);
+        Field fieldA1 = Field.getEmptyField(Letter._A, Number._1);
         final Set<Field> fields = knightStrategy.getAllFieldsInRange(fieldA1, Color.WHITE);
 
-        Field fieldC2 = Field.getFreeField(Letter._C, Number._2);
-        Field fieldB3 = Field.getFreeField(Letter._B, Number._3);
+        Field fieldC2 = Field.getEmptyField(Letter._C, Number._2);
+        Field fieldB3 = Field.getEmptyField(Letter._B, Number._3);
 
         assertThat(fields, hasItems(fieldC2, fieldB3));
 
@@ -71,11 +71,11 @@ public class KnightStrategyTest {
     
     @Test
     public void knightFieldsInRangeTest_H8() {
-        Field fieldH8 = Field.getFreeField(Letter._H, Number._8);
+        Field fieldH8 = Field.getEmptyField(Letter._H, Number._8);
         final Set<Field> fields = knightStrategy.getAllFieldsInRange(fieldH8, Color.WHITE);
         
-        Field fieldF7 = Field.getFreeField(Letter._F, Number._7);
-        Field fieldG6 = Field.getFreeField(Letter._G, Number._6);
+        Field fieldF7 = Field.getEmptyField(Letter._F, Number._7);
+        Field fieldG6 = Field.getEmptyField(Letter._G, Number._6);
         
         assertThat(fields, hasItems(fieldF7, fieldG6));
         
@@ -83,11 +83,11 @@ public class KnightStrategyTest {
     
     @Test
     public void knightFieldsInRangeTest_A8() {
-        Field fieldA8 = Field.getFreeField(Letter._A, Number._8);
+        Field fieldA8 = Field.getEmptyField(Letter._A, Number._8);
         final Set<Field> fields = knightStrategy.getAllFieldsInRange(fieldA8, Color.WHITE);
         
-        Field fieldB6 = Field.getFreeField(Letter._B, Number._6);
-        Field fieldC7 = Field.getFreeField(Letter._C, Number._7);
+        Field fieldB6 = Field.getEmptyField(Letter._B, Number._6);
+        Field fieldC7 = Field.getEmptyField(Letter._C, Number._7);
         
         assertThat(fields, hasItems(fieldB6, fieldC7));
         

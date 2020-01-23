@@ -39,7 +39,7 @@ public class KnightTest extends PieceTest {
     public void knightShouldUseOneStrategyTest() {
         Knight knight = new Knight();
         PieceMoveStrategy strategy = new MoveStrategyFactory().getKnightStrategy();
-        Field field = Field.getFreeField(Field.Letter._C, Field.Number._4);
+        Field field = Field.getEmptyField(Field.Letter._C, Field.Number._4);
         shouldContainAllFieldsAsStrategy(knight, strategy, field, Color.WHITE);
         shouldContainAllFieldsAsStrategy(knight, strategy, field, Color.BLACK);
     }

@@ -16,6 +16,7 @@ package pl.art.lach.mateusz.openchess.core.board;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.board.Board;
@@ -30,7 +31,12 @@ import pl.art.lach.mateusz.openchess.core.pieces.PieceFactory;
  */
 public class BoardTest {
     
-    private Board board = Board.getEmptyBoard();
+    private Board board;
+    
+    @Before
+    public void setup() {
+        board = Board.getEmptyBoard();
+    }
 
     @Test
     public void isInBoardTest() {
@@ -48,39 +54,64 @@ public class BoardTest {
         assertFalse(Field.isFieldNumberValid(-1));
     }
     
+    
     @Test
-    public void boardHasBeenCorrectlyInitiatedTest() {
-        Field[][] fields = board.getFields();
+    public void dummyArrayCopyTest() {
+        Field[] fields = new Field[2];
+        Field[] newFields = fields.clone();
         
-        for (Field[] row : fields) {
-            for (Field column : row) {
-                assertNotNull(column);
-                assertTrue(column instanceof Field);
-            }
-        }
+        newFields[0] = Field.getEmptyField(Letter._A, Number._2);
+        assertNull(fields[0]);
     }
     
     @Test
-    public void boardFieldsHasCorrectNumbersTest() {
-        Field[][] fields = board.getFields();
-                
-        assertEquals(Field.Letter._A, fields[0][0].getLetter());
-        assertEquals(Field.Number._1, fields[0][0].getNumber());
-        
-        assertEquals(Field.Letter._H, fields[7][7].getLetter());
-        assertEquals(Field.Number._8, fields[7][7].getNumber());
+    public void boardHasBeenCorrectlyInitiatedTest() {
+        for (int i = 0; i < FieldFacade.FIELDS_LENGTH; i++) {
+            for (int j = 0; j < FieldFacade.FIELDS_LENGTH; j++) {
+                Letter letter = Letter.values()[i];
+                Number number = Number.values()[j];
+                Field field = board.getField(letter, number);
+                assertNotNull(field);
+                assertTrue(field instanceof Field);
+            }
+        }
     }
     
     @Test
     public void boardBuilderAdjustFieldTest() {
         Piece piece = new PieceFactory().getPawnInstance();
         Field field = Field.getOccupiedField(Letter._B, Number._2, piece);
-        Board adjustedBoard = new Board.Builder(board)
+        Board adjustedBoard = Board.Builder.ofExistingBoard(board)
                 .setField(field)
                 .build();
         
         Field givenField = adjustedBoard.getField(field.getLetter(), field.getNumber());
         assertSame(piece, givenField.getPiece());
     }
+    
+    @Test
+    public void setBoardFieldTest() {
+        Piece piece = new PieceFactory().getPawnInstance();
+        Field field = Field.getOccupiedField(Letter._B, Number._2, piece);
+        Board board = Board.Builder.ofEmptyBoard()
+                .setField(field)
+                .build();
+        
+        assertFalse(board.getField(field.getLetter(), field.getNumber()).isEmpty());
+    }
 
+    @Test
+    public void clearBoardFieldAndImmutabilityOfBoardTest() {
+        Piece piece = new PieceFactory().getPawnInstance();
+        Field field = Field.getOccupiedField(Letter._B, Number._2, piece);
+        Board board = Board.Builder.ofEmptyBoard()
+                .setField(field)
+                .build();
+                
+        assertFalse(board.getField(field.getLetter(), field.getNumber()).isEmpty());
+        
+        Board adjustedBoard = board.clearField(field.getLetter(), field.getNumber());
+        assertTrue(adjustedBoard.getField(field.getLetter(), field.getNumber()).isEmpty());
+        assertFalse(board.getField(field.getLetter(), field.getNumber()).isEmpty());
+    }
 }

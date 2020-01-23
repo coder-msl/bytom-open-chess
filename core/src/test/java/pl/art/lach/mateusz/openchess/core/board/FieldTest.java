@@ -30,9 +30,9 @@ public class FieldTest {
 
     @Test
     public void equalsTest() {
-        Field fieldA1_1 = Field.getFreeField(Field.Letter._A, Field.Number._1);
-        Field fieldA1_2 = Field.getFreeField(Field.Letter._A, Field.Number._1);
-        Field fieldA2 = Field.getFreeField(Field.Letter._A, Field.Number._2);
+        Field fieldA1_1 = Field.getEmptyField(Field.Letter._A, Field.Number._1);
+        Field fieldA1_2 = Field.getEmptyField(Field.Letter._A, Field.Number._1);
+        Field fieldA2 = Field.getEmptyField(Field.Letter._A, Field.Number._2);
         
         assertEquals(fieldA1_1, fieldA1_2);
         assertNotEquals(fieldA1_1, fieldA2);
@@ -44,9 +44,9 @@ public class FieldTest {
     
     @Test
     public void emptyFieldTest() {
-        Field field = Field.getFreeField(Letter._A, Number._2);
+        Field field = Field.getEmptyField(Letter._A, Number._2);
         
-        assertTrue(field.isFree());
+        assertTrue(field.isEmpty());
         assertNull(field.getPiece());
     }
     
@@ -55,9 +55,19 @@ public class FieldTest {
         Piece pawn = new PieceFactory().getPawnInstance();
         Field field = Field.getOccupiedField(Letter._A, Number._2, pawn);
         
-        assertFalse(field.isFree());
+        assertFalse(field.isEmpty());
         assertNotNull(field.getPiece());
         assertSame(pawn, field.getPiece());
+    }
+    
+    @Test
+    public void getFieldTest() {
+        Piece pawn = new PieceFactory().getPawnInstance();
+        Field occupiedField = Field.getField(Letter._A, Number._2, pawn);
+        Field emptyField = Field.getField(Letter._A, Number._2, null);
+        assertFalse(occupiedField.isEmpty());
+        assertTrue(emptyField.isEmpty());
+
     }
 
 }

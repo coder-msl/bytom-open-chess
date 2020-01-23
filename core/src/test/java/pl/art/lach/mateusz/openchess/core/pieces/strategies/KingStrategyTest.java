@@ -35,35 +35,35 @@ public class KingStrategyTest {
 
     @Test
     public void kingFieldsInRangeTest_E1() {
-        Field fieldE1 = Field.getFreeField(Letter._E, Number._1);
+        Field fieldE1 = Field.getEmptyField(Letter._E, Number._1);
         final Set<Field> fields = kingStrategy.getAllFieldsInRange(fieldE1, Color.WHITE);
         
-        Field fieldD1 = Field.getFreeField(Letter._D, Number._1);
-        Field fieldD2 = Field.getFreeField(Letter._D, Number._2);
+        Field fieldD1 = Field.getEmptyField(Letter._D, Number._1);
+        Field fieldD2 = Field.getEmptyField(Letter._D, Number._2);
         
-        Field fieldE2 = Field.getFreeField(Letter._E, Number._2);
+        Field fieldE2 = Field.getEmptyField(Letter._E, Number._2);
         
-        Field fieldF2 = Field.getFreeField(Letter._F, Number._2);
-        Field fieldF1 = Field.getFreeField(Letter._F, Number._1);
+        Field fieldF2 = Field.getEmptyField(Letter._F, Number._2);
+        Field fieldF1 = Field.getEmptyField(Letter._F, Number._1);
         
         assertThat(fields, hasItems(fieldD1, fieldD2, fieldE2, fieldF2, fieldF1));
      }
     
     @Test
     public void kingFieldsInRangeTest_C4() {
-        Field fieldC4 = Field.getFreeField(Letter._C, Number._4);
+        Field fieldC4 = Field.getEmptyField(Letter._C, Number._4);
         final Set<Field> fields = kingStrategy.getAllFieldsInRange(fieldC4, Color.WHITE);
         
-        Field fieldC3 = Field.getFreeField(Letter._C, Number._3);
-        Field fieldC5 = Field.getFreeField(Letter._C, Number._5);
+        Field fieldC3 = Field.getEmptyField(Letter._C, Number._3);
+        Field fieldC5 = Field.getEmptyField(Letter._C, Number._5);
         
-        Field fieldB4 = Field.getFreeField(Letter._B, Number._4);
-        Field fieldB3 = Field.getFreeField(Letter._B, Number._3);
-        Field fieldB5 = Field.getFreeField(Letter._B, Number._5);
+        Field fieldB4 = Field.getEmptyField(Letter._B, Number._4);
+        Field fieldB3 = Field.getEmptyField(Letter._B, Number._3);
+        Field fieldB5 = Field.getEmptyField(Letter._B, Number._5);
         
-        Field fieldD4 = Field.getFreeField(Letter._D, Number._4);
-        Field fieldD3 = Field.getFreeField(Letter._D, Number._3);
-        Field fieldD5 = Field.getFreeField(Letter._D, Number._5);
+        Field fieldD4 = Field.getEmptyField(Letter._D, Number._4);
+        Field fieldD3 = Field.getEmptyField(Letter._D, Number._3);
+        Field fieldD5 = Field.getEmptyField(Letter._D, Number._5);
         
         assertThat(fields, hasItems(fieldC3, fieldC5));
         assertThat(fields, hasItems(fieldB4, fieldB3, fieldB5));

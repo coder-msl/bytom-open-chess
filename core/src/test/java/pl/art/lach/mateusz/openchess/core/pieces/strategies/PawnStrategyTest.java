@@ -35,43 +35,43 @@ public class PawnStrategyTest {
 
     @Test
     public void pawnFieldsInRangeTest_WhiteColor_A2() {
-        Field currentField = Field.getFreeField(Field.Letter._A, Field.Number._2);
+        Field currentField = Field.getEmptyField(Field.Letter._A, Field.Number._2);
         Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.WHITE);
         
-        Field expected1 = Field.getFreeField(Field.Letter._A, Field.Number._3);
-        Field expected2 = Field.getFreeField(Field.Letter._A, Field.Number._4);
-        Field expected3 = Field.getFreeField(Field.Letter._B, Field.Number._3);
+        Field expected1 = Field.getEmptyField(Field.Letter._A, Field.Number._3);
+        Field expected2 = Field.getEmptyField(Field.Letter._A, Field.Number._4);
+        Field expected3 = Field.getEmptyField(Field.Letter._B, Field.Number._3);
         
         assertThat(fields, hasItems(expected1, expected2, expected3));
     }
     
     @Test
     public void pawnFieldsInRangeTest_WhiteColor_B2() {
-        Field currentField = Field.getFreeField(Field.Letter._B, Field.Number._2);
+        Field currentField = Field.getEmptyField(Field.Letter._B, Field.Number._2);
         Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.WHITE);
         
-        Field expected1 = Field.getFreeField(Field.Letter._A, Field.Number._3);
-        Field expected2 = Field.getFreeField(Field.Letter._B, Field.Number._4);
-        Field expected3 = Field.getFreeField(Field.Letter._B, Field.Number._3);
+        Field expected1 = Field.getEmptyField(Field.Letter._A, Field.Number._3);
+        Field expected2 = Field.getEmptyField(Field.Letter._B, Field.Number._4);
+        Field expected3 = Field.getEmptyField(Field.Letter._B, Field.Number._3);
         
         assertThat(fields, hasItems(expected1, expected2, expected3));
     }
     
     @Test
     public void pawnFieldsInRangeTest_WhiteColor_B3() {
-        Field currentField = Field.getFreeField(Field.Letter._B, Field.Number._3);
+        Field currentField = Field.getEmptyField(Field.Letter._B, Field.Number._3);
         Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.WHITE);
         
-        Field expected1 = Field.getFreeField(Field.Letter._B, Field.Number._4);
-        Field expected2 = Field.getFreeField(Field.Letter._A, Field.Number._4);
-        Field expected3 = Field.getFreeField(Field.Letter._C, Field.Number._4);
+        Field expected1 = Field.getEmptyField(Field.Letter._B, Field.Number._4);
+        Field expected2 = Field.getEmptyField(Field.Letter._A, Field.Number._4);
+        Field expected3 = Field.getEmptyField(Field.Letter._C, Field.Number._4);
         
         assertThat(fields, hasItems(expected1, expected2, expected3));
     }
     
     @Test
     public void pawnFieldsInRangeTest_WhiteColor_B8() {
-        Field currentField = Field.getFreeField(Field.Letter._B, Field.Number._8);
+        Field currentField = Field.getEmptyField(Field.Letter._B, Field.Number._8);
         Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.WHITE);
         
         assertNotNull(fields);
@@ -80,7 +80,7 @@ public class PawnStrategyTest {
     
     @Test
     public void pawnFieldsInRangeTest_WhiteColor_B1() {
-        Field currentField = Field.getFreeField(Field.Letter._B, Field.Number._1);
+        Field currentField = Field.getEmptyField(Field.Letter._B, Field.Number._1);
         Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.BLACK);
         
         assertNotNull(fields);
@@ -89,35 +89,35 @@ public class PawnStrategyTest {
     
     @Test
     public void pawnFieldsInRangeTest_BlackColor_A7() {
-        Field currentField = Field.getFreeField(Field.Letter._A, Field.Number._7);
+        Field currentField = Field.getEmptyField(Field.Letter._A, Field.Number._7);
         Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.BLACK);
         
-        Field expected1 = Field.getFreeField(Field.Letter._A, Field.Number._6);
-        Field expected2 = Field.getFreeField(Field.Letter._B, Field.Number._6);
-        Field expected3 = Field.getFreeField(Field.Letter._A, Field.Number._5);
+        Field expected1 = Field.getEmptyField(Field.Letter._A, Field.Number._6);
+        Field expected2 = Field.getEmptyField(Field.Letter._B, Field.Number._6);
+        Field expected3 = Field.getEmptyField(Field.Letter._A, Field.Number._5);
         
         assertThat(fields, hasItems(expected1, expected2, expected3));
     }
     
     @Test
     public void pawnFieldsInRangeTest_BlackColor_C6() {
-        Field currentField = Field.getFreeField(Field.Letter._C, Field.Number._6);
+        Field currentField = Field.getEmptyField(Field.Letter._C, Field.Number._6);
         Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.BLACK);
         
-        Field expected1 = Field.getFreeField(Field.Letter._C, Field.Number._5);
-        Field expected2 = Field.getFreeField(Field.Letter._D, Field.Number._5);
-        Field expected3 = Field.getFreeField(Field.Letter._B, Field.Number._5);
+        Field expected1 = Field.getEmptyField(Field.Letter._C, Field.Number._5);
+        Field expected2 = Field.getEmptyField(Field.Letter._D, Field.Number._5);
+        Field expected3 = Field.getEmptyField(Field.Letter._B, Field.Number._5);
         
         assertThat(fields, hasItems(expected1, expected2, expected3));
     }
     
     @Test
     public void pawnFieldsInRangeTest_BlackColor_H6() {
-        Field currentField = Field.getFreeField(Field.Letter._H, Field.Number._6);
+        Field currentField = Field.getEmptyField(Field.Letter._H, Field.Number._6);
         Set<Field> fields = pawnStrategy.getAllFieldsInRange(currentField, Color.BLACK);
         
-        Field expected1 = Field.getFreeField(Field.Letter._H, Field.Number._5);
-        Field expected2 = Field.getFreeField(Field.Letter._G, Field.Number._5);
+        Field expected1 = Field.getEmptyField(Field.Letter._H, Field.Number._5);
+        Field expected2 = Field.getEmptyField(Field.Letter._G, Field.Number._5);
         
         assertThat(fields, hasItems(expected1, expected2));
     }

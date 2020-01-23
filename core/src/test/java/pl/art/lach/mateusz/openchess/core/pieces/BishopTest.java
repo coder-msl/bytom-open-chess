@@ -45,7 +45,7 @@ public class BishopTest extends PieceTest {
     
     @Test
     public void bishopShouldUseOneStrategyTest_E5() {
-        Field field = Field.getFreeField(Field.Letter._E, Field.Number._5);
+        Field field = Field.getEmptyField(Field.Letter._E, Field.Number._5);
         shouldContainAllFieldsAsStrategy(bishop, strategy, field, Color.BLACK);
     }
 }
