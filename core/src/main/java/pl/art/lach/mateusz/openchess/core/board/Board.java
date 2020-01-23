@@ -16,6 +16,9 @@ package pl.art.lach.mateusz.openchess.core.board;
 
 import java.util.Arrays;
 
+import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
+import pl.art.lach.mateusz.openchess.core.board.Field.Number;
+
 /**
  * @author: Mateusz Sławomir Lach 
  */
@@ -23,13 +26,47 @@ public class Board {
     
     private final Field[][] fields;
     
-    public Board() {
+    Board(Field[][] fields) {
         this.fields = new FieldFacade().getEmptyFields();
     }
-
-
+    
+    public static Board getEmptyBoard() {
+        Field[][] fields = new FieldFacade().getEmptyFields();
+        return new Board(fields);
+    }
+    
+    public static Board getBoard(Field[][] fields) {
+        return new Board(fields);
+    }
+    
     public Field[][] getFields() {
         return Arrays.copyOf(fields, fields.length);
+    }
+
+    public Field getField(Letter letter, Number number) {
+        return fields[letter.ordinal()][number.ordinal()];
+    }
+
+    
+    public static class Builder {
+        
+        private final Field[][] builderFields;
+        
+        public Builder(Board board) {
+            this.builderFields = board.getFields();
+        }
+        
+        public Builder setField(Field field) {
+            int letterOrdinal = field.getLetter().ordinal();
+            int numberOrdinal = field.getNumber().ordinal();
+            builderFields[letterOrdinal][numberOrdinal] = field;
+            return this;
+        }
+        
+        public Board build() {
+            return Board.getBoard(builderFields);
+        }
+        
     }
 
 }

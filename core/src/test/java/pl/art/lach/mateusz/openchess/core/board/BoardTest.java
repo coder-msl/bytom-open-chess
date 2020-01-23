@@ -20,13 +20,17 @@ import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
+import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
+import pl.art.lach.mateusz.openchess.core.board.Field.Number;
+import pl.art.lach.mateusz.openchess.core.pieces.Piece;
+import pl.art.lach.mateusz.openchess.core.pieces.PieceFactory;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
 public class BoardTest {
     
-    private Board board = new Board();
+    private Board board = Board.getEmptyBoard();
 
     @Test
     public void isInBoardTest() {
@@ -65,6 +69,18 @@ public class BoardTest {
         
         assertEquals(Field.Letter._H, fields[7][7].getLetter());
         assertEquals(Field.Number._8, fields[7][7].getNumber());
+    }
+    
+    @Test
+    public void boardBuilderAdjustFieldTest() {
+        Piece piece = new PieceFactory().getPawnInstance();
+        Field field = Field.getOccupiedField(Letter._B, Number._2, piece);
+        Board adjustedBoard = new Board.Builder(board)
+                .setField(field)
+                .build();
+        
+        Field givenField = adjustedBoard.getField(field.getLetter(), field.getNumber());
+        assertSame(piece, givenField.getPiece());
     }
 
 }

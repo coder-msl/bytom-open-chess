@@ -54,6 +54,13 @@ public abstract class Field {
         return new Field.OccupiedField(letter, number, piece);
     }
     
+    public static Field getField(final Letter letter, final Number number, final Piece piece) {
+        if (null == piece) {
+            return getFreeField(letter, number);
+        }
+        return getOccupiedField(letter, number, piece);
+    }
+    
     public Number getNumber() {
         return number;
     }
