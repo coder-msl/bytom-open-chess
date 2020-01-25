@@ -24,12 +24,22 @@ import pl.art.lach.mateusz.openchess.core.Color;
  * @author: Mateusz Sławomir Lach 
  */
 public class PieceFactoryTest {
+    
+    private PieceFactory pieceFactory = new PieceFactory();
 
     @Test
-    public void testCreatePawn() {
-        Piece pawn = new PieceFactory().getPawnInstance(Color.WHITE);
+    public void createPawnWhiteTest() {
+        Piece pawn = pieceFactory.getPawnInstance(Color.WHITE);
         assertTrue(pawn instanceof Piece);
         assertEquals(1, pawn.getValue());
+        assertEquals(Color.WHITE, pawn.getColor());
     }
-
+    
+    @Test
+    public void createPawnBlackTest() {
+        Piece pawn = pieceFactory.getPawnInstance(Color.BLACK);
+        assertTrue(pawn instanceof Piece);
+        assertEquals(1, pawn.getValue());
+        assertEquals(Color.BLACK, pawn.getColor());
+    }
 }
