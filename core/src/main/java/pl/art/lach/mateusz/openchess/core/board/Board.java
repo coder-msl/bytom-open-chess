@@ -26,7 +26,7 @@ public class Board {
     
     private final Field[][] fields;
     
-    Board(Field[][] fields) {
+    Board(final Field[][] fields) {
         this.fields = deepCloneFields(fields);
     }
     
@@ -35,31 +35,31 @@ public class Board {
         return new Board(emptyFields);
     }
         
-    private static Board getConfiguredBoard(Field[][] fields) {
+    private static Board getConfiguredBoard(final Field[][] fields) {
         return new Board(fields);
     }
 
-    public Field getField(Letter letter, Number number) {
+    public Field getField(final Letter letter, final Number number) {
         return fields[letter.ordinal()][number.ordinal()];
     }
     
-    public Board setField(Field field) {
+    public Board setField(final Field field) {
         return Board.Builder.ofExistingBoard(this)
                 .setField(field)
                 .build();
     }
     
-    public Board clearField(Field field) {
+    public Board clearField(final Field field) {
         return clearField(field.getLetter(), field.getNumber());
     }
 
-    public Board clearField(Letter letter, Number number) {
+    public Board clearField(final Letter letter, final Number number) {
         return Board.Builder.ofExistingBoard(this)
                 .clearField(letter, number)
                 .build();
     }
     
-    private static Field[][] deepCloneFields(Field[][] fields) {
+    private static Field[][] deepCloneFields(final Field[][] fields) {
         Field[][] copy = Arrays.copyOf(fields, fields.length);
         for (int i = 0; i < copy.length; i++) {
             copy[i] = fields[i].clone();
@@ -72,7 +72,7 @@ public class Board {
         
         private final Field[][] builderFields;
         
-        private Builder(Board board) {
+        private Builder(final Board board) {
             this.builderFields = deepCloneFields(board.fields);
         }
         
@@ -88,25 +88,25 @@ public class Board {
             return new Builder(board);
         }
         
-        public Builder setField(Field field) {
+        public Builder setField(final Field field) {
             int letterOrdinal = field.getLetter().ordinal();
             int numberOrdinal = field.getNumber().ordinal();
             builderFields[letterOrdinal][numberOrdinal] = field;
             return this;
         }
         
-        public Builder clearField(Field field) {
+        public Builder clearField(final Field field) {
             return clearField(field.getLetter(), field.getNumber());
         }
         
-        public Builder clearField(Letter letter, Number number) {
+        public Builder clearField(final Letter letter, final Number number) {
             Field emptyField = Field.getEmptyField(letter, number);
             builderFields[letter.ordinal()][number.ordinal()] = emptyField;
             return this;
         }
         
         public Board build() {
-            return Board.getConfiguredBoard(builderFields);
+            return getConfiguredBoard(builderFields);
         }
         
     }

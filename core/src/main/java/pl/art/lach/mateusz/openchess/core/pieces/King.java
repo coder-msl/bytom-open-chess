@@ -14,8 +14,6 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
-
 /**
  * @author: Mateusz Sławomir Lach 
  */
@@ -23,6 +21,6 @@ class King extends Piece {
 
     King() {
         super(100, 'K');
-        strategies.add(new MoveStrategyFactory().getKingStrategy());
+        strategies.add(getStrategyFactory().getKingStrategy());
     }
 }

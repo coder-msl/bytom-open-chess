@@ -21,6 +21,7 @@ import java.util.Set;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
 import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy;
 
 /**
@@ -34,6 +35,8 @@ public abstract class Piece {
     
     private final char symbol;
     
+    private final MoveStrategyFactory strategyFactory = new MoveStrategyFactory();
+    
     Piece(int value, char symbol) {
         this.value = value;
         this.symbol = symbol;
@@ -45,6 +48,10 @@ public abstract class Piece {
     
     char getSymbol() {
         return symbol;
+    }
+    
+    MoveStrategyFactory getStrategyFactory() {
+        return strategyFactory;
     }
 
     public Set<Field> getAllFieldsInRange(Field currentField, Color color) {
