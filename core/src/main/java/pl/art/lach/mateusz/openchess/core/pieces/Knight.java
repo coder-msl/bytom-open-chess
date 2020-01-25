@@ -14,13 +14,15 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
+import pl.art.lach.mateusz.openchess.core.Color;
+
 /**
  * @author: Mateusz Sławomir Lach 
  */
 class Knight extends Piece {
 
-    Knight() {
-        super(3, 'N');
-        strategies.add(getStrategyFactory().getKnightStrategy());
+    Knight(final Color color) {
+        super(3, 'N', color);
+        getStrategies().add(getStrategyFactory().getKnightStrategy());
     }
 }

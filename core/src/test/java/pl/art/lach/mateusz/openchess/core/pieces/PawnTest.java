@@ -29,41 +29,41 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
  * @author: Mateusz Sławomir Lach 
  */
 public class PawnTest extends PieceTest {
+    
+    private Pawn whitePawn = new Pawn(Color.WHITE);
+    
+    private Pawn blackPawn = new Pawn(Color.WHITE);
 
     @Test
     public void wasShiftedByTwoFieldsTest() {
-        Pawn pawn = new Pawn();
         
         Field from = Field.getEmptyField(Field.Letter._A, Field.Number._7);
         Field to = Field.getEmptyField(Field.Letter._A, Field.Number._5);
         
-        assertTrue(pawn.wasShiftedByTwoFields(from, to));
+        assertTrue(whitePawn.wasShiftedByTwoFields(from, to));
     }
     
     @Test
     public void wasntShiftedByTwoFieldsTest() {
-        Pawn pawn = new Pawn();
         
         Field from = Field.getEmptyField(Field.Letter._A, Field.Number._7);
         Field to = Field.getEmptyField(Field.Letter._A, Field.Number._6);
         
-        assertFalse(pawn.wasShiftedByTwoFields(from, to));
+        assertFalse(whitePawn.wasShiftedByTwoFields(from, to));
     }
 
     
     @Test
     public void pawnValueTest() {
-        Pawn pawn = new Pawn();
-
-        assertEquals(1, pawn.getValue());
+        
+        assertEquals(1, whitePawn.getValue());
     }
     
     @Test
     public void pawnShouldUseOneStrategyTest() {
-        Pawn pawn = new Pawn();
         PieceMoveStrategy pawnStrategy = new MoveStrategyFactory().getPawnStrategy();
         Field field = Field.getEmptyField(Field.Letter._A, Field.Number._2);
-        shouldContainAllFieldsAsStrategy(pawn, pawnStrategy, field, Color.WHITE);
-        shouldContainAllFieldsAsStrategy(pawn, pawnStrategy, field, Color.BLACK);
+        shouldContainAllFieldsAsStrategy(whitePawn, pawnStrategy, field);
+        shouldContainAllFieldsAsStrategy(blackPawn, pawnStrategy, field);
     }
 }

@@ -14,14 +14,16 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
+import pl.art.lach.mateusz.openchess.core.Color;
+
 /**
  * @author: Mateusz Sławomir Lach 
  */
 class Queen extends Piece {
 
-    Queen() {
-        super(9, 'Q');
-        strategies.add(getStrategyFactory().getRookStrategy());
-        strategies.add(getStrategyFactory().getBishopStrategy());
+    Queen(final Color color) {
+        super(9, 'Q', color);
+        getStrategies().add(getStrategyFactory().getRookStrategy());
+        getStrategies().add(getStrategyFactory().getBishopStrategy());
     }
 }

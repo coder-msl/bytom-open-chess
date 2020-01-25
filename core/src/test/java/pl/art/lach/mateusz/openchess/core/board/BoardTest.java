@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Board.Builder;
 import pl.art.lach.mateusz.openchess.core.board.Field;
@@ -33,6 +34,8 @@ import pl.art.lach.mateusz.openchess.core.pieces.PieceFactory;
 public class BoardTest {
     
     private Board board;
+    
+    Piece piece = new PieceFactory().getPawnInstance(Color.WHITE);
     
     @Before
     public void setup() {
@@ -80,7 +83,6 @@ public class BoardTest {
     
     @Test
     public void boardBuilderAdjustFieldTest() {
-        Piece piece = new PieceFactory().getPawnInstance();
         Field field = Field.getOccupiedField(Letter._B, Number._2, piece);
         Board adjustedBoard = Board.Builder.ofExistingBoard(board)
                 .setField(field)
@@ -92,7 +94,6 @@ public class BoardTest {
     
     @Test
     public void setBoardFieldTest() {
-        Piece piece = new PieceFactory().getPawnInstance();
         Field field = Field.getOccupiedField(Letter._B, Number._2, piece);
         Board board = Board.Builder.ofEmptyBoard()
                 .setField(field)
@@ -103,7 +104,6 @@ public class BoardTest {
     
     @Test
     public void setBoardFieldOfExistingBoardTest() {
-        Piece piece = new PieceFactory().getPawnInstance();
         Field field = Field.getOccupiedField(Letter._B, Number._2, piece);
         Board board = Board.Builder.ofEmptyBoard().build();
         
@@ -114,7 +114,6 @@ public class BoardTest {
 
     @Test
     public void clearBoardFieldAndImmutabilityOfBoardTest() {
-        Piece piece = new PieceFactory().getPawnInstance();
         Field field = Field.getOccupiedField(Letter._B, Number._2, piece);
         Board board = Board.Builder.ofEmptyBoard()
                 .setField(field)
@@ -129,7 +128,7 @@ public class BoardTest {
     
     @Test
     public void clearBoardFieldAndImmutabilityOfBoardBuilderTest() {
-        Piece piece = new PieceFactory().getPawnInstance();
+        
         Field field = Field.getOccupiedField(Letter._B, Number._2, piece);
         Board board = Board.Builder.ofEmptyBoard()
                 .setField(field)

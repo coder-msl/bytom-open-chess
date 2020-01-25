@@ -28,23 +28,26 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
  */
 public class KingTest extends PieceTest {
 
-    private King king = new King();
+    private King whiteKing = new King(Color.WHITE);
+
+    private King blackKing = new King(Color.BLACK);
+    
     
     @Test
     public void kingValueTest() {
-        assertEquals(100, king.getValue());
+        assertEquals(100, whiteKing.getValue());
     }
     
     @Test
     public void kingSymbolTest() {
-        assertEquals('K', king.getSymbol());
+        assertEquals('K', whiteKing.getSymbol());
     }
     
     @Test
     public void kingShouldUseOneStrategyTest() {
         PieceMoveStrategy kingStrategy = new MoveStrategyFactory().getKingStrategy();
         Field field = Field.getEmptyField(Field.Letter._E, Field.Number._1);
-        shouldContainAllFieldsAsStrategy(king, kingStrategy, field, Color.WHITE);
-        shouldContainAllFieldsAsStrategy(king, kingStrategy, field, Color.BLACK);
+        shouldContainAllFieldsAsStrategy(whiteKing, kingStrategy, field);
+        shouldContainAllFieldsAsStrategy(blackKing, kingStrategy, field);
     }
 }

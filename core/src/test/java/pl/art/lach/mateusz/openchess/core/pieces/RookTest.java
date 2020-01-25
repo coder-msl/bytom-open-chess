@@ -28,20 +28,22 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
  */
 public class RookTest extends PieceTest {
 
+    private Rook whiteRook = new Rook(Color.WHITE);
+    
+    private Rook blackRook = new Rook(Color.WHITE);
     
     @Test
     public void rookValueTest() {
-        Rook rook = new Rook();
+        
 
-        assertEquals(5, rook.getValue());
+        assertEquals(5, whiteRook.getValue());
     }
     
     @Test
     public void rookShouldUseOneStrategyTest() {
-        Rook rook = new Rook();
         PieceMoveStrategy rookStrategy = new MoveStrategyFactory().getRookStrategy();
         Field field = Field.getEmptyField(Field.Letter._A, Field.Number._2);
-        shouldContainAllFieldsAsStrategy(rook, rookStrategy, field, Color.WHITE);
-        shouldContainAllFieldsAsStrategy(rook, rookStrategy, field, Color.BLACK);
+        shouldContainAllFieldsAsStrategy(whiteRook, rookStrategy, field);
+        shouldContainAllFieldsAsStrategy(whiteRook, rookStrategy, field);
     }
 }

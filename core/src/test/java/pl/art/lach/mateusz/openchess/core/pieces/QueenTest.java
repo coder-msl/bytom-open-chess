@@ -40,7 +40,7 @@ public class QueenTest extends PieceTest {
     
     @Before
     public void setup() {
-        queen = new Queen();
+        queen = new Queen(Color.WHITE);
         rookStrategy = new MoveStrategyFactory().getRookStrategy();
         bishopStrategy = new MoveStrategyFactory().getBishopStrategy();
     }

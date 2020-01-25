@@ -14,15 +14,31 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import pl.art.lach.mateusz.openchess.core.Color;
+
 /**
  * @author: Mateusz Sławomir Lach 
  */
 public class PieceFactory {
     
-    private static final Piece PAWN = new Pawn();
+    private static final Map<Class<? extends Piece>, Piece> WHITE_PIECES = new HashMap<>();
+    private static final Map<Class<? extends Piece>, Piece> BLACK_PIECES = new HashMap<>();
     
-    public Piece getPawnInstance() {
-        return PAWN;
+    static {
+        WHITE_PIECES.put(Pawn.class, new Pawn(Color.WHITE));
+    }
+    
+    static {
+        BLACK_PIECES.put(Pawn.class, new Pawn(Color.BLACK));
+    }
+    
+    public Piece getPawnInstance(final Color color) {
+        return color == Color.WHITE ? 
+                WHITE_PIECES.get(Pawn.class) 
+                : BLACK_PIECES.get(Pawn.class);
     }
 
 }

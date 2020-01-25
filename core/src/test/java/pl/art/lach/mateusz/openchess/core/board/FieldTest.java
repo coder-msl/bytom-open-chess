@@ -18,6 +18,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
 import pl.art.lach.mateusz.openchess.core.pieces.Piece;
@@ -27,6 +28,8 @@ import pl.art.lach.mateusz.openchess.core.pieces.PieceFactory;
  * @author: Mateusz Sławomir Lach 
  */
 public class FieldTest {
+    
+    private Piece pawn = new PieceFactory().getPawnInstance(Color.WHITE);
 
     @Test
     public void equalsTest() {
@@ -52,7 +55,7 @@ public class FieldTest {
     
     @Test
     public void occupiedFieldTest() {
-        Piece pawn = new PieceFactory().getPawnInstance();
+        
         Field field = Field.getOccupiedField(Letter._A, Number._2, pawn);
         
         assertFalse(field.isEmpty());
@@ -62,7 +65,6 @@ public class FieldTest {
     
     @Test
     public void getFieldTest() {
-        Piece pawn = new PieceFactory().getPawnInstance();
         Field occupiedField = Field.getField(Letter._A, Number._2, pawn);
         Field emptyField = Field.getField(Letter._A, Number._2, null);
         assertFalse(occupiedField.isEmpty());

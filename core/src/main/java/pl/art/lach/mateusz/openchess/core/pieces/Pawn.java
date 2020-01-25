@@ -14,6 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
+import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 
 /**
@@ -22,9 +23,9 @@ import pl.art.lach.mateusz.openchess.core.board.Field;
 class Pawn extends Piece {
     
     
-    public Pawn() {
-        super(1, '\0');
-        this.strategies.add(getStrategyFactory().getPawnStrategy());
+    public Pawn(final Color color) {
+        super(1, '\0', color);
+        getStrategies().add(getStrategyFactory().getPawnStrategy());
     }
 
     public boolean wasShiftedByTwoFields(Field from, Field to) {

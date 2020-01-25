@@ -31,15 +31,18 @@ public abstract class Piece {
 
     private final int value;
     
-    protected final List<PieceMoveStrategy> strategies = new ArrayList<>();
+    private final List<PieceMoveStrategy> strategies = new ArrayList<>();
     
     private final char symbol;
     
     private final MoveStrategyFactory strategyFactory = new MoveStrategyFactory();
     
-    Piece(int value, char symbol) {
+    private final Color color;
+    
+    Piece(int value, char symbol, Color color) {
         this.value = value;
         this.symbol = symbol;
+        this.color = color;
     }
         
     int getValue() {
@@ -48,6 +51,14 @@ public abstract class Piece {
     
     char getSymbol() {
         return symbol;
+    }
+    
+    Color getColor() {
+        return color;
+    }
+    
+    List<PieceMoveStrategy> getStrategies() {
+        return strategies;
     }
     
     MoveStrategyFactory getStrategyFactory() {

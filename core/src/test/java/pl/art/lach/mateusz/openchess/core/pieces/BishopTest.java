@@ -28,24 +28,26 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
  */
 public class BishopTest extends PieceTest {
 
-    private Bishop bishop = new Bishop();
+    private Bishop whiteBishop = new Bishop(Color.WHITE);
+
+    private Bishop blackBishop = new Bishop(Color.BLACK);
     
     private PieceMoveStrategy strategy = new MoveStrategyFactory().getBishopStrategy();
     
     @Test
     public void pawnValueTest() {
-        assertEquals(3, bishop.getValue());
+        assertEquals(3, whiteBishop.getValue());
     }
     
     @Test
     public void bishopShouldUseOneStrategyTest_A2() {
-        Field field = Field.getOccupiedField(Field.Letter._A, Field.Number._2, bishop);
-        shouldContainAllFieldsAsStrategy(bishop, strategy, field, Color.WHITE);
+        Field field = Field.getOccupiedField(Field.Letter._A, Field.Number._2, whiteBishop);
+        shouldContainAllFieldsAsStrategy(whiteBishop, strategy, field);
     }
     
     @Test
     public void bishopShouldUseOneStrategyTest_E5() {
         Field field = Field.getEmptyField(Field.Letter._E, Field.Number._5);
-        shouldContainAllFieldsAsStrategy(bishop, strategy, field, Color.BLACK);
+        shouldContainAllFieldsAsStrategy(blackBishop, strategy, field);
     }
 }

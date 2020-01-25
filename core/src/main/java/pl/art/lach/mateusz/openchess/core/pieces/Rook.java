@@ -14,15 +14,15 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
+import pl.art.lach.mateusz.openchess.core.Color;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
 class Rook extends Piece {
 
-    Rook() {
-        super(5, 'R');
-        strategies.add(new MoveStrategyFactory().getRookStrategy());
+    Rook(final Color color) {
+        super(5, 'R', color);
+        getStrategies().add(getStrategyFactory().getRookStrategy());
     }
 }

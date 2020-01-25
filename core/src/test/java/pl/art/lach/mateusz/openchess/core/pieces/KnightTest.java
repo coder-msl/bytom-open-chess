@@ -28,19 +28,20 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
  */
 public class KnightTest extends PieceTest {
 
+    private Knight whiteKnight = new Knight(Color.WHITE);
+    
+    private Knight blackKnight = new Knight(Color.BLACK);
     
     @Test
     public void knightValueTest() {
-        Knight rook = new Knight();
-        assertEquals(3, rook.getValue());
+        assertEquals(3, whiteKnight.getValue());
     }
     
     @Test
     public void knightShouldUseOneStrategyTest() {
-        Knight knight = new Knight();
         PieceMoveStrategy strategy = new MoveStrategyFactory().getKnightStrategy();
         Field field = Field.getEmptyField(Field.Letter._C, Field.Number._4);
-        shouldContainAllFieldsAsStrategy(knight, strategy, field, Color.WHITE);
-        shouldContainAllFieldsAsStrategy(knight, strategy, field, Color.BLACK);
+        shouldContainAllFieldsAsStrategy(whiteKnight, strategy, field);
+        shouldContainAllFieldsAsStrategy(blackKnight, strategy, field);
     }
 }

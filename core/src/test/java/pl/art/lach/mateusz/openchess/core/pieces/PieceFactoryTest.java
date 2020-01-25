@@ -18,6 +18,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import pl.art.lach.mateusz.openchess.core.Color;
+
 /**
  * @author: Mateusz Sławomir Lach 
  */
@@ -25,7 +27,7 @@ public class PieceFactoryTest {
 
     @Test
     public void testCreatePawn() {
-        Piece pawn = new PieceFactory().getPawnInstance();
+        Piece pawn = new PieceFactory().getPawnInstance(Color.WHITE);
         assertTrue(pawn instanceof Piece);
         assertEquals(1, pawn.getValue());
     }

@@ -14,13 +14,15 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces;
 
+import pl.art.lach.mateusz.openchess.core.Color;
+
 /**
  * @author: Mateusz Sławomir Lach 
  */
 class Bishop extends Piece {
 
-    Bishop() {
-        super(3, 'B');
-        strategies.add(getStrategyFactory().getBishopStrategy());
+    Bishop(final Color color) {
+        super(3, 'B', color);
+        getStrategies().add(getStrategyFactory().getBishopStrategy());
     }
 }
