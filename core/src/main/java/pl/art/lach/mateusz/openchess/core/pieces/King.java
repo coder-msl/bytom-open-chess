@@ -25,4 +25,9 @@ class King extends Piece {
         super(100, 'K', color);
         getStrategies().add(getStrategyFactory().getKingStrategy());
     }
+    
+    @Override
+    public boolean isTakeablePiece() {
+        return false;
+    }
 }

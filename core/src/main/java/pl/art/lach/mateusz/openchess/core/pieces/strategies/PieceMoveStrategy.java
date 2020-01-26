@@ -27,12 +27,14 @@ public interface PieceMoveStrategy {
 
     Set<Field> getAllFieldsInRange(Board board, Field currentField, Color white);
     
-    static void addIfCoordinatesAreValid(Set<Field> fields, int letterOrdinal, int numberOrdinal) {
+    static void addIfFieldCanBeTaken(Board board, Set<Field> fields, int letterOrdinal, int numberOrdinal, Color color) {
         if (coordinatesAreValid(letterOrdinal, numberOrdinal)) {
             Field.Letter letter = Field.Letter.values()[letterOrdinal];
             Field.Number number = Field.Number.values()[numberOrdinal];
-            Field fieldInRange = Field.getEmptyField(letter, number);
-            fields.add(fieldInRange);
+            Field field = board.getField(letter, number);
+            if (board.fieldCanBeTaken(field, color)) {
+                fields.add(field);
+            }
         }
     }
     

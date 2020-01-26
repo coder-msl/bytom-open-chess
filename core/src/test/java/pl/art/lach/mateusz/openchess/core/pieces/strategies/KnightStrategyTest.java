@@ -15,6 +15,7 @@
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
 import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.*;
 
 import java.util.Set;
@@ -26,6 +27,8 @@ import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
+import pl.art.lach.mateusz.openchess.core.pieces.Piece;
+import pl.art.lach.mateusz.openchess.core.pieces.PieceFactory;
 
 /**
  * @author: Mateusz Sławomir Lach
@@ -33,6 +36,8 @@ import pl.art.lach.mateusz.openchess.core.board.Field.Number;
 public class KnightStrategyTest {
 
     private KnightStrategy knightStrategy = new KnightStrategy();
+    
+    private PieceFactory pieceFactory = new PieceFactory();
 
     @Test
     public void knightFieldsInRangeTest_C4() {
@@ -96,5 +101,66 @@ public class KnightStrategyTest {
         
         assertThat(fields, hasItems(fieldB6, fieldC7));
         
+    }
+    
+    @Test
+    public void knightFieldsInRangeTest_A8_WithAllies() {
+        Field fieldA8 = Field.getEmptyField(Letter._A, Number._8);
+        
+        Piece pawn = pieceFactory.getPawnInstance(Color.WHITE);
+        
+        Field fieldB6 = Field.getField(Letter._B, Number._6, pawn);
+        Field fieldC7 = Field.getField(Letter._C, Number._7, pawn);
+        
+        Board board = Board.Builder.ofEmptyBoard()
+                .setField(fieldB6)
+                .setField(fieldC7)
+                .build();
+        
+        Set<Field> fields = knightStrategy.getAllFieldsInRange(board, fieldA8, Color.WHITE);
+        
+        assertThat(fields, not(hasItems(fieldB6, fieldC7)));
+        assertTrue(fields.isEmpty());
+    }
+    
+    @Test
+    public void knightFieldsInRangeTest_A8_WithOponents() {
+        Field fieldA8 = Field.getEmptyField(Letter._A, Number._8);
+        
+        Piece pawn = pieceFactory.getPawnInstance(Color.BLACK);
+        
+        Field fieldB6 = Field.getField(Letter._B, Number._6, pawn);
+        Field fieldC7 = Field.getField(Letter._C, Number._7, pawn);
+        
+        Board board = Board.Builder.ofEmptyBoard()
+                .setField(fieldB6)
+                .setField(fieldC7)
+                .build();
+        
+        Set<Field> fields = knightStrategy.getAllFieldsInRange(board, fieldA8, Color.WHITE);
+        
+        assertThat(fields, hasItems(fieldB6, fieldC7));
+    }
+    
+    
+    @Test
+    public void knightFieldsInRangeTest_A8_WithOponentKing() {
+        Field fieldA8 = Field.getEmptyField(Letter._A, Number._8);
+        
+        Piece king = pieceFactory.getKingInstance(Color.BLACK);
+        Piece pawn = pieceFactory.getPawnInstance(Color.BLACK);
+        
+        Field fieldB6 = Field.getField(Letter._B, Number._6, pawn);
+        Field fieldC7 = Field.getField(Letter._C, Number._7, king);
+        
+        Board board = Board.Builder.ofEmptyBoard()
+                .setField(fieldB6)
+                .setField(fieldC7)
+                .build();
+        
+        Set<Field> fields = knightStrategy.getAllFieldsInRange(board, fieldA8, Color.WHITE);
+        
+        assertThat(fields, hasItems(fieldB6));
+        assertThat(fields, not(hasItems(fieldC7)));
     }
 }

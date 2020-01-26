@@ -75,7 +75,8 @@ public class Board {
 
     public boolean fieldCanBeTaken(Field field, Color color) {
         Piece piece = getField(field.getLetter(), field.getNumber()).getPiece();
-        return isFieldEmpty(field) || piece.getColor() != color;
+        return isFieldEmpty(field) 
+                || (piece.getColor() != color && piece.isTakeablePiece());
     }
     
     public static class Builder {

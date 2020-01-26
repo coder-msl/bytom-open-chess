@@ -21,26 +21,26 @@ import java.util.Set;
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import static pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy.addIfCoordinatesAreValid;
+import static pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy.addIfFieldCanBeTaken;
 /**
  * @author: Mateusz Sławomir Lach 
  */
 class KingStrategy implements PieceMoveStrategy {
 
     @Override
-    public Set<Field> getAllFieldsInRange(Board board, Field currentField, Color white) {
+    public Set<Field> getAllFieldsInRange(Board board, Field currentField, Color color) {
         final Set<Field> fields = new HashSet<>();
         final int letter = currentField.getLetter().ordinal();
         final int number = currentField.getNumber().ordinal();
         
-        addIfCoordinatesAreValid(fields, letter - 1, number - 1);
-        addIfCoordinatesAreValid(fields, letter + 0, number - 1);
-        addIfCoordinatesAreValid(fields, letter - 1, number + 0);
-        addIfCoordinatesAreValid(fields, letter + 1, number + 0);
-        addIfCoordinatesAreValid(fields, letter + 0, number + 1);
-        addIfCoordinatesAreValid(fields, letter + 1, number + 1);
-        addIfCoordinatesAreValid(fields, letter + 1, number - 1);
-        addIfCoordinatesAreValid(fields, letter - 1, number + 1);
+        addIfFieldCanBeTaken(board, fields, letter - 1, number - 1, color);
+        addIfFieldCanBeTaken(board, fields, letter + 0, number - 1, color);
+        addIfFieldCanBeTaken(board, fields, letter - 1, number + 0, color);
+        addIfFieldCanBeTaken(board, fields, letter + 1, number + 0, color);
+        addIfFieldCanBeTaken(board, fields, letter + 0, number + 1, color);
+        addIfFieldCanBeTaken(board, fields, letter + 1, number + 1, color);
+        addIfFieldCanBeTaken(board, fields, letter + 1, number - 1, color);
+        addIfFieldCanBeTaken(board, fields, letter - 1, number + 1, color);
         
         return Collections.unmodifiableSet(fields);
     }

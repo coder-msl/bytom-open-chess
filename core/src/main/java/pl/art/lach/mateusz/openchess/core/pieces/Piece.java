@@ -58,6 +58,10 @@ public abstract class Piece {
         return color;
     }
     
+    public boolean isTakeablePiece() {
+        return true;
+    }
+    
     List<PieceMoveStrategy> getStrategies() {
         return strategies;
     }

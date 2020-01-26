@@ -42,4 +42,18 @@ public class PieceFactoryTest {
         assertEquals(1, pawn.getValue());
         assertEquals(Color.BLACK, pawn.getColor());
     }
+    
+    @Test
+    public void createKingWhiteTest() {
+        Piece king = pieceFactory.getKingInstance(Color.WHITE);
+        assertEquals(100, king.getValue());
+        assertEquals(Color.WHITE, king.getColor());
+    }
+    
+    @Test
+    public void createKingBlackTest() {
+        Piece king = pieceFactory.getKingInstance(Color.BLACK);
+        assertEquals(100, king.getValue());
+        assertEquals(Color.BLACK, king.getColor());
+    }
 }

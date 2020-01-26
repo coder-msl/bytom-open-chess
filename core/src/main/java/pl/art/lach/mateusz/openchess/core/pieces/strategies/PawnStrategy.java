@@ -22,7 +22,7 @@ import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
-import static pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy.addIfCoordinatesAreValid;
+import static pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy.addIfFieldCanBeTaken;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -36,12 +36,12 @@ class PawnStrategy implements PieceMoveStrategy {
         
         final int letter = currentField.getLetter().ordinal();
         final int number = currentField.getNumber().ordinal();
-        addIfCoordinatesAreValid(fields, letter, number + numberDirection);
-        addIfCoordinatesAreValid(fields, letter - 1, number + numberDirection);
-        addIfCoordinatesAreValid(fields, letter + 1, number + numberDirection);
+        addIfFieldCanBeTaken(board, fields, letter, number + numberDirection, color);
+        addIfFieldCanBeTaken(board, fields, letter - 1, number + numberDirection, color);
+        addIfFieldCanBeTaken(board, fields, letter + 1, number + numberDirection, color);
         
         if (isOnStartPosition(currentField, color)) {
-            addIfCoordinatesAreValid(fields, letter, number + (numberDirection * 2));
+            addIfFieldCanBeTaken(board, fields, letter, number + (numberDirection * 2), color);
         }
         
         return Collections.unmodifiableSet(fields);
