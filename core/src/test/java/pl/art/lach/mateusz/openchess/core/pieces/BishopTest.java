@@ -42,12 +42,12 @@ public class BishopTest extends PieceTest {
     @Test
     public void bishopShouldUseOneStrategyTest_A2() {
         Field field = Field.getOccupiedField(Field.Letter._A, Field.Number._2, whiteBishop);
-        shouldContainAllFieldsAsStrategy(whiteBishop, strategy, field);
+        assertContainsAllFieldsAsStrategy(whiteBishop, strategy, field);
     }
     
     @Test
     public void bishopShouldUseOneStrategyTest_E5() {
         Field field = Field.getEmptyField(Field.Letter._E, Field.Number._5);
-        shouldContainAllFieldsAsStrategy(blackBishop, strategy, field);
+        assertContainsAllFieldsAsStrategy(blackBishop, strategy, field);
     }
 }

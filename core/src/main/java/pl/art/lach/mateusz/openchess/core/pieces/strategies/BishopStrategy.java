@@ -19,6 +19,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import pl.art.lach.mateusz.openchess.core.Color;
+import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 
 /**
@@ -27,13 +28,13 @@ import pl.art.lach.mateusz.openchess.core.board.Field;
 class BishopStrategy extends LongRangeStrategy {
 
     @Override
-    public Set<Field> getAllFieldsInRange(Field currentField, Color white) {
+    public Set<Field> getAllFieldsInRange(Board board, Field currentField, Color color) {
         final Set<Field> fields = new HashSet<>();
         
-        addFieldsInDirection(fields, currentField, Direction.TOP_RIGHT);
-        addFieldsInDirection(fields, currentField, Direction.BOTTOM_LEFT);
-        addFieldsInDirection(fields, currentField, Direction.TOP_LEFT);
-        addFieldsInDirection(fields, currentField, Direction.BOTTOM_RIGHT);
+        addFieldsInDirection(board, fields, currentField, color, Direction.TOP_RIGHT);
+        addFieldsInDirection(board, fields, currentField, color, Direction.BOTTOM_LEFT);
+        addFieldsInDirection(board, fields, currentField, color, Direction.TOP_LEFT);
+        addFieldsInDirection(board, fields, currentField, color, Direction.BOTTOM_RIGHT);
         
         return Collections.unmodifiableSet(fields);
     }

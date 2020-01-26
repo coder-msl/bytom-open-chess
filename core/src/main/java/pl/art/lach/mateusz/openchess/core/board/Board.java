@@ -16,8 +16,10 @@ package pl.art.lach.mateusz.openchess.core.board;
 
 import java.util.Arrays;
 
+import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
+import pl.art.lach.mateusz.openchess.core.pieces.Piece;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -67,6 +69,14 @@ public class Board {
         return copy;
     }
 
+    public boolean isFieldEmpty(Field field) {
+        return getField(field.getLetter(), field.getNumber()).isEmpty();
+    }
+
+    public boolean fieldCanBeTaken(Field field, Color color) {
+        Piece piece = getField(field.getLetter(), field.getNumber()).getPiece();
+        return isFieldEmpty(field) || piece.getColor() != color;
+    }
     
     public static class Builder {
         
@@ -110,6 +120,5 @@ public class Board {
         }
         
     }
-
 
 }

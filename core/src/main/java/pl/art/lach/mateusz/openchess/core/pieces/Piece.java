@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 import pl.art.lach.mateusz.openchess.core.Color;
+import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
 import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy;
@@ -53,7 +54,7 @@ public abstract class Piece {
         return symbol;
     }
     
-    Color getColor() {
+    public Color getColor() {
         return color;
     }
     
@@ -65,10 +66,10 @@ public abstract class Piece {
         return strategyFactory;
     }
 
-    public Set<Field> getAllFieldsInRange(Field currentField, Color color) {
+    public Set<Field> getAllFieldsInRange(Board board, Field currentField, Color color) {
         Set<Field> fields = new HashSet<>();
         strategies.forEach((strategy) -> {
-            fields.addAll(strategy.getAllFieldsInRange(currentField, color));
+            fields.addAll(strategy.getAllFieldsInRange(board, currentField, color));
         });
         return fields;
     }

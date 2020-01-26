@@ -19,6 +19,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import pl.art.lach.mateusz.openchess.core.Color;
+import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 
 /**
@@ -27,13 +28,13 @@ import pl.art.lach.mateusz.openchess.core.board.Field;
 class RookStrategy extends LongRangeStrategy {
 
     @Override
-    public Set<Field> getAllFieldsInRange(Field currentField, Color white) {
+    public Set<Field> getAllFieldsInRange(Board board, Field currentField, Color color) {
         final Set<Field> fields = new HashSet<>();
         
-        addFieldsInDirection(fields, currentField, Direction.TOP);
-        addFieldsInDirection(fields, currentField, Direction.BOTTOM);
-        addFieldsInDirection(fields, currentField, Direction.LEFT);
-        addFieldsInDirection(fields, currentField, Direction.RIGHT);
+        addFieldsInDirection(board, fields, currentField, color, Direction.TOP);
+        addFieldsInDirection(board, fields, currentField, color, Direction.BOTTOM);
+        addFieldsInDirection(board, fields, currentField, color, Direction.LEFT);
+        addFieldsInDirection(board, fields, currentField, color, Direction.RIGHT);
         
         return Collections.unmodifiableSet(fields);
     }

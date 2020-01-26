@@ -19,6 +19,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import pl.art.lach.mateusz.openchess.core.Color;
+import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import static pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy.addIfCoordinatesAreValid;
 /**
@@ -27,7 +28,7 @@ import static pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStra
 class KingStrategy implements PieceMoveStrategy {
 
     @Override
-    public Set<Field> getAllFieldsInRange(Field currentField, Color white) {
+    public Set<Field> getAllFieldsInRange(Board board, Field currentField, Color white) {
         final Set<Field> fields = new HashSet<>();
         final int letter = currentField.getLetter().ordinal();
         final int number = currentField.getNumber().ordinal();

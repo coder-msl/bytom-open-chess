@@ -63,7 +63,7 @@ public class PawnTest extends PieceTest {
     public void pawnShouldUseOneStrategyTest() {
         PieceMoveStrategy pawnStrategy = new MoveStrategyFactory().getPawnStrategy();
         Field field = Field.getEmptyField(Field.Letter._A, Field.Number._2);
-        shouldContainAllFieldsAsStrategy(whitePawn, pawnStrategy, field);
-        shouldContainAllFieldsAsStrategy(blackPawn, pawnStrategy, field);
+        assertContainsAllFieldsAsStrategy(whitePawn, pawnStrategy, field);
+        assertContainsAllFieldsAsStrategy(blackPawn, pawnStrategy, field);
     }
 }

@@ -15,16 +15,19 @@
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
 import static org.hamcrest.CoreMatchers.hasItems;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.not;
+import static org.junit.Assert.assertThat;
+import static pl.art.lach.mateusz.openchess.core.Color.WHITE;
 
 import java.util.Set;
 
 import org.junit.Test;
 
-import pl.art.lach.mateusz.openchess.core.Color;
+import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
+import pl.art.lach.mateusz.openchess.core.pieces.PieceFactory;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -32,11 +35,14 @@ import pl.art.lach.mateusz.openchess.core.board.Field.Number;
 public class RookStrategyTest {
     
     private final RookStrategy rookStrategy = new RookStrategy();
+    
+    private final PieceFactory pieceFactory = new PieceFactory();
 
     @Test
     public void bishopFieldsInRangeTest_C4() {
         Field fieldC4 = Field.getEmptyField(Letter._C, Number._4);
-        final Set<Field> fields = rookStrategy.getAllFieldsInRange(fieldC4, Color.WHITE);
+        Board board = Board.getEmptyBoard();
+        final Set<Field> fields = rookStrategy.getAllFieldsInRange(board, fieldC4, WHITE);
         
         Field fieldB4 = Field.getEmptyField(Letter._B, Number._4);
         Field fieldA4 = Field.getEmptyField(Letter._A, Number._4);
@@ -62,5 +68,40 @@ public class RookStrategyTest {
         assertThat(fields, hasItems(fieldC1, fieldC2, fieldC3));
         
      }
+     
+    @Test
+    public void bishopFieldsInRangeTestWithObstacles_C4() {
+        Field fieldC4 = Field.getEmptyField(Letter._C, Number._4);
+        
+        //blocker pieces
+        Field fieldA4 = Field.getField(Letter._A, Number._4, pieceFactory.getPawnInstance(WHITE));
+        Field fieldE4 = Field.getField(Letter._E, Number._4, pieceFactory.getPawnInstance(WHITE));
+        Field fieldC7 = Field.getField(Letter._C, Number._7, pieceFactory.getPawnInstance(WHITE));
+        Field fieldC2 = Field.getField(Letter._C, Number._2, pieceFactory.getPawnInstance(WHITE));
+      
+        Board board = Board.Builder.ofEmptyBoard()
+                .setField(fieldA4)
+                .setField(fieldE4)
+                .setField(fieldC7)
+                .setField(fieldC2)
+                .build();
+        
+        Set<Field> fields = rookStrategy.getAllFieldsInRange(board, fieldC4, WHITE);
+        
+        assertThat(fields, hasItems(Field.getEmptyField(Letter._B, Number._4)));
+        assertThat(fields, hasItems(Field.getEmptyField(Letter._D, Number._4)));
+        assertThat(fields, hasItems(Field.getEmptyField(Letter._C, Number._6)));
+        assertThat(fields, hasItems(Field.getEmptyField(Letter._C, Number._3)));
+        
+        assertThat(fields, not(hasItems(fieldA4, fieldE4, fieldC7, fieldC2)));
+        
+        Field fieldA3 = Field.getEmptyField(Letter._A, Number._3);
+        Field fieldE5 = Field.getEmptyField(Letter._E, Number._5);
+        Field fieldC8 = Field.getEmptyField(Letter._C, Number._8);
+        Field fieldC1 = Field.getEmptyField(Letter._C, Number._1);
+
+        assertThat(fields, not(hasItems(fieldA3, fieldE5, fieldC8, fieldC1)));
+     }
+     
 
 }

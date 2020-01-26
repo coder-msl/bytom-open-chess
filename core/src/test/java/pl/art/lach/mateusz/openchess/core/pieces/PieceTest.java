@@ -19,6 +19,7 @@ import static org.junit.Assert.assertThat;
 
 import java.util.Set;
 
+import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy;
 
@@ -27,11 +28,12 @@ import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy;
  */
 abstract class PieceTest {
 
-    public void shouldContainAllFieldsAsStrategy(final Piece piece, 
+    public void assertContainsAllFieldsAsStrategy(final Piece piece, 
             final PieceMoveStrategy strategy, final Field field) {
-
-        Set<Field> fieldsFromPiece = piece.getAllFieldsInRange(field, piece.getColor());
-        Set<Field> fieldsFromStrategy = strategy.getAllFieldsInRange(field, piece.getColor());
+        
+        Board board = Board.Builder.ofEmptyBoard().build();
+        Set<Field> fieldsFromPiece = piece.getAllFieldsInRange(board, field, piece.getColor());
+        Set<Field> fieldsFromStrategy = strategy.getAllFieldsInRange(board, field, piece.getColor());
 
         
         fieldsFromPiece.forEach((element) -> {

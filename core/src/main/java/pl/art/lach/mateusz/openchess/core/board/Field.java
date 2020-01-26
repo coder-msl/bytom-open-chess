@@ -97,9 +97,9 @@ public abstract class Field {
     }
     
     
-    static class EmptyField extends Field {
+    static final class EmptyField extends Field {
 
-        EmptyField(Letter letter, Number number) {
+        EmptyField(final Letter letter, final Number number) {
             super(letter, number);
         }
 
@@ -115,11 +115,11 @@ public abstract class Field {
         
     }
     
-    static class OccupiedField extends Field {
+    static final class OccupiedField extends Field {
         
         private final Piece piece;
 
-        OccupiedField(Letter letter, Number number, Piece piece) {
+        OccupiedField(final Letter letter, final Number number, final Piece piece) {
             super(letter, number);
             this.piece = piece;
         }

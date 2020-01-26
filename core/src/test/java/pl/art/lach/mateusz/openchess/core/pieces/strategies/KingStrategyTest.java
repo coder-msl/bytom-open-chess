@@ -22,6 +22,7 @@ import java.util.Set;
 import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.Color;
+import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
@@ -36,7 +37,8 @@ public class KingStrategyTest {
     @Test
     public void kingFieldsInRangeTest_E1() {
         Field fieldE1 = Field.getEmptyField(Letter._E, Number._1);
-        final Set<Field> fields = kingStrategy.getAllFieldsInRange(fieldE1, Color.WHITE);
+        Board board = Board.getEmptyBoard();
+        final Set<Field> fields = kingStrategy.getAllFieldsInRange(board, fieldE1, Color.WHITE);
         
         Field fieldD1 = Field.getEmptyField(Letter._D, Number._1);
         Field fieldD2 = Field.getEmptyField(Letter._D, Number._2);
@@ -52,7 +54,8 @@ public class KingStrategyTest {
     @Test
     public void kingFieldsInRangeTest_C4() {
         Field fieldC4 = Field.getEmptyField(Letter._C, Number._4);
-        final Set<Field> fields = kingStrategy.getAllFieldsInRange(fieldC4, Color.WHITE);
+        Board board = Board.getEmptyBoard();
+        final Set<Field> fields = kingStrategy.getAllFieldsInRange(board, fieldC4, Color.WHITE);
         
         Field fieldC3 = Field.getEmptyField(Letter._C, Number._3);
         Field fieldC5 = Field.getEmptyField(Letter._C, Number._5);

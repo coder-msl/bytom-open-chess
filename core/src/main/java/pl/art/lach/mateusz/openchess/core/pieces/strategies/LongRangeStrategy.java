@@ -17,6 +17,9 @@ package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 import java.util.Set;
 
 import static pl.art.lach.mateusz.openchess.core.board.Field.coordinatesAreValid;
+
+import pl.art.lach.mateusz.openchess.core.Color;
+import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
@@ -56,17 +59,23 @@ abstract class LongRangeStrategy implements PieceMoveStrategy {
         }
     }
 
-    protected void addFieldsInDirection(Set<Field> fields, Field currentField, Direction direction) {
+    protected void addFieldsInDirection(Board board, Set<Field> fields, 
+            Field currentField, Color color, Direction direction) {
         int fieldLetter = currentField.getLetter().ordinal() + direction.getLetterDirection();
         int fieldNumber = currentField.getNumber().ordinal() + direction.getNumberDirection();
         while (coordinatesAreValid(fieldLetter, fieldNumber)) {
             Letter letter = Field.Letter.values()[fieldLetter];
             Number number = Field.Number.values()[fieldNumber];
 
-            fields.add(Field.getEmptyField(letter, number));
-
-            fieldLetter += direction.getLetterDirection();
-            fieldNumber += direction.getNumberDirection();
+            Field field = Field.getEmptyField(letter, number);
+            if (board.fieldCanBeTaken(field, color)) {
+                fields.add(field);
+                fieldLetter += direction.getLetterDirection();
+                fieldNumber += direction.getNumberDirection();
+            } else {
+                return;
+            }
+            
         }
     }
 

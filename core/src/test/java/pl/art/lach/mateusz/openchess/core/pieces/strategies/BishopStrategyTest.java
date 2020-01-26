@@ -5,6 +5,7 @@ import java.util.Set;
 import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.Color;
+import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
@@ -19,7 +20,8 @@ public class BishopStrategyTest {
     @Test
     public void bishopFieldsInRangeTest_C4() {
         Field fieldC4 = Field.getEmptyField(Letter._C, Number._4);
-        final Set<Field> fields = bishopStrategy.getAllFieldsInRange(fieldC4, Color.WHITE);
+        Board board = Board.getEmptyBoard();
+        final Set<Field> fields = bishopStrategy.getAllFieldsInRange(board, fieldC4, Color.WHITE);
         
         Field fieldB5 = Field.getEmptyField(Letter._B, Number._5);
         Field fieldA6 = Field.getEmptyField(Letter._A, Number._6);

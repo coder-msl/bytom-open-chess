@@ -23,6 +23,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.Color;
+import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy;
 import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
@@ -53,10 +54,10 @@ public class QueenTest extends PieceTest {
     @Test
     public void rookShouldUseOneStrategyTest_White() {
         Field field = Field.getEmptyField(Field.Letter._A, Field.Number._2);
-        
-        Set<Field> queenWhiteFields = queen.getAllFieldsInRange(field, Color.WHITE);
-        Set<Field> rookStrategyFields = rookStrategy.getAllFieldsInRange(field, Color.WHITE);
-        Set<Field> bishopStrategyFields = bishopStrategy.getAllFieldsInRange(field, Color.WHITE);
+        Board board = Board.getEmptyBoard();
+        Set<Field> queenWhiteFields = queen.getAllFieldsInRange(board, field, Color.WHITE);
+        Set<Field> rookStrategyFields = rookStrategy.getAllFieldsInRange(board, field, Color.WHITE);
+        Set<Field> bishopStrategyFields = bishopStrategy.getAllFieldsInRange(board, field, Color.WHITE);
 
         assertEquals(queenWhiteFields.size(), rookStrategyFields.size() + bishopStrategyFields.size());
 
@@ -68,10 +69,10 @@ public class QueenTest extends PieceTest {
     @Test
     public void rookShouldUseOneStrategyTest_Black() {
         Field field = Field.getEmptyField(Field.Letter._A, Field.Number._2);
-        
-        Set<Field> queenBlackFields = queen.getAllFieldsInRange(field, Color.BLACK);
-        Set<Field> rookStrategyFields = rookStrategy.getAllFieldsInRange(field, Color.BLACK);
-        Set<Field> bishopStrategyFields = bishopStrategy.getAllFieldsInRange(field, Color.BLACK);
+        Board board = Board.getEmptyBoard();
+        Set<Field> queenBlackFields = queen.getAllFieldsInRange(board, field, Color.BLACK);
+        Set<Field> rookStrategyFields = rookStrategy.getAllFieldsInRange(board, field, Color.BLACK);
+        Set<Field> bishopStrategyFields = bishopStrategy.getAllFieldsInRange(board, field, Color.BLACK);
 
         assertEquals(queenBlackFields.size(), rookStrategyFields.size() + bishopStrategyFields.size());
         assertTrue(queenBlackFields.containsAll(rookStrategyFields));

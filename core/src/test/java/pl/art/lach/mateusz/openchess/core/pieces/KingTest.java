@@ -47,7 +47,7 @@ public class KingTest extends PieceTest {
     public void kingShouldUseOneStrategyTest() {
         PieceMoveStrategy kingStrategy = new MoveStrategyFactory().getKingStrategy();
         Field field = Field.getEmptyField(Field.Letter._E, Field.Number._1);
-        shouldContainAllFieldsAsStrategy(whiteKing, kingStrategy, field);
-        shouldContainAllFieldsAsStrategy(blackKing, kingStrategy, field);
+        assertContainsAllFieldsAsStrategy(whiteKing, kingStrategy, field);
+        assertContainsAllFieldsAsStrategy(blackKing, kingStrategy, field);
     }
 }
