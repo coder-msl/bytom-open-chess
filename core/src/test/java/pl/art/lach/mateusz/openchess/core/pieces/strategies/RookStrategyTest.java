@@ -27,6 +27,7 @@ import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
+import pl.art.lach.mateusz.openchess.core.pieces.Piece;
 import pl.art.lach.mateusz.openchess.core.pieces.PieceFactory;
 
 /**
@@ -74,10 +75,11 @@ public class RookStrategyTest {
         Field fieldC4 = Field.getEmptyField(Letter._C, Number._4);
         
         //blocker pieces
-        Field fieldA4 = Field.getField(Letter._A, Number._4, pieceFactory.getPawnInstance(WHITE));
-        Field fieldE4 = Field.getField(Letter._E, Number._4, pieceFactory.getPawnInstance(WHITE));
-        Field fieldC7 = Field.getField(Letter._C, Number._7, pieceFactory.getPawnInstance(WHITE));
-        Field fieldC2 = Field.getField(Letter._C, Number._2, pieceFactory.getPawnInstance(WHITE));
+        Piece pawn = pieceFactory.getPawnInstance(WHITE);
+        Field fieldA4 = Field.getField(Letter._A, Number._4, pawn);
+        Field fieldE4 = Field.getField(Letter._E, Number._4, pawn);
+        Field fieldC7 = Field.getField(Letter._C, Number._7, pawn);
+        Field fieldC2 = Field.getField(Letter._C, Number._2, pawn);
       
         Board board = Board.Builder.ofEmptyBoard()
                 .setField(fieldA4)
@@ -95,6 +97,7 @@ public class RookStrategyTest {
         
         assertThat(fields, not(hasItems(fieldA4, fieldE4, fieldC7, fieldC2)));
         
+        //fields behind blocked pieces
         Field fieldA3 = Field.getEmptyField(Letter._A, Number._3);
         Field fieldE5 = Field.getEmptyField(Letter._E, Number._5);
         Field fieldC8 = Field.getEmptyField(Letter._C, Number._8);
@@ -102,6 +105,7 @@ public class RookStrategyTest {
 
         assertThat(fields, not(hasItems(fieldA3, fieldE5, fieldC8, fieldC1)));
      }
+     
      
 
 }
