@@ -16,6 +16,7 @@ package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
 import java.util.Set;
 
+import static pl.art.lach.mateusz.openchess.core.board.Field.coordinatesAreValid;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
@@ -58,7 +59,7 @@ abstract class LongRangeStrategy implements PieceMoveStrategy {
     protected void addFieldsInDirection(Set<Field> fields, Field currentField, Direction direction) {
         int fieldLetter = currentField.getLetter().ordinal() + direction.getLetterDirection();
         int fieldNumber = currentField.getNumber().ordinal() + direction.getNumberDirection();
-        while (Field.coordinatesAreValid(fieldLetter, fieldNumber)) {
+        while (coordinatesAreValid(fieldLetter, fieldNumber)) {
             Letter letter = Field.Letter.values()[fieldLetter];
             Number number = Field.Number.values()[fieldNumber];
 

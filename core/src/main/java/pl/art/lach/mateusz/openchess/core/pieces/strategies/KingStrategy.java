@@ -33,10 +33,10 @@ class KingStrategy implements PieceMoveStrategy {
         final int number = currentField.getNumber().ordinal();
         
         addIfCoordinatesAreValid(fields, letter - 1, number - 1);
-        addIfCoordinatesAreValid(fields, letter, number - 1);
-        addIfCoordinatesAreValid(fields, letter - 1, number);
-        addIfCoordinatesAreValid(fields, letter + 1, number);
-        addIfCoordinatesAreValid(fields, letter, number + 1);
+        addIfCoordinatesAreValid(fields, letter + 0, number - 1);
+        addIfCoordinatesAreValid(fields, letter - 1, number + 0);
+        addIfCoordinatesAreValid(fields, letter + 1, number + 0);
+        addIfCoordinatesAreValid(fields, letter + 0, number + 1);
         addIfCoordinatesAreValid(fields, letter + 1, number + 1);
         addIfCoordinatesAreValid(fields, letter + 1, number - 1);
         addIfCoordinatesAreValid(fields, letter - 1, number + 1);

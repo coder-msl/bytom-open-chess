@@ -18,7 +18,7 @@ import java.util.Set;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-
+import static pl.art.lach.mateusz.openchess.core.board.Field.coordinatesAreValid;
 /**
  * @author: Mateusz Sławomir Lach 
  */
@@ -27,7 +27,7 @@ public interface PieceMoveStrategy {
     Set<Field> getAllFieldsInRange(Field currentField, Color white);
     
     static void addIfCoordinatesAreValid(Set<Field> fields, int letterOrdinal, int numberOrdinal) {
-        if (Field.coordinatesAreValid(letterOrdinal, numberOrdinal)) {
+        if (coordinatesAreValid(letterOrdinal, numberOrdinal)) {
             Field.Letter letter = Field.Letter.values()[letterOrdinal];
             Field.Number number = Field.Number.values()[numberOrdinal];
             Field fieldInRange = Field.getEmptyField(letter, number);
