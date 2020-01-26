@@ -23,6 +23,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
+import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
@@ -79,7 +80,7 @@ public class RookStrategyTest {
         Field fieldA4 = Field.getField(Letter._A, Number._4, pawn);
         Field fieldE4 = Field.getField(Letter._E, Number._4, pawn);
         Field fieldC7 = Field.getField(Letter._C, Number._7, pawn);
-        Field fieldC2 = Field.getField(Letter._C, Number._2, pawn);
+        Field fieldC2 = Field.getField(Letter._C, Number._2, pieceFactory.getPawnInstance(Color.BLACK));
       
         Board board = Board.Builder.ofEmptyBoard()
                 .setField(fieldA4)
@@ -94,8 +95,9 @@ public class RookStrategyTest {
         assertThat(fields, hasItems(Field.getEmptyField(Letter._D, Number._4)));
         assertThat(fields, hasItems(Field.getEmptyField(Letter._C, Number._6)));
         assertThat(fields, hasItems(Field.getEmptyField(Letter._C, Number._3)));
+        assertThat(fields, hasItems(Field.getEmptyField(Letter._C, Number._2)));
         
-        assertThat(fields, not(hasItems(fieldA4, fieldE4, fieldC7, fieldC2)));
+        assertThat(fields, not(hasItems(fieldA4, fieldE4, fieldC7)));
         
         //fields behind blocked pieces
         Field fieldA3 = Field.getEmptyField(Letter._A, Number._3);

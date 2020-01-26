@@ -16,7 +16,6 @@ import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static pl.art.lach.mateusz.openchess.core.Color.BLACK;
-import static pl.art.lach.mateusz.openchess.core.Color.WHITE;
 
 public class BishopStrategyTest {
     
@@ -56,7 +55,7 @@ public class BishopStrategyTest {
     public void bishopFieldsInRangeTestWithObstacles_C4() {
         Field fieldC4 = Field.getEmptyField(Letter._C, Number._4);
         //blocker pieces
-        Piece pawn = pieceFactory.getPawnInstance(WHITE);
+        Piece pawn = pieceFactory.getPawnInstance(BLACK);
         
         Field fieldA2 = Field.getField(Letter._A, Number._2, pawn);
         Field fieldA6 = Field.getField(Letter._A, Number._6, pawn);
@@ -73,7 +72,7 @@ public class BishopStrategyTest {
         
         Set<Field> fields = bishopStrategy.getAllFieldsInRange(board, fieldC4, BLACK);
         
-        assertThat(fields, hasItems(Field.getEmptyField(Letter._B, Number._2)));
+        assertThat(fields, hasItems(Field.getEmptyField(Letter._B, Number._3)));
         assertThat(fields, hasItems(Field.getEmptyField(Letter._B, Number._5)));
         assertThat(fields, hasItems(Field.getEmptyField(Letter._D, Number._3)));
         assertThat(fields, hasItems(Field.getEmptyField(Letter._D, Number._5)));

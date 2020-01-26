@@ -72,6 +72,9 @@ abstract class LongRangeStrategy implements PieceMoveStrategy {
                 fields.add(field);
                 fieldLetter += direction.getLetterDirection();
                 fieldNumber += direction.getNumberDirection();
+                if (!board.isFieldEmpty(field)) {
+                    return;
+                }
             } else {
                 return;
             }
