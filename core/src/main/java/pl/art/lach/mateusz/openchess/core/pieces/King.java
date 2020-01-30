@@ -21,8 +21,10 @@ import pl.art.lach.mateusz.openchess.core.Color;
  */
 class King extends Piece {
 
+    private static final char KING_SYMBOL = 'K';
+
     King(final Color color) {
-        super(100, 'K', color);
+        super(100, KING_SYMBOL, color);
         getStrategies().add(getStrategyFactory().getKingStrategy());
     }
     

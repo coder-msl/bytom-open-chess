@@ -21,8 +21,10 @@ import pl.art.lach.mateusz.openchess.core.Color;
  */
 class Rook extends Piece {
 
+    private static final char ROOK_SYMBOL = 'R';
+
     Rook(final Color color) {
-        super(5, 'R', color);
+        super(5, ROOK_SYMBOL, color);
         getStrategies().add(getStrategyFactory().getRookStrategy());
     }
 }

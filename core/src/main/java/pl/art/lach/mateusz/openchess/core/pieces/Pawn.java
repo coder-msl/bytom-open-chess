@@ -22,13 +22,14 @@ import pl.art.lach.mateusz.openchess.core.board.Field;
  */
 class Pawn extends Piece {
     
-    
-    public Pawn(final Color color) {
-        super(1, '\0', color);
+    private static final char EMPTY_SYMBOL = '\0';
+
+    Pawn(final Color color) {
+        super(1, EMPTY_SYMBOL, color);
         getStrategies().add(getStrategyFactory().getPawnStrategy());
     }
 
-    public boolean wasShiftedByTwoFields(Field from, Field to) {
+    boolean wasShiftedByTwoFields(Field from, Field to) {
         int fromNumber = from.getNumber().ordinal();
         int toNumber = to.getNumber().ordinal();
         return Math.abs(fromNumber - toNumber) == 2;

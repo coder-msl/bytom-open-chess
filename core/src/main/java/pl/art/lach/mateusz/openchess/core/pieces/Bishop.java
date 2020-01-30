@@ -21,8 +21,10 @@ import pl.art.lach.mateusz.openchess.core.Color;
  */
 class Bishop extends Piece {
 
+    private static final char BISHOP_SYMBOL = 'B';
+
     Bishop(final Color color) {
-        super(3, 'B', color);
+        super(3, BISHOP_SYMBOL, color);
         getStrategies().add(getStrategyFactory().getBishopStrategy());
     }
 }

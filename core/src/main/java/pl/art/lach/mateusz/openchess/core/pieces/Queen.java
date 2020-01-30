@@ -21,8 +21,10 @@ import pl.art.lach.mateusz.openchess.core.Color;
  */
 class Queen extends Piece {
 
+    private static final char QUEEN_SYMBOL = 'Q';
+
     Queen(final Color color) {
-        super(9, 'Q', color);
+        super(9, QUEEN_SYMBOL, color);
         getStrategies().add(getStrategyFactory().getRookStrategy());
         getStrategies().add(getStrategyFactory().getBishopStrategy());
     }
