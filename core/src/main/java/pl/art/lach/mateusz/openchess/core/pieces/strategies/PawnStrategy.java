@@ -41,7 +41,8 @@ class PawnStrategy implements PieceMoveStrategy {
         addIfFieldCanBeTaken(board, fields, letter + 1, number + numberDirection, color);
         
         if (isOnStartPosition(currentField, color)) {
-            addIfFieldCanBeTaken(board, fields, letter, number + (numberDirection * 2), color);
+            final int startMoveNumber = number + (numberDirection * 2);
+            addIfFieldCanBeTaken(board, fields, letter, startMoveNumber, color);
         }
         
         return Collections.unmodifiableSet(fields);
