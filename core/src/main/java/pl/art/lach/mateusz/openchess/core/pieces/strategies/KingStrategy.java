@@ -21,11 +21,15 @@ import java.util.Set;
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
+import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
+
 import static pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy.addIfFieldCanBeTaken;
 /**
  * @author: Mateusz Sławomir Lach 
  */
 class KingStrategy implements PieceMoveStrategy {
+
+    private static final int CASTLING_SHIFT = 2;
 
     @Override
     public Set<Field> getAllFieldsInRange(Board board, Field currentField, Color color) {
@@ -42,7 +46,28 @@ class KingStrategy implements PieceMoveStrategy {
         addIfFieldCanBeTaken(board, fields, letter + 1, number - 1, color);
         addIfFieldCanBeTaken(board, fields, letter - 1, number + 1, color);
         
+        addLeftCastlingIfPossible(board, fields, currentField, color);
+        addRightCastlingIfPossible(board, fields, currentField, color);
+        
         return Collections.unmodifiableSet(fields);
+    }
+
+    private void addRightCastlingIfPossible(Board board, Set<Field> fields, Field currentField, Color color) {
+        int letterOrdinal = currentField.getLetter().ordinal();
+        if (board.isRightCastlingPossible(color)) {
+            Letter letter = Field.Letter.values()[letterOrdinal + CASTLING_SHIFT];
+            Field castlingField = Field.getEmptyField(letter, currentField.getNumber());
+            fields.add(castlingField);
+        }
+    }
+
+    private void addLeftCastlingIfPossible(Board board, Set<Field> fields, Field currentField, Color color) {
+        int letterOrdinal = currentField.getLetter().ordinal();
+        if (board.isLeftCastlingPossible(color)) {
+            Letter letter = Field.Letter.values()[letterOrdinal - CASTLING_SHIFT];
+            Field castlingField = Field.getEmptyField(letter, currentField.getNumber());
+            fields.add(castlingField);
+        }
     }
 
 

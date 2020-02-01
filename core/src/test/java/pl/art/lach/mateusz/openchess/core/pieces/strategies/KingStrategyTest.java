@@ -15,17 +15,20 @@
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
 import static org.hamcrest.CoreMatchers.hasItems;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.not;
+import static org.junit.Assert.assertThat;
+import static pl.art.lach.mateusz.openchess.core.Color.WHITE;
 
 import java.util.Set;
 
 import org.junit.Test;
 
-import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
+import pl.art.lach.mateusz.openchess.core.pieces.Piece;
+import pl.art.lach.mateusz.openchess.core.pieces.PieceFactory;
 
 /**
  * @author: Mateusz Sławomir Lach 
@@ -33,12 +36,14 @@ import pl.art.lach.mateusz.openchess.core.board.Field.Number;
 public class KingStrategyTest {
     
     private final KingStrategy kingStrategy = new KingStrategy();
+    
+    private final PieceFactory pieceFactory = new PieceFactory();
 
     @Test
     public void kingFieldsInRangeTest_E1() {
         Field fieldE1 = Field.getEmptyField(Letter._E, Number._1);
         Board board = Board.getEmptyBoard();
-        final Set<Field> fields = kingStrategy.getAllFieldsInRange(board, fieldE1, Color.WHITE);
+        final Set<Field> fields = kingStrategy.getAllFieldsInRange(board, fieldE1, WHITE);
         
         Field fieldD1 = Field.getEmptyField(Letter._D, Number._1);
         Field fieldD2 = Field.getEmptyField(Letter._D, Number._2);
@@ -55,7 +60,7 @@ public class KingStrategyTest {
     public void kingFieldsInRangeTest_C4() {
         Field fieldC4 = Field.getEmptyField(Letter._C, Number._4);
         Board board = Board.getEmptyBoard();
-        final Set<Field> fields = kingStrategy.getAllFieldsInRange(board, fieldC4, Color.WHITE);
+        final Set<Field> fields = kingStrategy.getAllFieldsInRange(board, fieldC4, WHITE);
         
         Field fieldC3 = Field.getEmptyField(Letter._C, Number._3);
         Field fieldC5 = Field.getEmptyField(Letter._C, Number._5);
@@ -72,5 +77,32 @@ public class KingStrategyTest {
         assertThat(fields, hasItems(fieldB4, fieldB3, fieldB5));
         assertThat(fields, hasItems(fieldD4, fieldD3, fieldD5));
      }
+    
+    
+    @Test
+    public void testWhiteKingRightAndLeftCastling() {
+        
+        Piece king = pieceFactory.getKingInstance(WHITE);
+        Piece rookH1 = pieceFactory.getRookInstance(WHITE);
+        Piece rookA1 = pieceFactory.getRookInstance(WHITE);
+        
+        Field fieldH1 = Field.getField(Letter._H, Number._1, rookH1);
+        Field fieldA1 = Field.getField(Letter._A, Number._1, rookA1);
+        Field fieldE1 = Field.getField(Letter._E, Number._1, king);
+        
+        Board board = Board.Builder.ofEmptyBoard()
+                .setField(fieldH1)
+                .setField(fieldE1)
+                .setField(fieldA1)
+                .build();
+        
+        final Set<Field> fields = kingStrategy.getAllFieldsInRange(board, fieldE1, WHITE);
+
+        Field fieldF1 = Field.getEmptyField(Letter._F, Number._1);
+        Field fieldG1 = Field.getEmptyField(Letter._G, Number._1);
+        Field fieldD1 = Field.getEmptyField(Letter._D, Number._1);
+        
+        assertThat(fields, hasItems(fieldF1, fieldG1, fieldD1));
+    }
 
 }

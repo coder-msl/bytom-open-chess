@@ -16,6 +16,9 @@ package pl.art.lach.mateusz.openchess.core.board;
 
 import java.util.Arrays;
 
+import static pl.art.lach.mateusz.openchess.core.Color.WHITE;
+import static pl.art.lach.mateusz.openchess.core.Color.BLACK;
+
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
 import pl.art.lach.mateusz.openchess.core.board.Field.Number;
@@ -28,17 +31,30 @@ public class Board {
     
     private final Field[][] fields;
     
+    private final CastlingState whiteCastlingState; 
+    
+    private final CastlingState blackCastlingState;
+    
     Board(final Field[][] fields) {
         this.fields = deepCloneFields(fields);
+        this.blackCastlingState = CastlingState.getInitialState();
+        this.whiteCastlingState = CastlingState.getInitialState();
+    }
+    
+    Board(final Field[][] fields, final CastlingState whiteState, CastlingState blackState) {
+        this.fields = deepCloneFields(fields);
+        this.blackCastlingState = blackState;
+        this.whiteCastlingState = whiteState;
     }
     
     public static Board getEmptyBoard() {
         Field[][] emptyFields = new FieldFacade().getEmptyFields();
         return new Board(emptyFields);
     }
-        
-    private static Board getConfiguredBoard(final Field[][] fields) {
-        return new Board(fields);
+
+    private static Board getConfiguredBoard(final Field[][] fields, 
+            CastlingState whiteCastlingState, CastlingState blackCastlingState) {
+        return new Board(fields, whiteCastlingState, blackCastlingState);
     }
 
     public Field getField(final Letter letter, final Number number) {
@@ -83,12 +99,20 @@ public class Board {
         
         private final Field[][] builderFields;
         
+        private final CastlingState whiteCastlingState;
+        
+        private final CastlingState blackCastlingState;
+        
         private Builder(final Board board) {
             this.builderFields = deepCloneFields(board.fields);
+            this.whiteCastlingState = board.whiteCastlingState;
+            this.blackCastlingState = board.blackCastlingState;
         }
         
         private Builder() {
             this.builderFields = new FieldFacade().getEmptyFields();
+            this.whiteCastlingState = CastlingState.getInitialState();
+            this.blackCastlingState = CastlingState.getInitialState();
         }
         
         public static Builder ofEmptyBoard() {
@@ -117,9 +141,21 @@ public class Board {
         }
         
         public Board build() {
-            return getConfiguredBoard(builderFields);
+            return getConfiguredBoard(builderFields, whiteCastlingState, blackCastlingState);
         }
         
+    }
+
+    public boolean isRightCastlingPossible(final Color color) {
+        return color == WHITE ? 
+                whiteCastlingState.isRightCastlingPossible()
+                : blackCastlingState.isRightCastlingPossible();
+    }
+
+    public boolean isLeftCastlingPossible(final Color color) {
+        return color == WHITE ?
+                whiteCastlingState.isLeftCastlingPossible()
+                : blackCastlingState.isLeftCastlingPossible();
     }
 
 }

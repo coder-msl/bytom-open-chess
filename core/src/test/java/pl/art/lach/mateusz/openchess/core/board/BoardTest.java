@@ -143,4 +143,5 @@ public class BoardTest {
         assertTrue(adjustedBoard.getField(field.getLetter(), field.getNumber()).isEmpty());
         assertFalse(board.getField(field.getLetter(), field.getNumber()).isEmpty());
     }
+
 }
