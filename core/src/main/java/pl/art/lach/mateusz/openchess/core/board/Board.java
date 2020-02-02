@@ -14,10 +14,9 @@
  */
 package pl.art.lach.mateusz.openchess.core.board;
 
-import java.util.Arrays;
-
 import static pl.art.lach.mateusz.openchess.core.Color.WHITE;
-import static pl.art.lach.mateusz.openchess.core.Color.BLACK;
+
+import java.util.Arrays;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
@@ -148,14 +147,14 @@ public class Board {
 
     public boolean isRightCastlingPossible(final Color color) {
         return color == WHITE ? 
-                whiteCastlingState.isRightCastlingPossible()
-                : blackCastlingState.isRightCastlingPossible();
+                whiteCastlingState.isRightCastlingPossible(this, color)
+                : blackCastlingState.isRightCastlingPossible(this, color);
     }
 
     public boolean isLeftCastlingPossible(final Color color) {
         return color == WHITE ?
-                whiteCastlingState.isLeftCastlingPossible()
-                : blackCastlingState.isLeftCastlingPossible();
+                whiteCastlingState.isLeftCastlingPossible(this, color)
+                : blackCastlingState.isLeftCastlingPossible(this, color);
     }
 
 }

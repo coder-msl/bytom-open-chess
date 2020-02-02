@@ -15,7 +15,6 @@
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
 import static org.hamcrest.CoreMatchers.hasItems;
-import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static pl.art.lach.mateusz.openchess.core.Color.WHITE;
 

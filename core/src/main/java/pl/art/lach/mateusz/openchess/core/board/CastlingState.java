@@ -14,6 +14,10 @@
  */
 package pl.art.lach.mateusz.openchess.core.board;
 
+import pl.art.lach.mateusz.openchess.core.Color;
+import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
+import pl.art.lach.mateusz.openchess.core.board.Field.Number;
+
 /**
  * @author: Mateusz Sławomir Lach 
  */
@@ -47,11 +51,19 @@ final class CastlingState {
         return new CastlingState(leftRookWasMoved, rightRookWasMoved, true);
     }
     
-    boolean isRightCastlingPossible() {
+    boolean isRightCastlingPossible(final Board board, final Color color) {
+//        if (Color.WHITE == color && board.getField(Letter._H, Number._1).isEmpty()) {
+//            return false;
+//        } else if (Color.BLACK == color && board.getField(Letter._H, Number._8).isEmpty()) {
+//            return false;
+//        } 
+        //TODO: finish me 
         return !rightRookWasMoved && !kingWasMoved;
     }
     
-    boolean isLeftCastlingPossible() {
+    boolean isLeftCastlingPossible(final Board board, final Color color) {
         return !leftRookWasMoved && !kingWasMoved;
     }
+    
+    
 }

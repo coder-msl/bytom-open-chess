@@ -20,8 +20,8 @@ import org.junit.Test;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy;
 import pl.art.lach.mateusz.openchess.core.pieces.strategies.MoveStrategyFactory;
+import pl.art.lach.mateusz.openchess.core.pieces.strategies.PieceMoveStrategy;
 
 /**
  * @author: Mateusz Sławomir Lach 

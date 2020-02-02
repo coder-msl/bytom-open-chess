@@ -16,30 +16,43 @@ package pl.art.lach.mateusz.openchess.core.board;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
+
+import pl.art.lach.mateusz.openchess.core.Color;
 
 /**
  * @author: Mateusz Sławomir Lach 
  */
 public class CastlingStateTest {
+    
+    private Board board;
+    
+    private Color color;
+    
+    @Before
+    public void setup() {
+        this.board = Board.getEmptyBoard();
+        this.color = Color.WHITE;
+    }
 
     @Test
     public void testRightCastlingPossible() {
         CastlingState state = CastlingState.getInitialState();
-        assertTrue(state.isRightCastlingPossible());
+        assertTrue(state.isRightCastlingPossible(board, color));
     }
 
     @Test
     public void testLeftCastlingPossible() {
         CastlingState state = CastlingState.getInitialState();
-        assertTrue(state.isLeftCastlingPossible());
+        assertTrue(state.isLeftCastlingPossible(board, color));
     }
     
     @Test
     public void testLeftCastlingNotPossible_KingMoved() {
         CastlingState state = CastlingState.getInitialState();
         state = state.setKingMoved();
-        assertFalse(state.isLeftCastlingPossible());
+        assertFalse(state.isLeftCastlingPossible(board, color));
     }
     
     
@@ -47,14 +60,14 @@ public class CastlingStateTest {
     public void testLeftCastlingNotPossible_RookMoved() {
         CastlingState state = CastlingState.getInitialState();
         state = state.setLeftRookMotioned();
-        assertFalse(state.isLeftCastlingPossible());
+        assertFalse(state.isLeftCastlingPossible(board, color));
     }
     
     @Test
     public void testRightCastlingNotPossible_RookMoved() {
         CastlingState state = CastlingState.getInitialState();
         state = state.setRightRookMoved();
-        assertFalse(state.isRightCastlingPossible());
+        assertFalse(state.isRightCastlingPossible(board, color));
     }
     
     
@@ -62,7 +75,7 @@ public class CastlingStateTest {
     public void testRightCastlingNotPossible_KingMoved() {
         CastlingState state = CastlingState.getInitialState();
         state = state.setKingMoved();
-        assertFalse(state.isRightCastlingPossible());
+        assertFalse(state.isRightCastlingPossible(board, color));
     }
     
 
