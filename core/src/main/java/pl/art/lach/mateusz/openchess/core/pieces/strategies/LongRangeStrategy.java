@@ -63,23 +63,27 @@ abstract class LongRangeStrategy implements PieceMoveStrategy {
             Field currentField, Color color, Direction direction) {
         int fieldLetter = currentField.getLetter().ordinal() + direction.getLetterDirection();
         int fieldNumber = currentField.getNumber().ordinal() + direction.getNumberDirection();
-        while (coordinatesAreValid(fieldLetter, fieldNumber)) {
-            Letter letter = Field.Letter.values()[fieldLetter];
-            Number number = Field.Number.values()[fieldNumber];
-
-            Field field = Field.getEmptyField(letter, number);
-            if (board.fieldCanBeTaken(field, color)) {
-                fields.add(field);
-                fieldLetter += direction.getLetterDirection();
-                fieldNumber += direction.getNumberDirection();
-                if (!board.isFieldEmpty(field)) {
-                    return;
-                }
-            } else {
-                return;
+        
+        while (fieldCanBeTaken(board, color, fieldLetter, fieldNumber)) {
+            Field field = getEmptyField(fieldLetter, fieldNumber);
+            fields.add(field);
+            fieldLetter += direction.getLetterDirection();
+            fieldNumber += direction.getNumberDirection();
+            if (!board.isFieldEmpty(field)) {
+                break;
             }
-            
         }
+    }
+
+    private Field getEmptyField(int fieldLetter, int fieldNumber) {
+        Letter letter = Field.Letter.get(fieldLetter);
+        Number number = Field.Number.get(fieldNumber);
+        return Field.getEmptyField(letter, number);
+    }
+    
+    private boolean fieldCanBeTaken(Board board, Color color, int fieldLetter, int fieldNumber) {
+        return coordinatesAreValid(fieldLetter, fieldNumber)
+                && board.fieldCanBeTaken(getEmptyField(fieldLetter, fieldNumber), color);
     }
 
 

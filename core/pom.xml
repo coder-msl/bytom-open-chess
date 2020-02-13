@@ -9,6 +9,17 @@
   <artifactId>bytom-open-chess-core</artifactId>
   <name>bytom-open-chess-core</name>
   
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.sonar</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>5.3</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
   <dependencies>
     <!-- https://mvnrepository.com/artifact/junit/junit -->
