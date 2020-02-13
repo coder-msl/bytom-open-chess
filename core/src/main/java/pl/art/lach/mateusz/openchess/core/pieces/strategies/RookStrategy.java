@@ -22,6 +22,8 @@ import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
 
+
+
 /**
  * @author: Mateusz Sławomir Lach 
  */
