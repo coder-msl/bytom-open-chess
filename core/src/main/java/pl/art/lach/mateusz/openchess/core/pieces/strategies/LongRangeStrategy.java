@@ -14,6 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import static pl.art.lach.mateusz.openchess.core.board.Field.coordinatesAreValid;
@@ -59,27 +60,33 @@ abstract class LongRangeStrategy implements PieceMoveStrategy {
         }
     }
 
-    protected void addFieldsInDirection(Board board, Set<Field> fields, 
-            Field currentField, Color color, Direction direction) {
+    protected Set<Field> getFieldsInDirection(Board board, Field currentField, 
+            Color color, Direction direction) {
+        Set<Field> fields = new HashSet<>();
         int fieldLetter = currentField.getLetter().ordinal() + direction.getLetterDirection();
         int fieldNumber = currentField.getNumber().ordinal() + direction.getNumberDirection();
-        while (coordinatesAreValid(fieldLetter, fieldNumber)) {
-            Letter letter = Field.Letter.values()[fieldLetter];
-            Number number = Field.Number.values()[fieldNumber];
-
-            Field field = Field.getEmptyField(letter, number);
-            if (board.fieldCanBeTaken(field, color)) {
-                fields.add(field);
-                fieldLetter += direction.getLetterDirection();
-                fieldNumber += direction.getNumberDirection();
-                if (!board.isFieldEmpty(field)) {
-                    return;
-                }
-            } else {
-                return;
+        
+        while (fieldCanBeTaken(board, color, fieldLetter, fieldNumber)) {
+            Field field = getEmptyField(fieldLetter, fieldNumber);
+            fields.add(field);
+            fieldLetter += direction.getLetterDirection();
+            fieldNumber += direction.getNumberDirection();
+            if (!board.isFieldEmpty(field)) {
+                break;
             }
-            
         }
+        return fields;
+    }
+
+    private Field getEmptyField(int fieldLetter, int fieldNumber) {
+        Letter letter = Field.Letter.get(fieldLetter);
+        Number number = Field.Number.get(fieldNumber);
+        return Field.getEmptyField(letter, number);
+    }
+    
+    private boolean fieldCanBeTaken(Board board, Color color, int fieldLetter, int fieldNumber) {
+        return coordinatesAreValid(fieldLetter, fieldNumber)
+                && board.fieldCanBeTaken(getEmptyField(fieldLetter, fieldNumber), color);
     }
 
 

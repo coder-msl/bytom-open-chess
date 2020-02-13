@@ -9,6 +9,17 @@
   <artifactId>bytom-open-chess-core</artifactId>
   <name>bytom-open-chess-core</name>
   
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.sonar</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>5.3</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
   <dependencies>
     <!-- https://mvnrepository.com/artifact/junit/junit -->
@@ -16,6 +27,13 @@
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>4.12</version>
+        <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-all</artifactId>
+        <version>1.10.19</version>
         <scope>test</scope>
     </dependency>
   </dependencies>

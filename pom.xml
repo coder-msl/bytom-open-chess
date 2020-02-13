@@ -17,4 +17,17 @@
   <modules>
    <module>core</module>
   </modules>
+  
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.sonar</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>5.3</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+ 
 </project>

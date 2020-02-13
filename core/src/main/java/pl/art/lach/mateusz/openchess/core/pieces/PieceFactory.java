@@ -30,11 +30,13 @@ public class PieceFactory {
     static {
         WHITE_PIECES.put(Pawn.class, new Pawn(Color.WHITE));
         WHITE_PIECES.put(King.class, new King(Color.WHITE));
+        WHITE_PIECES.put(Rook.class, new Rook(Color.WHITE));
     }
     
     static {
         BLACK_PIECES.put(Pawn.class, new Pawn(Color.BLACK));
         BLACK_PIECES.put(King.class, new King(Color.BLACK));
+        BLACK_PIECES.put(Rook.class, new Rook(Color.BLACK));
     }
     
     public Piece getPawnInstance(final Color color) {
@@ -47,6 +49,12 @@ public class PieceFactory {
         return color == Color.WHITE ?
                 WHITE_PIECES.get(King.class)
                 : BLACK_PIECES.get(King.class);
+    }
+
+    public Piece getRookInstance(final Color color) {
+        return color == Color.WHITE ? 
+                WHITE_PIECES.get(Rook.class) 
+                : BLACK_PIECES.get(Rook.class);
     }
 
 }

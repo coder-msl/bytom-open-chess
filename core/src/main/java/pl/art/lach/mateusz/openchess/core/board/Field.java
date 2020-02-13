@@ -25,11 +25,23 @@ public abstract class Field {
     
     
     public enum Number {
-        _1, _2, _3, _4, _5, _6, _7, _8
+        _1, _2, _3, _4, _5, _6, _7, _8;
+        
+        private static final Number[] enums = Number.values();
+        
+        public static final Number get(int ordinal) {
+            return enums[ordinal];
+        }
     }
     
     public enum Letter {
-        _A, _B, _C, _D, _E, _F, _G, _H
+        _A, _B, _C, _D, _E, _F, _G, _H;
+        
+        private static final Letter[] enums = Letter.values();
+        
+        public static final Letter get(int ordinal) {
+            return enums[ordinal];
+        }
     }
     
     private final Letter letter;
@@ -53,6 +65,7 @@ public abstract class Field {
             final Piece piece) {
         return new Field.OccupiedField(letter, number, piece);
     }
+    
     
     public static Field getField(final Letter letter, final Number number, final Piece piece) {
         if (null == piece) {
@@ -135,5 +148,7 @@ public abstract class Field {
         }
         
     }
+
+
 
 }

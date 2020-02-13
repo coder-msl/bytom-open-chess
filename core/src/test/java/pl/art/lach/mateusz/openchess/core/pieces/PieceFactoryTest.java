@@ -56,4 +56,18 @@ public class PieceFactoryTest {
         assertEquals(100, king.getValue());
         assertEquals(Color.BLACK, king.getColor());
     }
+    
+    @Test
+    public void createRookBlackTest() {
+        Piece rook = pieceFactory.getRookInstance(Color.BLACK);
+        assertEquals(5, rook.getValue());
+        assertEquals(Color.BLACK, rook.getColor());
+    }
+    
+    @Test
+    public void createRookWhiteTest() {
+        Piece rook = pieceFactory.getRookInstance(Color.WHITE);
+        assertEquals(5, rook.getValue());
+        assertEquals(Color.WHITE, rook.getColor());
+    }
 }
