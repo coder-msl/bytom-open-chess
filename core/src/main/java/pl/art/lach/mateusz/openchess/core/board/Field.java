@@ -16,8 +16,6 @@ package pl.art.lach.mateusz.openchess.core.board;
 
 import java.util.Objects;
 
-import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
-import pl.art.lach.mateusz.openchess.core.board.Field.Number;
 import pl.art.lach.mateusz.openchess.core.pieces.Piece;
 
 /**

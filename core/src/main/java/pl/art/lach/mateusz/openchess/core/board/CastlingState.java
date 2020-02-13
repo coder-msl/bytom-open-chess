@@ -15,8 +15,6 @@
 package pl.art.lach.mateusz.openchess.core.board;
 
 import pl.art.lach.mateusz.openchess.core.Color;
-import pl.art.lach.mateusz.openchess.core.board.Field.Letter;
-import pl.art.lach.mateusz.openchess.core.board.Field.Number;
 
 /**
  * @author: Mateusz Sławomir Lach 

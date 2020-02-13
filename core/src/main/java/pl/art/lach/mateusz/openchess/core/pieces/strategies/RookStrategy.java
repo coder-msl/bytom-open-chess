@@ -31,10 +31,10 @@ class RookStrategy extends LongRangeStrategy {
     public Set<Field> getAllFieldsInRange(Board board, Field currentField, Color color) {
         final Set<Field> fields = new HashSet<>();
         
-        addFieldsInDirection(board, fields, currentField, color, Direction.TOP);
-        addFieldsInDirection(board, fields, currentField, color, Direction.BOTTOM);
-        addFieldsInDirection(board, fields, currentField, color, Direction.LEFT);
-        addFieldsInDirection(board, fields, currentField, color, Direction.RIGHT);
+        fields.addAll(getFieldsInDirection(board, currentField, color, Direction.TOP));
+        fields.addAll(getFieldsInDirection(board, currentField, color, Direction.BOTTOM));
+        fields.addAll(getFieldsInDirection(board, currentField, color, Direction.LEFT));
+        fields.addAll(getFieldsInDirection(board, currentField, color, Direction.RIGHT));
         
         return Collections.unmodifiableSet(fields);
     }

@@ -31,10 +31,10 @@ class BishopStrategy extends LongRangeStrategy {
     public Set<Field> getAllFieldsInRange(Board board, Field currentField, Color color) {
         final Set<Field> fields = new HashSet<>();
         
-        addFieldsInDirection(board, fields, currentField, color, Direction.TOP_RIGHT);
-        addFieldsInDirection(board, fields, currentField, color, Direction.BOTTOM_LEFT);
-        addFieldsInDirection(board, fields, currentField, color, Direction.TOP_LEFT);
-        addFieldsInDirection(board, fields, currentField, color, Direction.BOTTOM_RIGHT);
+        fields.addAll(getFieldsInDirection(board, currentField, color, Direction.TOP_RIGHT));
+        fields.addAll(getFieldsInDirection(board, currentField, color, Direction.BOTTOM_LEFT));
+        fields.addAll(getFieldsInDirection(board, currentField, color, Direction.TOP_LEFT));
+        fields.addAll(getFieldsInDirection(board, currentField, color, Direction.BOTTOM_RIGHT));
         
         return Collections.unmodifiableSet(fields);
     }

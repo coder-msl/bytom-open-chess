@@ -14,6 +14,7 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import static pl.art.lach.mateusz.openchess.core.board.Field.coordinatesAreValid;
@@ -59,8 +60,9 @@ abstract class LongRangeStrategy implements PieceMoveStrategy {
         }
     }
 
-    protected void addFieldsInDirection(Board board, Set<Field> fields, 
-            Field currentField, Color color, Direction direction) {
+    protected Set<Field> getFieldsInDirection(Board board, Field currentField, 
+            Color color, Direction direction) {
+        Set<Field> fields = new HashSet<>();
         int fieldLetter = currentField.getLetter().ordinal() + direction.getLetterDirection();
         int fieldNumber = currentField.getNumber().ordinal() + direction.getNumberDirection();
         
@@ -73,6 +75,7 @@ abstract class LongRangeStrategy implements PieceMoveStrategy {
                 break;
             }
         }
+        return fields;
     }
 
     private Field getEmptyField(int fieldLetter, int fieldNumber) {
