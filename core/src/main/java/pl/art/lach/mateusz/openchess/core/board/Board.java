@@ -96,11 +96,11 @@ public class Board {
     
     public static class Builder {
         
-        private final Field[][] builderFields;
+        private Field[][] builderFields;
         
-        private final CastlingState whiteCastlingState;
+        private CastlingState whiteCastlingState;
         
-        private final CastlingState blackCastlingState;
+        private CastlingState blackCastlingState;
         
         private Builder(final Board board) {
             this.builderFields = deepCloneFields(board.fields);
@@ -126,6 +126,16 @@ public class Board {
             int letterOrdinal = field.getLetter().ordinal();
             int numberOrdinal = field.getNumber().ordinal();
             builderFields[letterOrdinal][numberOrdinal] = field;
+            return this;
+        }
+        
+        public Builder setWhiteCastlingState(CastlingState castlingState) {
+            this.whiteCastlingState = castlingState;
+            return this;
+        }
+        
+        public Builder setBlackCastlingState(CastlingState castlingState) {
+            this.blackCastlingState = castlingState;
             return this;
         }
         

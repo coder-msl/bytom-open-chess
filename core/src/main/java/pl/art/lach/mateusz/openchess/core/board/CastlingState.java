@@ -53,10 +53,10 @@ final class CastlingState {
     
     boolean isRightCastlingPossible(final Board board, final Color color) {
         if (Color.WHITE == color 
-                && isKingOrRookRelocated(board, Letter._H, Number._1, Letter._E, Number._1)) {
+                && isKingOrRookFieldEmpty(board, Letter._H, Number._1, Letter._E, Number._1)) {
             return false;
         } else if (Color.BLACK == color 
-                && isKingOrRookRelocated(board, Letter._H, Number._8, Letter._E, Number._8)) {
+                && isKingOrRookFieldEmpty(board, Letter._H, Number._8, Letter._E, Number._8)) {
             return false;
         } 
         return !rightRookWasMoved && !kingWasMoved;
@@ -64,16 +64,16 @@ final class CastlingState {
     
     boolean isLeftCastlingPossible(final Board board, final Color color) {
         if (Color.WHITE == color 
-                && isKingOrRookRelocated(board, Letter._A, Number._1, Letter._E, Number._1)) {
+                && isKingOrRookFieldEmpty(board, Letter._A, Number._1, Letter._E, Number._1)) {
             return false;
         } else if (Color.BLACK == color 
-                && isKingOrRookRelocated(board, Letter._H, Number._8, Letter._E, Number._8)) {
+                && isKingOrRookFieldEmpty(board, Letter._H, Number._8, Letter._E, Number._8)) {
             return false;
         } 
         return !leftRookWasMoved && !kingWasMoved;
     }
 
-    private boolean isKingOrRookRelocated(Board board, Letter rookLetter, 
+    private boolean isKingOrRookFieldEmpty(Board board, Letter rookLetter, 
             Number rookNumber, Letter kingLetter, Number kingNumber) {
         return board.getField(rookLetter, rookNumber).isEmpty()
                || board.getField(kingLetter, kingNumber).isEmpty();
