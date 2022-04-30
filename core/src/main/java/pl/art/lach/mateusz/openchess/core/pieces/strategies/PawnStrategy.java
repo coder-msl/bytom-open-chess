@@ -31,11 +31,11 @@ class PawnStrategy implements PieceMoveStrategy {
 
     @Override
     public Set<Field> getAllFieldsInRange(Board board, Field currentField, Color color) {
-        final Set<Field> fields = new HashSet<>();
-        final int numberDirection = getNumberDirectionBasingOnColor(color);
+        var fields = new HashSet<Field>();
+        var numberDirection = getNumberDirectionBasingOnColor(color);
         
-        final int letter = currentField.getLetter().ordinal();
-        final int number = currentField.getNumber().ordinal();
+        var letter = currentField.getLetter().ordinal();
+        var number = currentField.getNumber().ordinal();
         addIfFieldCanBeTaken(board, fields, letter, number + numberDirection, color);
         addIfFieldCanBeTaken(board, fields, letter - 1, number + numberDirection, color);
         addIfFieldCanBeTaken(board, fields, letter + 1, number + numberDirection, color);
@@ -49,7 +49,7 @@ class PawnStrategy implements PieceMoveStrategy {
     }
 
     private int getNumberDirectionBasingOnColor(Color color) {
-        int numberDirection = 1;
+        var numberDirection = 1;
         if (Color.BLACK == color) {
             numberDirection = -numberDirection;
         }

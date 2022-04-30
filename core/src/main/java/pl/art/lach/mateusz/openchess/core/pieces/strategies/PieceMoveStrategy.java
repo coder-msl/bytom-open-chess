@@ -14,12 +14,13 @@
  */
 package pl.art.lach.mateusz.openchess.core.pieces.strategies;
 
+import static pl.art.lach.mateusz.openchess.core.board.Field.coordinatesAreValid;
+
 import java.util.Set;
 
 import pl.art.lach.mateusz.openchess.core.Color;
 import pl.art.lach.mateusz.openchess.core.board.Board;
 import pl.art.lach.mateusz.openchess.core.board.Field;
-import static pl.art.lach.mateusz.openchess.core.board.Field.coordinatesAreValid;
 /**
  * @author: Mateusz Sławomir Lach 
  */
@@ -29,9 +30,9 @@ public interface PieceMoveStrategy {
     
     static void addIfFieldCanBeTaken(Board board, Set<Field> fields, int letterOrdinal, int numberOrdinal, Color color) {
         if (coordinatesAreValid(letterOrdinal, numberOrdinal)) {
-            Field.Letter letter = Field.Letter.values()[letterOrdinal];
-            Field.Number number = Field.Number.values()[numberOrdinal];
-            Field field = board.getField(letter, number);
+			var letter = Field.Letter.values()[letterOrdinal];
+            var number = Field.Number.values()[numberOrdinal];
+            var field = board.getField(letter, number);
             if (board.fieldCanBeTaken(field, color)) {
                 fields.add(field);
             }

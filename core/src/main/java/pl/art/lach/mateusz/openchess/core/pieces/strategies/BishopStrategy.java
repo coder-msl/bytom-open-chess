@@ -29,7 +29,7 @@ class BishopStrategy extends LongRangeStrategy {
 
     @Override
     public Set<Field> getAllFieldsInRange(Board board, Field currentField, Color color) {
-        final Set<Field> fields = new HashSet<>();
+        final var fields = new HashSet<Field>();
         
         fields.addAll(getFieldsInDirection(board, currentField, color, Direction.TOP_RIGHT));
         fields.addAll(getFieldsInDirection(board, currentField, color, Direction.BOTTOM_LEFT));
